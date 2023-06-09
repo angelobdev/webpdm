@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class WebPDMApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(WebPDMApp.class, args);
+        SpringApplication.run(WebPDMApp.class, args); 
+
+        // ciao 
     }
 
 }
