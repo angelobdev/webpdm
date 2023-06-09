@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WebpdmApplication {
+public class WebPDMApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(WebpdmApplication.class, args);
+        SpringApplication.run(WebPDMApp.class, args);
     }
 
 }
