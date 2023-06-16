@@ -16,6 +16,6 @@ public class VenditaDettaglio {
     private Integer id;
 
     @OneToOne
-    @Column(name = "vendita_id")
+    @JoinColumn(name = "vendita_id")
     private Vendita vendita;
 }

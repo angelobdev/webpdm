@@ -30,10 +30,10 @@ public class Reclamo {
     private String stato;
 
     @OneToOne
-    @Column(name = "vendita_id")
+    @JoinColumn(name = "vendita_id")
     private Vendita vendita;
 
     @OneToOne
-    @Column(name = "rimborso_id")
+    @JoinColumn(name = "rimborso_id")
     private Rimborso rimborso;
 }

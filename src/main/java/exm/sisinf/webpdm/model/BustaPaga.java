@@ -24,7 +24,7 @@ public class BustaPaga {
     private Date dataEmissione;
 
     @OneToOne
-    @Column(name = "dipendente_cf")
+    @JoinColumn(name = "dipendente_cf")
     private Dipendente dipendente;
 
 }

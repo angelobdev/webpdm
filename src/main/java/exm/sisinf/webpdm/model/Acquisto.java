@@ -16,11 +16,11 @@ public class Acquisto {
     private Integer id;
 
     @OneToOne
-    @Column(name = "vendita_id")
+    @JoinColumn(name = "vendita_id")
     private Vendita vendita;
 
     @OneToOne
-    @Column(name = "prodotto_id")
+    @JoinColumn(name = "prodotto_id")
     private Prodotto prodotto;
 
     @Column(name = "quantita")

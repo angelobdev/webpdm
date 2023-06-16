@@ -19,7 +19,7 @@ public class Approvvigionamento {
     private String nome;
 
     @OneToOne
-    @Column(name = "categoria")
+    @JoinColumn(name = "categoria")
     private CategoriaOrdine categoria;
 
     @Column(name = "quantita")

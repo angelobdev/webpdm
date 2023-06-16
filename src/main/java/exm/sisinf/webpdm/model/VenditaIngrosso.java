@@ -16,15 +16,15 @@ public class VenditaIngrosso {
     private Integer id;
 
     @OneToOne
-    @Column(name = "vendita_id")
+    @JoinColumn(name = "vendita_id")
     private Vendita vendita;
 
     @OneToOne
-    @Column(name = "utente_id")
+    @JoinColumn(name = "utente_id")
     private Utente utente;
 
     @OneToOne
-    @Column(name = "spedizione_id")
+    @JoinColumn(name = "spedizione_id")
     private Spedizione spedizione;
 
     @Column(name = "numero_fattura")

@@ -30,7 +30,7 @@ public class OrdineFornitore {
     private Double totale;
 
     @OneToOne
-    @Column(name = "fornitore_piva")
+    @JoinColumn(name = "fornitore_piva")
     private Fornitore fornitore;
 
 }
