@@ -21,7 +21,7 @@ public class BustaPaga {
     private Double totale;
 
     @Column(name = "data_emissione")
-    private Date data_emissione;
+    private Date dataEmissione;
 
     @OneToOne
     @Column(name = "dipendente_cf")
