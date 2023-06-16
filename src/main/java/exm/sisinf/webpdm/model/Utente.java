@@ -37,5 +37,4 @@ public class Utente {
     @Column(name = "numero_ordini")
     private Integer numeroOrdini;
 
-    // TODO: Join Vendita all'ingrosso
 }
