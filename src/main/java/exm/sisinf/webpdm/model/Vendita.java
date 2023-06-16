@@ -34,7 +34,7 @@ public class Vendita {
 
 
     @ManyToOne
-    // TODO: Column
+    @Column(name = "codice_coupon")
     private Coupon coupon;
 
 }
