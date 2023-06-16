@@ -2,7 +2,6 @@ package exm.sisinf.webpdm.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Generated;
 import lombok.NoArgsConstructor;
 
 @Entity
