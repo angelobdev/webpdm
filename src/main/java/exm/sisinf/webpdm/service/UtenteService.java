@@ -4,6 +4,9 @@ import exm.sisinf.webpdm.model.Utente;
 import exm.sisinf.webpdm.repository.DipendenteRepository;
 import exm.sisinf.webpdm.repository.UtenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,24 +18,24 @@ public class UtenteService {
     private UtenteRepository utenteRepository;
     //CREATE
 
-    public Utente createUtente(Utente utente){
+    public Utente createUtente(Utente utente) {
         return utenteRepository.save(utente);
     }
 
     //READ
-    public List<Utente> getAllUtente(){
+    public List<Utente> getAllUtente() {
         return utenteRepository.findAll();
     }
 
-    public Utente getUtente(Integer id){
+    public Utente getUtente(Integer id) {
         return utenteRepository.findById(id).orElse(null);
     }
 
     //UPDATE
 
-    public Utente updateUtente(Integer id, Utente utente){
+    public Utente updateUtente(Integer id, Utente utente) {
         Utente toUpdate = utenteRepository.findById(id).orElse(null);
-        if(toUpdate!=null){
+        if (toUpdate != null) {
             toUpdate.setPiva(utente.getPiva());
             toUpdate.setNome(utente.getNome());
             toUpdate.setSede(utente.getSede());
@@ -46,7 +49,17 @@ public class UtenteService {
 
     //DELETE
 
-    public void deleteUtente(int id){
+    public void deleteUtente(int id) {
         utenteRepository.deleteById(id);
+    }
+
+    // USER DETAILS SERVICE
+    public UserDetailsService userDetailsService() {
+        return new UserDetailsService() {
+            @Override
+            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+                return utenteRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Utente non trovato"));
+            }
+        };
     }
 }
