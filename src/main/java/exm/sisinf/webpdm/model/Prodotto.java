@@ -18,13 +18,13 @@ public class Prodotto {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "id")
+    @Column(name = "nome")
     private String nome;
 
-    @Column(name = "id")
+    @Column(name = "prezzo_kg")
     private Double prezzoKg;
 
-    @Column(name = "id")
+    @Column(name = "data_arrivo")
     private Date dataArrivo;
 
     @Column(name = "quantita")

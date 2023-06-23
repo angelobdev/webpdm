@@ -23,7 +23,7 @@ public class OrdineFornitore {
     @Column(name = "data")
     private Date data;
 
-    @Column(name = "totale")
+    @Column(name = "stato")
     private String stato;
 
     @Column(name = "totale")

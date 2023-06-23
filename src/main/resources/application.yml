@@ -1,0 +1,20 @@
+spring:
+  mvc:
+    view:
+      prefix: "/"
+      suffix: ".jsp"
+
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/webpdm"
+    username: "postgres"
+    password: "postgres2023"
+
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        dialect: "org.hibernate.dialect.PostgreSQLDialect"
+        hbm2ddl:
+          auto: "update"
