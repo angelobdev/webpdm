@@ -71,7 +71,7 @@ public class AuthController {
                 registerRequest.getNome(),
                 registerRequest.getSede(),
                 registerRequest.getUsername(),
-                registerRequest.getPassword()
+                encoder.encode(registerRequest.getPassword())
         );
 
         Ruolo ruoloUtente = ruoloRepository.findByNome(Ruolo.ERuolo.ROLE_USER).orElse(null);
