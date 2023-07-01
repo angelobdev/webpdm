@@ -2,7 +2,8 @@ package exm.sisinf.webpdm.config;
 
 import exm.sisinf.webpdm.auth.AuthEntryPointJwt;
 import exm.sisinf.webpdm.auth.AuthTokenFilter;
-import exm.sisinf.webpdm.service.UtenteService;
+import exm.sisinf.webpdm.auth.AuthTokenService;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +20,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.context.RequestAttributeSecurityContextRepository;
 
 @Configuration
 @EnableWebSecurity
@@ -36,12 +38,18 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll()
-                        .anyRequest().authenticated())
-                .exceptionHandling(exception -> exception
-                        .authenticationEntryPoint(unauthorizedHandler))
-                .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                        .requestMatchers("/content**", "/content/**").hasAnyRole("USER", "ADMIN") // USER CONTENT
+                        .requestMatchers("/dashboard**", "/dashboard/**").hasRole("ADMIN") // DASHBOARD
+                        .anyRequest().permitAll()
+                ).exceptionHandling(exception -> exception
+                        .authenticationEntryPoint(unauthorizedHandler)
+                ).sessionManagement(session -> session
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                        .invalidSessionUrl("/")
+                        .maximumSessions(1)
+                ).securityContext(securityContext -> securityContext
+                        .securityContextRepository(new RequestAttributeSecurityContextRepository())
+                )
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class)
                 .build();
@@ -71,6 +79,5 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 
 }

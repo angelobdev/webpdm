@@ -1,19 +1,14 @@
-<%@ page import="java.util.Date" %>
-<!DOCTYPE HTML>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <html>
 <head>
-    <title>Ciao</title>
+    <title>WEBPDM: Index</title>
     <jsp:useBean id="title" scope="request" type="java.lang.String"/>
 </head>
 <body>
-<h1>Benvenuto/a su ${title}</h1>
-<h1>Ciao, sei gay!</h1>
+<jsp:include page="/nav"/>
 
-<% for(int x = 0; x < 10; x++) {%>
-    <a>Ciao</a>
-<% } %>
-<br>
-<%=new Date().toString()%>
+<h1>Benvenuto/a su ${title}</h1>
 
 </body>
 </html>

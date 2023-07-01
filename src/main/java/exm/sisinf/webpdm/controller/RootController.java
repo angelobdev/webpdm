@@ -12,13 +12,13 @@ public class RootController {
     private static final String TITLE = "PERLA DEL MEDITERRANEO";
 
     @GetMapping()
-    public String root(Model model){
+    public String root(Model model) {
         model.addAttribute("title", TITLE);
         return "index";
     }
 
     @GetMapping("/index")
-    public String index(Model model){
+    public String index(Model model) {
         return root(model);
     }
 

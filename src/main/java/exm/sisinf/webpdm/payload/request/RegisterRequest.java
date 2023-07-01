@@ -10,6 +10,14 @@ import lombok.Data;
 @AllArgsConstructor
 public class RegisterRequest {
 
+    public RegisterRequest(String piva, String nome, String sede, String username, String password) {
+        this.piva = piva;
+        this.nome = nome;
+        this.sede = sede;
+        this.username = username;
+        this.password = password;
+    }
+
     @NotBlank
     private String piva;
 

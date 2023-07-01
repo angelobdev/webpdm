@@ -23,7 +23,13 @@ webpdm:
   app:
     jwtSecret: ======================WEBPDM=Spring===========================
     jwtExpirationMs: 86400000
+    jwtSessionAttribute: W88SBtkU3ScRKzBP6YUBx4Wg6kqpi5sCiqTLoKEyNrq1ENKeIxngChXAqx5ghafRbSGAAUTOsUBzre3koJW3KGNUkyFxsbr9U7Lh
 
 management:
   security:
     enabled: false
+
+server:
+  error:
+    whitelabel:
+      enabled: false

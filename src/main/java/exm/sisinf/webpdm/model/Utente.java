@@ -48,7 +48,7 @@ public class Utente implements UserDetails {
     @Column(name = "password")
     private String password;
 
-    @OneToOne
+    @ManyToOne
     private Ruolo ruolo;
 
     @Column(name = "numero_ordini")
