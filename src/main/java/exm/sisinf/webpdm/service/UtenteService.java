@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UtenteService {
+public class UtenteService implements UserDetailsService {
 
     @Autowired
     private UtenteRepository utenteRepository;
@@ -53,13 +53,8 @@ public class UtenteService {
         utenteRepository.deleteById(id);
     }
 
-    // USER DETAILS SERVICE
-    public UserDetailsService userDetailsService() {
-        return new UserDetailsService() {
-            @Override
-            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                return utenteRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Utente non trovato"));
-            }
-        };
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return utenteRepository.findByUsername(username).orElse(null);
     }
 }

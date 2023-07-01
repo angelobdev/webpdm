@@ -1,9 +1,7 @@
 package exm.sisinf.webpdm.model;
 
-import exm.sisinf.webpdm.auth.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,9 +12,12 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name = "utenti")
+@Table(name = "utenti",
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = "username")
+        }
+)
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Utente implements UserDetails {
@@ -24,7 +25,7 @@ public class Utente implements UserDetails {
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private String id;
+    private Integer id;
 
     //Dati aziendali
 
@@ -45,15 +46,23 @@ public class Utente implements UserDetails {
     @Column(name = "password")
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    @OneToOne
+    private Ruolo ruolo;
 
     @Column(name = "numero_ordini")
     private Integer numeroOrdini;
 
+    public Utente(String piva, String nome, String sede, String username, String password) {
+        this.piva = piva;
+        this.nome = nome;
+        this.sede = sede;
+        this.username = username;
+        this.password = password;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
+        return List.of(new SimpleGrantedAuthority(ruolo.getNome().name()));
     }
 
     @Override

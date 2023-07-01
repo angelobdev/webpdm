@@ -19,6 +19,11 @@ spring:
         hbm2ddl:
           auto: update
 
-token:
-  signing:
-    key: 413F4428472B4B6250655368566D5970337336763979244226452948404D6351
+webpdm:
+  app:
+    jwtSecret: ======================WEBPDM=Spring===========================
+    jwtExpirationMs: 86400000
+
+management:
+  security:
+    enabled: false

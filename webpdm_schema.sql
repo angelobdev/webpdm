@@ -14,6 +14,14 @@ CREATE TABLE IF NOT EXISTS coupon
     PRIMARY KEY (codice_sconto)
 );
 
+-- RUOLI
+CREATE TABLE IF NOT EXISTS ruoli
+(
+    id   SERIAL,
+    nome VARCHAR(32),
+    PRIMARY KEY (id)
+);
+
 -- UTENTI
 CREATE TABLE IF NOT EXISTS utenti
 (
@@ -25,8 +33,12 @@ CREATE TABLE IF NOT EXISTS utenti
     -- Info accesso
     username      VARCHAR(255),
     password      VARCHAR(255),
+    ruolo_id      INT,
+
     numero_ordini INT,
-    PRIMARY KEY (id)
+
+    PRIMARY KEY (id),
+    FOREIGN KEY (ruolo_id) REFERENCES ruoli (id)
 );
 
 -- SPEDIZIONE
