@@ -38,6 +38,8 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/login").anonymous()
+                        .requestMatchers("/logout").authenticated()
                         .requestMatchers("/content**", "/content/**").hasAnyRole("USER", "ADMIN") // USER CONTENT
                         .requestMatchers("/dashboard**", "/dashboard/**").hasRole("ADMIN") // DASHBOARD
                         .anyRequest().permitAll()

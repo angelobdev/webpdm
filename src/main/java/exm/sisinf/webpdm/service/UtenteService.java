@@ -23,6 +23,7 @@ public class UtenteService implements UserDetailsService {
     }
 
     //READ
+
     public List<Utente> getAllUtente() {
         return utenteRepository.findAll();
     }
@@ -53,8 +54,16 @@ public class UtenteService implements UserDetailsService {
         utenteRepository.deleteById(id);
     }
 
+    // UserDetailsService Override
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return utenteRepository.findByUsername(username).orElse(null);
+    }
+
+    // UTILITY
+
+    public boolean existsByUsername(String username){
+        return utenteRepository.existsByUsername(username);
     }
 }

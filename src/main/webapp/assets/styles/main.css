@@ -20,6 +20,22 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-image: url("https://rnz-ressh.cloudinary.com/image/upload/s--0V7W-oH2--/ar_16:10,c_fill,f_auto,g_auto,q_auto,w_1050/v1687339614/4L71PR9_000_33KE8WV_jpg");
+    background-size: cover;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Style the video: 100% width and height to cover the entire window */
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -999;
 }
 
 nav {
@@ -27,7 +43,7 @@ nav {
     top: 0;
     width: calc(100% - 2rem);
     height: var(--nav-height);
-    background: antiquewhite;
+    background: #fffa;
 
     display: flex;
     justify-content: flex-start;

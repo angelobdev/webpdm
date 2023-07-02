@@ -16,16 +16,7 @@ public class NavigatorController {
     @GetMapping("/nav")
     public String navigator(Model model) {
         Utente utente = authTokenService.getUtente();
-        String username = "";
-
-        if (utente != null) {
-            String utenteUsername = utente.getUsername();
-            if (utenteUsername != null && !utenteUsername.isEmpty()) username = utenteUsername;
-            else username = "NOT_FOUND";
-        }
-
-        model.addAttribute("username", username);
-
+        model.addAttribute("utente", utente);
         return "components/navigator";
     }
 

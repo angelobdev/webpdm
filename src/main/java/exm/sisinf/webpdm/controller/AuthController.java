@@ -9,15 +9,18 @@ import exm.sisinf.webpdm.payload.response.JwtResponse;
 import exm.sisinf.webpdm.payload.response.MessageResponse;
 import exm.sisinf.webpdm.repository.RuoloRepository;
 import exm.sisinf.webpdm.restcontroller.AuthRestController;
+import exm.sisinf.webpdm.service.UtenteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
@@ -30,41 +33,60 @@ public class AuthController {
     private AuthTokenService authTokenService;
 
     @Autowired
-    AuthRestController authRestController;
+    private AuthRestController authRestController;
+
+    @Autowired
+    private UtenteService utenteService;
 
     // LOGIN
 
     @GetMapping("/login")
-    public String login() {
+    public String login(Model model) {
+        model.addAttribute("error", "");
         return "login";
     }
 
     @PostMapping("/login")
-    public RedirectView actionLogin(@RequestParam String username, @RequestParam String password) {
-        LoginRequest loginInfo = new LoginRequest(username, password);
+    public ModelAndView actionLogin(@RequestParam String username, @RequestParam String password) {
 
-        logger.info("LOGIN BY: {}", loginInfo);
+        // Controllo se l'utente esiste
+        if (utenteService.existsByUsername(username)) {
 
-        try {
-            ResponseEntity<?> response = authRestController.authenticateUser(loginInfo);
+            LoginRequest loginInfo = new LoginRequest(username, password);
 
-            if (response.getBody() instanceof JwtResponse jwtRes) {
+            // Tento il login
+            try {
+                ResponseEntity<?> response = authRestController.authenticateUser(loginInfo);
 
-                logger.info("LOGGED IN");
+                if (response.getBody() instanceof JwtResponse jwtRes) {
+                    // Il login ha successo
+                    authTokenService.store(jwtRes.getToken()); // Salvo il token di accesso
 
-                authTokenService.store(jwtRes.getToken());
+                    Ruolo.ERuolo ruolo = authTokenService.getUtente().getRuolo().getNome();
+                    logger.info("RUOLO UTENTE: {}", ruolo.name());
 
-                return switch (authTokenService.getUtente().getRuolo().getNome()) {
-                    case ROLE_ADMIN -> new RedirectView("/dashboard");
-                    case ROLE_USER -> new RedirectView("/content");
-                };
+                    return new ModelAndView("redirect:/content");
+
+                } else {
+                    // Se fallisce ritorno l'errore
+                    ModelAndView erroreSconosciutoView = new ModelAndView("login");
+                    erroreSconosciutoView.addObject("error", "Login fallito, errore sconosciuto!");
+                    return erroreSconosciutoView;
+                }
+
+            } catch (Exception e) {
+                // Il login non ha successo
+                ModelAndView passwordErrataView = new ModelAndView("login");
+                passwordErrataView.addObject("error", "Password Errata!");
+                return passwordErrataView;
             }
-        } catch (Exception e) {
-            logger.info("INVALID LOGIN, Error: {}", e.getMessage());
-            return new RedirectView("/index");
+
+        } else {
+            ModelAndView utenteNonTrovatoView = new ModelAndView("login");
+            utenteNonTrovatoView.addObject("error", "Utente non trovato!");
+            return utenteNonTrovatoView;
         }
 
-        return new RedirectView("/index");
     }
 
     // REGISTER

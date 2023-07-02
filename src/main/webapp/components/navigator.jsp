@@ -1,15 +1,34 @@
-<jsp:useBean id="username" scope="request" type="java.lang.String"/>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="exm.sisinf.webpdm.model.Ruolo" %>
+<jsp:useBean id="utente" scope="request" class="exm.sisinf.webpdm.model.Utente"/>
 <link rel="stylesheet" type="text/css" href="../assets/styles/main.css"/>
+<script
+        src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"
+        data-keep-original-source="false"
+></script>
 <nav>
     <p>WEBPDM</p>
+
+    <% if (utente.getUsername() == null) { %>
+    <!-- Nav Routes (public) -->
     <div class="nav-routes">
         <a href="/">Home</a>
-        <a href="content">AREA_UTENTE</a>
-        <a href="dashboard">AREA_ADMIN</a>
     </div>
+    <% } else { %>
+    <!-- Nav Routes (utente) -->
+    <div class="nav-routes">
+        <a href="/">Home</a>
+        <a href="/content">Area Clienti</a>
+        <% if (utente.getRuolo() != null && utente.getRuolo().getNome().equals(Ruolo.ERuolo.ROLE_ADMIN)) { %>
+        <a href="/dashboard">Dashboard</a>
+        <% } %>
+    </div>
+    <% } %>
+
     <div class="nav-last">
-        <% if (!username.isEmpty()) {%>
-        <p>Ciao, ${username}</p>
+        <% if (utente.getUsername() != null) { %>
+        <p>Ciao, <%=utente.getUsername()%>
+        </p>
         <a href="/logout">Logout</a>
         <% } else { %>
         <a href="/login">Login</a>
@@ -18,3 +37,6 @@
         <% } %>
     </div>
 </nav>
+<video autoplay muted loop id="myVideo">
+    <source src="../assets/media/background.mp4" type="video/mp4">
+</video>
