@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Roboto Slab");
 
 :root {
     --nav-height: 3rem;
 }
 
 * {
-    font-family: Roboto, sans-serif;
+    font-family: "Roboto Slab", sans-serif;
 }
 
 html,
@@ -28,6 +28,10 @@ a {
     text-decoration: none;
 }
 
+.logo {
+    height: 80%;
+}
+
 /* Style the video: 100% width and height to cover the entire window */
 #myVideo {
     position: fixed;
@@ -43,7 +47,7 @@ nav {
     top: 0;
     width: calc(100% - 2rem);
     height: var(--nav-height);
-    background: #fffa;
+    background: #fff;
 
     display: flex;
     justify-content: flex-start;
@@ -63,8 +67,16 @@ nav > .nav-routes {
 }
 
 nav > .nav-routes > a {
-    margin-right: 0.5rem;
+    margin-right: 2rem;
+    color: #066;
+    font-size: 1.1rem;
+    display: inline-block;
 }
+
+nav > .nav-routes > a:hover {
+    text-shadow: 0 0 2px yellow;
+}
+
 
 nav > .nav-last {
     display: flex;
@@ -76,4 +88,19 @@ nav > .nav-last {
 
 nav > .nav-last > * {
     margin-left: 0.5rem;
+}
+
+.login-button {
+    background: #066;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+    color: white;
+}
+
+.login-button:hover {
+    background: #088;
+}
+
+.login-button:active {
+    background: #0aa;
 }

@@ -7,12 +7,15 @@
         data-keep-original-source="false"
 ></script>
 <nav>
-    <p>WEBPDM</p>
+    <img src="../assets/media/logo.png" class="logo">
 
     <% if (utente.getUsername() == null) { %>
     <!-- Nav Routes (public) -->
     <div class="nav-routes">
-        <a href="/">Home</a>
+        <a href="/"><i class="fa fa-ship"></i>Home</a>
+        <a href="/chisiamo"><i class="fas fa-paper-plane"></i>Chi siamo</a>
+        <a href="/dovesiamo"><i class="fa fa-map-signs"></i>Dove siamo</a>
+        <a href="/contatti"><i class="fa fa-phone"></i>Contatti</a>
     </div>
     <% } else { %>
     <!-- Nav Routes (utente) -->
@@ -31,9 +34,7 @@
         </p>
         <a href="/logout">Logout</a>
         <% } else { %>
-        <a href="/login">Login</a>
-        <p>o</p>
-        <a href="/register">Registrati</a>
+        <a href="/login" class="login-button">Login</a>
         <% } %>
     </div>
 </nav>
