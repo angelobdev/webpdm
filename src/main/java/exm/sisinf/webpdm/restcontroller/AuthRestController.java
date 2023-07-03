@@ -9,8 +9,11 @@ import exm.sisinf.webpdm.payload.response.JwtResponse;
 import exm.sisinf.webpdm.payload.response.MessageResponse;
 import exm.sisinf.webpdm.repository.RuoloRepository;
 import exm.sisinf.webpdm.repository.UtenteRepository;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -27,6 +30,11 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthRestController {
+
+    @Value("${webpdm.app.jwtSessionAttribute}")
+    private String tokenSessionKey;
+
+
     @Autowired
     AuthenticationManager authenticationManager;
 

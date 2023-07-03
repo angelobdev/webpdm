@@ -70,11 +70,18 @@ nav > .nav-routes > a {
     margin-right: 2rem;
     color: #066;
     font-size: 1.1rem;
-    display: inline-block;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
 }
 
 nav > .nav-routes > a:hover {
     text-shadow: 0 0 2px yellow;
+}
+
+nav > .nav-routes > a > p {
+    margin-right: 0.5rem;
 }
 
 

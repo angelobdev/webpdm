@@ -10,6 +10,8 @@ import exm.sisinf.webpdm.payload.response.MessageResponse;
 import exm.sisinf.webpdm.repository.RuoloRepository;
 import exm.sisinf.webpdm.restcontroller.AuthRestController;
 import exm.sisinf.webpdm.service.UtenteService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +49,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ModelAndView actionLogin(@RequestParam String username, @RequestParam String password) {
+    public ModelAndView actionLogin(@RequestParam String username, @RequestParam String password, HttpServletRequest request, HttpServletResponse httpResponse) {
 
         // Controllo se l'utente esiste
         if (utenteService.existsByUsername(username)) {
@@ -59,10 +61,12 @@ public class AuthController {
                 ResponseEntity<?> response = authRestController.authenticateUser(loginInfo);
 
                 if (response.getBody() instanceof JwtResponse jwtRes) {
-                    // Il login ha successo
-                    authTokenService.store(jwtRes.getToken()); // Salvo il token di accesso
 
-                    Ruolo.ERuolo ruolo = authTokenService.getUtente().getRuolo().getNome();
+                    String token = jwtRes.getToken();
+
+                    // Il login ha successo
+                    authTokenService.store(httpResponse, token); // Salvo il token di accesso
+                    Ruolo.ERuolo ruolo = authTokenService.getUtente(token).getRuolo().getNome();
                     logger.info("RUOLO UTENTE: {}", ruolo.name());
 
                     return new ModelAndView("redirect:/content");
@@ -106,14 +110,6 @@ public class AuthController {
         }
 
         return new RedirectView("/index");
-    }
-
-    // LOGOUT
-
-    @GetMapping("/logout")
-    public RedirectView logout() {
-        authTokenService.invalidate();
-        return new RedirectView("/logout");
     }
 
 }

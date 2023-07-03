@@ -60,6 +60,6 @@ public class AuthTokenFilter extends OncePerRequestFilter {
             return headerAuth.substring(7);
         }
 
-        return authTokenService.retrieve();
+        return authTokenService.retrieve(request);
     }
 }

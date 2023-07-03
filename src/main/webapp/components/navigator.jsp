@@ -12,10 +12,10 @@
     <% if (utente.getUsername() == null) { %>
     <!-- Nav Routes (public) -->
     <div class="nav-routes">
-        <a href="/"><i class="fa fa-ship"></i>Home</a>
-        <a href="/chisiamo"><i class="fas fa-paper-plane"></i>Chi siamo</a>
-        <a href="/dovesiamo"><i class="fa fa-map-signs"></i>Dove siamo</a>
-        <a href="/contatti"><i class="fa fa-phone"></i>Contatti</a>
+        <a href="/"><p><i class="fa fa-ship"></i></p>Home</a>
+        <a href="/chisiamo"><p><i class="fas fa-paper-plane"></i></p>Chi siamo</a>
+        <a href="/dovesiamo"><p><i class="fa fa-map-signs"></i></p>Dove siamo</a>
+        <a href="/contatti"><p><i class="fa fa-phone"></i></p>Contatti</a>
     </div>
     <% } else { %>
     <!-- Nav Routes (utente) -->
@@ -38,6 +38,3 @@
         <% } %>
     </div>
 </nav>
-<video autoplay muted loop id="myVideo">
-    <source src="../assets/media/background.mp4" type="video/mp4">
-</video>

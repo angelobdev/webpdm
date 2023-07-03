@@ -12,6 +12,10 @@
 <p>Errore: ${error}</p>
 <% } %>
 
+<video autoplay muted loop id="myVideo">
+    <source src="assets/media/background.mp4" type="video/mp4">
+</video>
+
 <div class="login-container">
     <div class="header">
         <i class="fa fa-anchor" style="font-size: 2rem"></i>
@@ -37,7 +41,7 @@
         <a href="#">Password dimenticata?</a>
         <div class="divider"></div>
         <div class="register">
-            <p>Non sei registrato?</p><a href="/register">Registrati!</a>
+            <p>Non sei registrato? <a href="/register">Registrati!</a></p>
         </div>
     </form>
 
