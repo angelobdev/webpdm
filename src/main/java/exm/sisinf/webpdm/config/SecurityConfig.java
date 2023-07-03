@@ -3,8 +3,11 @@ package exm.sisinf.webpdm.config;
 import exm.sisinf.webpdm.auth.AuthEntryPointJwt;
 import exm.sisinf.webpdm.auth.AuthTokenFilter;
 import exm.sisinf.webpdm.auth.AuthTokenService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -33,6 +36,9 @@ public class SecurityConfig {
     @Autowired
     private AuthEntryPointJwt unauthorizedHandler;
 
+    @Value("${webpdm.app.jwtSessionAttribute}")
+    private String tokenSessionKey;
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
@@ -52,7 +58,19 @@ public class SecurityConfig {
                 ).securityContext(securityContext -> securityContext
                         .securityContextRepository(new RequestAttributeSecurityContextRepository())
                 )
-                .authenticationProvider(authenticationProvider())
+                .logout(logout -> logout
+                        .permitAll()
+                        .logoutSuccessHandler(((request, response, authentication) -> {
+                            response.setStatus(HttpServletResponse.SC_OK);
+                            // LOGOUT
+                            Cookie cookie = new Cookie(tokenSessionKey, null);
+                            cookie.setPath("/");
+                            cookie.setMaxAge(0);
+                            response.addCookie(cookie);
+
+                            response.sendRedirect("/");
+                        }))
+                ).authenticationProvider(authenticationProvider())
                 .addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
