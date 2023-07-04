@@ -95,7 +95,8 @@ public class AuthController {
 
     // REGISTER
     @GetMapping("/register")
-    public String register() {
+    public String register(Model model) {
+        model.addAttribute("error", "");
         return "register";
     }
 

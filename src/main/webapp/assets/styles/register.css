@@ -1,0 +1,93 @@
+.register-container {
+    background: #fffd;
+    width: 32%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 3rem;
+    border-radius: 0.5rem;
+}
+
+.register-container > .header {
+    background: #0ffa;
+    width: 100%;
+    height: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.register-container > .header > .title {
+    padding: 0;
+    font-size: 1.4rem;
+}
+
+.register-container > .form-register {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.register-container > .form-register > div {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 2rem;
+}
+
+.register-container > .form-register > div > .icon-holder {
+    width: 3rem;
+    height: 3rem;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 3rem 0 0 3rem;
+}
+
+
+.register-container > .form-register > div > input {
+    width: 100%;
+    height: 3rem;
+    background: #f0f0f0aa;
+    padding-left: 1rem;
+    border-radius: 0 3rem 3rem 0;
+    border: 0.5px solid #0005;
+}
+
+.register-container > .form-register > section {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.register-container > .form-register > button {
+    width: 90%;
+    height: 3rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 0;
+    background: yellow;
+    border-radius: 3rem;
+}
+
+.divider {
+    width: 90%;
+    background: #0005;
+    height: 1px;
+}
+
+a {
+    color: #066;
+}

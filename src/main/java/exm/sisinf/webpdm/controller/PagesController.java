@@ -6,14 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PagesController {
 
-    @GetMapping("/chisiamo")
-    public String chiSiamo() {
-        return "chisiamo";
-    }
-
-    @GetMapping("/dovesiamo")
-    public String doveSiamo() {
-        return "dovesiamo";
+    @GetMapping("/azienda")
+    public String azienda() {
+        return "azienda";
     }
 
     @GetMapping("/contatti")

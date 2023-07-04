@@ -7,15 +7,16 @@
         data-keep-original-source="false"
 ></script>
 <nav>
-    <img src="../assets/media/logo.png" class="logo">
+    <img src="https://img.freepik.com/premium-vector/vector-graphic-abstract-fish-logo-design-template_600800-223.jpg" class="logo">
+    <h2 class="logo-titolo">La Perla del Mediterraneo</h2>
 
     <% if (utente.getUsername() == null) { %>
     <!-- Nav Routes (public) -->
     <div class="nav-routes">
-        <a href="/"><p><i class="fa fa-ship"></i></p>Home</a>
-        <a href="/chisiamo"><p><i class="fas fa-paper-plane"></i></p>Chi siamo</a>
-        <a href="/dovesiamo"><p><i class="fa fa-map-signs"></i></p>Dove siamo</a>
-        <a href="/contatti"><p><i class="fa fa-phone"></i></p>Contatti</a>
+        <a href="/">Home</a>
+        <a href="/azienda">Azienda</a>
+        <a href="/prodotti">Prodotti</a>
+        <a href="/contatti">Contatti</a>
     </div>
     <% } else { %>
     <!-- Nav Routes (utente) -->

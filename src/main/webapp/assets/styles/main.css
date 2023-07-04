@@ -1,11 +1,12 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto Slab");
+@import url("https://fonts.googleapis.com/css?family=Merriweather Sans");
+@import url("https://fonts.googleapis.com/css?family=Dancing Script");
 
 :root {
     --nav-height: 3rem;
 }
 
 * {
-    font-family: "Roboto Slab", sans-serif;
+    font-family: "Merriweather Sans", sans-serif;
 }
 
 html,
@@ -20,8 +21,6 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-image: url("https://rnz-ressh.cloudinary.com/image/upload/s--0V7W-oH2--/ar_16:10,c_fill,f_auto,g_auto,q_auto,w_1050/v1687339614/4L71PR9_000_33KE8WV_jpg");
-    background-size: cover;
 }
 
 a {
@@ -29,7 +28,11 @@ a {
 }
 
 .logo {
-    height: 80%;
+    height: 100%;
+}
+
+.logo-titolo {
+    font-family: "Dancing Script", sans-serif;
 }
 
 /* Style the video: 100% width and height to cover the entire window */
@@ -56,6 +59,8 @@ nav {
 
     padding-left: 1rem;
     padding-right: 1rem;
+
+    box-shadow: 0 5px 5px #0005;
 }
 
 nav > .nav-routes {
@@ -63,21 +68,28 @@ nav > .nav-routes {
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
-    margin-left: 2rem;
+    margin-left: auto;
 }
 
 nav > .nav-routes > a {
     margin-right: 2rem;
-    color: #066;
-    font-size: 1.1rem;
+    color: #000;
+    font-size: 1.15rem;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
+
+    opacity: 0.6;
+    transition: 0.3s;
 }
 
 nav > .nav-routes > a:hover {
-    text-shadow: 0 0 2px yellow;
+    background: #0001;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+
+    opacity: 1
 }
 
 nav > .nav-routes > a > p {
@@ -90,7 +102,7 @@ nav > .nav-last {
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
-    margin-left: auto;
+
 }
 
 nav > .nav-last > * {
@@ -98,16 +110,18 @@ nav > .nav-last > * {
 }
 
 .login-button {
-    background: #066;
+    background: #579dc9;
     padding: 0.5rem;
-    border-radius: 0.2rem;
+    border-radius: 3rem;
     color: white;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .login-button:hover {
-    background: #088;
+    background: #6da6c9;
 }
 
 .login-button:active {
-    background: #0aa;
+    background: #85aec7;
 }
