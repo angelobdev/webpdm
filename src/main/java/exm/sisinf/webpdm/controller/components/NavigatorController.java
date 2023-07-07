@@ -21,4 +21,11 @@ public class NavigatorController {
         return "components/navigator";
     }
 
+    @GetMapping("/adminnav")
+    public String adminNavigator(Model model, HttpServletRequest request) {
+        Utente utente = authTokenService.getUtente(authTokenService.retrieve(request));
+        model.addAttribute("utente", utente);
+        return "components/adminnav";
+    }
+
 }

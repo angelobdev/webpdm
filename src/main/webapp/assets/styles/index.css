@@ -1,0 +1,212 @@
+:root {
+    --containerHeight: 100%;
+    --firstColor: hsl(0, 0%, 89%);
+    --secondColor: hsl(166, 12%, 73%);
+    --thirdColor: #385170;
+    --fourthColor: #142d4c;
+    --fifthColor: hsl(221, 45%, 19%);
+}
+::-webkit-scrollbar {
+    width: 0.0001em;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #0000;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #0000;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--firstColor);
+}
+html {
+    scroll-behavior: smooth;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: black;
+    font-style: italic;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: var(--containerHeight);
+    margin: 0px;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    border-radius: 0 3rem 0 0;
+}
+.container > .page {
+    width: 100%;
+    min-height: var(--containerHeight);
+    scroll-snap-align: center;
+    padding: 0;
+    margin: 0;
+}
+.container > .todo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--secondColor);
+    color: black;
+    font-style: italic;
+}
+.todo > .todoList1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 90%;
+}
+.todoList1 > .card {
+    background-color: var(--fourthColor);
+    border: 1px solid black;
+    border-radius: 1rem;
+
+    margin: 0.5rem;
+
+    width: 50%;
+    height: 70%;
+
+    overflow-y: scroll;
+}
+.todoList1 > .elenco {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: scroll;
+}
+.elenco > h3{
+    background-color: var(--thirdColor);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: black;
+    border-right-style: solid;
+    border-right-color: black;
+    border-left-style: solid;
+    border-left-color: black;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-radius: 0.5rem 0.5rem 0 0;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+.elenco > ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 100%;
+    padding: 2rem;
+    margin: 0;
+}
+.elenco > ul > li {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+}
+.elenco > ul > li > p {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    margin: 0.2rem;
+}
+.elenco  ul > li > button {
+    justify-content: flex-end;
+    align-items: center;
+    border: none;
+    background-color: #0000;
+    margin-left: auto;
+}
+.todoList1 > .add {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add > h3 {
+    background-color: var(--thirdColor);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    border-top-width: 1px;
+    border-top-color: black;
+    border-right-color: black;
+    border-left-color: black;
+    border-bottom-color: black;
+    border-radius: 0.5rem 0.5rem 0 0;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.add > input {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem;
+    width: 60%;
+    align-items: center;
+    background-color: var(--thirdColor);
+}
+.add > button{
+    border: 2px solid white;
+    background-color: var(--thirdColor);
+    border-radius: 2px;
+}
+
+.meteoPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--thirdColor);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: black;
+    font-style: italic;
+}
+.wherePage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--fourthColor);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color:  black;
+    font-style: italic;
+}
+.infoPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--fifthColor);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

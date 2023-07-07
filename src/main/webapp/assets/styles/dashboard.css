@@ -1,0 +1,50 @@
+.admin-nav {
+    background: antiquewhite;
+
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+
+    width: 30vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.admin-nav > a {
+    background: white;
+
+    width: 90%;
+    height: 3rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+    border: 0.5px solid gray;
+    border-radius: 2rem;
+
+    margin-top: 1rem;
+}
+
+.admin-nav > a:hover {
+    background: lightgray;
+}
+
+.dashboard-content {
+    position: absolute;
+    top: var(--nav-height);
+    right: 0;
+
+    width: 70vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}

@@ -1,5 +1,5 @@
 nav {
-    position: absolute;
+    position: fixed;
     top: 0;
     width: calc(100% - 1rem);
     height: var(--nav-height);
@@ -14,6 +14,8 @@ nav {
     /*padding-right: 1rem;*/
 
     box-shadow: 0 5px 5px #0005;
+
+    z-index: 1;
 }
 
 nav > .nav-routes {

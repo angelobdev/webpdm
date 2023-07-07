@@ -44,3 +44,9 @@ a {
     min-height: 100%;
     z-index: -999;
 }
+
+.divider {
+    width: 90%;
+    background: #0005;
+    height: 1px;
+}
