@@ -1,50 +1,67 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <html>
 <head>
     <title>WEBPDM: Index</title>
-    <link rel="stylesheet" type="text/css" href="assets/styles/index.css" />
-    <jsp:useBean id="title" scope="request" type="java.lang.String"/>
+    <link rel="stylesheet" type="text/css" href="assets/styles/index.css"/>
 </head>
 <body>
 <jsp:include page="/nav"/>
-<div class="container">
-    <div class="todo page">
-        <div class="titoloTodo">
-            <h1><span id="todoList">TODO LIST</span></h1>
+
+<div class="slider">
+
+    <div class="controlli">
+        <div class="sopra">
+            <i class="fa fa-chevron-up"> </i>
         </div>
-        <div class="todoList1">
-            <div class="elenco card">
-                <h3>Lista delle cose da Fare:</h3>
-                <ul id="lista">
-                    <li id="elemento">
-                        <input type="checkbox" name="object" id="object" value="1" />
-                        <p>Fare il sito</p>
-                        <button id="rimuovi" onclick="rimuovi()">
-                            rimuovi
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            <div class="add card">
-                <h3>Aggiungi:</h3>
-                <input type="text" id="item" name="item\" />
-                <button id="aggiungi" onclick="aggiunta()">Aggiungi</button>
-            </div>
+        <div class="sotto">
+            <i class="fa fa-chevron-down"> </i>
         </div>
     </div>
-    <div class="meteoPage page">
-        <h1>Meteo</h1>
-        <p>Ti sei spostato alla pagine del <span id="meteoPage">Meteo</span></p>
+
+    <div class="wrapper">
+
+        <div class="left">
+            <div>
+                <h2> pisci friscu </h2>
+                <p> il pisci friscu che serviamo è sempre friscu dal 1900 u na capi compa </p>
+            </div>
+
+            <div>
+                <h2> pisci scaduto </h2>
+                <p> vinnimu roba scaduta du 1900 </p>
+            </div>
+
+            <div>
+                <h2> a fissi i mammata </h2>
+                <p> mammata è na grande lorda i prima categoria </p>
+            </div>
+
+            <div>
+                <h2> pisci scaduto </h2>
+                <p> vinnimu roba scaduta du 1900 </p>
+            </div>
+
+            <div>
+                <h2> pisci scaduto </h2>
+                <p> vinnimu roba scaduta du 1900 </p>
+            </div>
+
+        </div>
+        <div class="right">
+            <div>
+                <img src="assets/media/pesce1.jpeg">
+            </div>
+            <div>
+                <img src="assets/media/pesce2.jpeg">
+            </div>
+            <div>
+                <img src="assets/media/pesce3.jpeg">
+            </div>
+            <div>
+                <img src="assets/media/pesce4.jpeg">
+            </div>
+        </div>
     </div>
-    <div class="wherePage page">
-        <h1>WherePage</h1>
-        <p>Ti sei spostato alla <span id="wherePage">wherePage</span></p>
-    </div>
-    <div class="infoPage page">
-        <h1>InfoPage</h1>
-        <p>Ti sei spostato alla <span id="infoPage">infoPage</span></p>
-    </div>
-</div>
 </body>
 </html>

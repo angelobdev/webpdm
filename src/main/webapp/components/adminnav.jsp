@@ -16,7 +16,7 @@
 <jsp:include page="/nav"/>
 
 <div class="admin-nav">
-    <p>Dashboard</p>
+    <h1>Dashboard</h1>
     <div class="divider"></div>
     <a href="/dashboard/magazzino">Gestione Magazzino</a>
     <a href="/dashboard/dipendenti">Gestione Dipendenti</a>
