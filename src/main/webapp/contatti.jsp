@@ -2,15 +2,22 @@
 <html>
 <head>
     <title>WEBPDM: Contatti</title>
+    <link rel="stylesheet" type="text/css" href="assets/styles/contatti.css">
 
 </head>
 <body>
 <jsp:include page="/nav"/>
 
-<div class="contact-info">
-    <div class="card" >
-        <i class="card-icon far fa-envelope"></i>
-        <p>Laperladelmediterraneo@gmail.com</p>
+
+<div class="container">
+
+    <h1 class="scritta"> Contattaci</h1>
+
+    <div class="cards-container">
+        <div class="contact-info">
+            <div class="card">
+                <i class="fas fa-envelope fa-lg"></i>
+                <p>Laperladelmediterraneo@gmail.com</p>
 
             </div>
             <div class="card">

@@ -1,9 +1,9 @@
+/** {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    font-family: "mont-serrat", sans-serif;*/
+/*    box-sizing: border-box;*/
 
-*{
-    margin : 0 ;
-    padding : 0 ;
-    font-family: "mont-serrat" , sans-serif ;
-    box-sizing: border-box ;
 
 /*}*/
 
@@ -19,18 +19,24 @@
 }
 
 
+.scritta {
+    color: white;
+    font-size: 3rem;
+}
+
 .card {
-    background: #2f3452 ;
-    padding: 0 20px ;
-    margin : 0 10px ;
-    width : calc( 33% - 20px ) ;
-    height: 200px ;
-    display: flex ;
-    flex-direction: column ;
-    justify-content: center ;
-    align-items: center ;
-    color : #fff ;
-    cursor: pointer ;
+    background: #579dc9;
+    padding: 0 20px;
+    margin: 0 10px;
+    width: calc(33% - 20px);
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 3rem;
 
 
 }
@@ -71,6 +77,30 @@
     max-height: 40px;
     opacity: 1;
 
- }
+}
+
+.container {
+    width: 100%;
+    height: calc(100vh - var(--nav-height));
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), transparent), url("../media/pescatore.jpg");
+    background-size: cover;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    background: #fff5;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
 
 
