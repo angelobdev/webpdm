@@ -94,6 +94,16 @@
                 <input name="quantita" type="number" placeholder="Quantità" required>
             </div>
 
+            <div class="input-container">
+                <label>Descrizione</label>
+                <input name="descrizione" type="text" size="512" placeholder="Descrizione prodotto" class="wide" required>
+            </div>
+
+            <div class="input-container">
+                <label>Link Immagine</label>
+                <input name="immagine" type="text" size="512" placeholder="Link Immagine" class="wide" required>
+            </div>
+
             <input type="submit" value="Aggiungi">
 
         </form>

@@ -34,6 +34,12 @@ public class Prodotto {
     @Column(name = "quantita")
     private Integer quantita;
 
+    @Column(name = "descrizione")
+    private String descrizione;
+
+    @Column(name = "immagine")
+    private String immagine;
+
     @ManyToMany
     @JoinTable(
             name = "acquisti",
@@ -42,10 +48,12 @@ public class Prodotto {
     )
     private Collection<Vendita> vendite;
 
-    public Prodotto(String nome, Double prezzoKg, Date dataArrivo, Integer quantita) {
+    public Prodotto(String nome, Double prezzoKg, Date dataArrivo, Integer quantita, String descrizione, String immagine) {
         this.nome = nome;
         this.prezzoKg = prezzoKg;
         this.dataArrivo = dataArrivo;
         this.quantita = quantita;
+        this.descrizione = descrizione;
+        this.immagine = immagine;
     }
 }

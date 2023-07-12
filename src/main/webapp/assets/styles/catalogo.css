@@ -1,0 +1,55 @@
+.products {
+    min-width: 100%;
+    height: calc(100vh - var(--nav-height));
+    background-image: url("https://www.theladders.com/wp-content/uploads/fisherman-191101.jpg");
+    background-size: cover;
+
+    margin: 0;
+    padding: 0;
+
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+}
+
+
+.container {
+    display: inline;
+
+    background: #fff9;
+
+    min-width: 300px;
+    max-width: 300px;
+    height: 80%;
+
+    border: 1px solid #0005;
+    border-radius: 3rem;
+    box-shadow: 3px 2px #0005;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.container > img {
+    width: 90%;
+    height: 40%;
+    margin-top: 2rem;
+    border-radius: 2rem;
+    object-fit: cover;
+}
+
+.container > .prezzo {
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+.container > .quantita {
+
+}

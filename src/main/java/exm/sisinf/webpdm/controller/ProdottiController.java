@@ -19,16 +19,16 @@ public class ProdottiController {
     @Autowired
     private ProdottoService prodottoService;
 
-    @GetMapping("/prodotti")
-    public String prodotti(Model model) {
+    @GetMapping("/catalogo")
+    public String catalogo(Model model) {
         List<Prodotto> prodotti = prodottoService.getAllProdotti();
         model.addAttribute("prodotti", prodotti);
-        return "prodotti";
+        return "catalogo";
     }
 
     @PostMapping("/prodotti/add")
-    public RedirectView prodottiAddAction(@RequestParam String nome, @RequestParam Double prezzoKg, @RequestParam String dataArrivo, @RequestParam Integer quantita) throws ParseException {
-        Prodotto prodotto = new Prodotto(nome, prezzoKg, new SimpleDateFormat("yyyy-MM-dd").parse(dataArrivo), quantita);
+    public RedirectView prodottiAddAction(@RequestParam String nome, @RequestParam Double prezzoKg, @RequestParam String dataArrivo, @RequestParam Integer quantita, @RequestParam String descrizione, @RequestParam String immagine) throws ParseException {
+        Prodotto prodotto = new Prodotto(nome, prezzoKg, new SimpleDateFormat("yyyy-MM-dd").parse(dataArrivo), quantita, descrizione, immagine);
         prodottoService.createProdotto(prodotto);
         return new RedirectView("/dashboard/magazzino");
     }
