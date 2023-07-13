@@ -22,8 +22,10 @@ CREATE TABLE IF NOT EXISTS ruoli
     PRIMARY KEY (id)
 );
 
-INSERT INTO ruoli(id, nome) VALUES (DEFAULT, 'ROLE_ADMIN');
-INSERT INTO ruoli(id, nome) VALUES (DEFAULT, 'ROLE_USER');
+INSERT INTO ruoli(id, nome)
+VALUES (DEFAULT, 'ROLE_ADMIN');
+INSERT INTO ruoli(id, nome)
+VALUES (DEFAULT, 'ROLE_USER');
 
 -- UTENTI
 CREATE TABLE IF NOT EXISTS utenti
@@ -95,6 +97,8 @@ CREATE TABLE IF NOT EXISTS prodotti
     prezzo_kg   FLOAT,
     data_arrivo DATE,
     quantita    INT,
+    descrizione VARCHAR(512),
+    immagine    VARCHAR(1024),
     PRIMARY KEY (id)
 );
 
