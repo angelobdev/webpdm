@@ -32,14 +32,14 @@ table td {
 }
 
 .delete-prodotto {
-    background: #ff0000;
+    background: #ff6348;
     border: 1px solid #0005;
     padding: 0.5rem;
     border-radius: 0.2rem;
 }
 
 .delete-prodotto:hover {
-    background: #ff4c4c;
+    background: #ff6348;
 }
 
 .delete-prodotto:active {
