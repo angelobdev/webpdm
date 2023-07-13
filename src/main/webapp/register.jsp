@@ -21,7 +21,7 @@
         <i class="fa fa-anchor" style="color:white;font-size: 2rem"></i>
         <h1 class="title">Registrazione</h1>
     </div>
-    <form class="form-register" action="#" method="post">
+    <form class="form-register" action="/api/auth/register" method="post">
 
         <!-- PIVA -->
         <div>

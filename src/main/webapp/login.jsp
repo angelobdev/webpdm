@@ -22,7 +22,7 @@
             <i class="fa fa-anchor" style="color:white;font-size: 2rem"></i>
             <h1 class="title">LOGIN</h1>
         </div>
-        <form class="form-login" action="#" method="post">
+        <form class="form-login" action="/api/auth/login" method="post">
             <div>
                 <div class="icon-holder">
                     <i class="fa fa-user"></i>

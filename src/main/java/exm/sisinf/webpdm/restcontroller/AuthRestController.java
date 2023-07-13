@@ -1,5 +1,6 @@
 package exm.sisinf.webpdm.restcontroller;
 
+import exm.sisinf.webpdm.auth.AuthTokenService;
 import exm.sisinf.webpdm.auth.JwtUtils;
 import exm.sisinf.webpdm.model.Ruolo;
 import exm.sisinf.webpdm.model.Utente;
@@ -9,7 +10,9 @@ import exm.sisinf.webpdm.payload.response.JwtResponse;
 import exm.sisinf.webpdm.payload.response.MessageResponse;
 import exm.sisinf.webpdm.repository.RuoloRepository;
 import exm.sisinf.webpdm.repository.UtenteRepository;
+import exm.sisinf.webpdm.service.UtenteService;
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +25,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,9 +36,8 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/auth")
 public class AuthRestController {
 
-    @Value("${webpdm.app.jwtSessionAttribute}")
-    private String tokenSessionKey;
-
+    @Autowired
+    AuthTokenService authTokenService;
 
     @Autowired
     AuthenticationManager authenticationManager;
@@ -43,6 +47,9 @@ public class AuthRestController {
 
     @Autowired
     RuoloRepository ruoloRepository;
+
+    @Autowired
+    UtenteService utenteService;
 
     @Autowired
     PasswordEncoder encoder;
@@ -88,5 +95,66 @@ public class AuthRestController {
         utenteRepository.save(utente);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+    }
+
+
+    // LOGIN
+    @PostMapping("/login")
+    public ModelAndView actionLogin(@RequestParam String username, @RequestParam String password, HttpServletRequest request, HttpServletResponse httpResponse) {
+
+        // Controllo se l'utente esiste
+        if (utenteService.existsByUsername(username)) {
+
+            LoginRequest loginInfo = new LoginRequest(username, password);
+
+            // Tento il login
+            try {
+                ResponseEntity<?> response = authenticateUser(loginInfo);
+
+                if (response.getBody() instanceof JwtResponse jwtRes) {
+
+                    String token = jwtRes.getToken();
+
+                    // Il login ha successo
+                    authTokenService.store(httpResponse, token); // Salvo il token di accesso
+                    Ruolo.ERuolo ruolo = authTokenService.getUtente(token).getRuolo().getNome();
+//                    logger.info("RUOLO UTENTE: {}", ruolo.name());
+
+                    return new ModelAndView("redirect:/content");
+
+                } else {
+                    // Se fallisce ritorno l'errore
+                    ModelAndView erroreSconosciutoView = new ModelAndView("login");
+                    erroreSconosciutoView.addObject("error", "Login fallito, errore sconosciuto!");
+                    return erroreSconosciutoView;
+                }
+
+            } catch (Exception e) {
+                // Il login non ha successo
+                ModelAndView passwordErrataView = new ModelAndView("login");
+                passwordErrataView.addObject("error", "Password Errata!");
+                return passwordErrataView;
+            }
+
+        } else {
+            ModelAndView utenteNonTrovatoView = new ModelAndView("login");
+            utenteNonTrovatoView.addObject("error", "Utente non trovato!");
+            return utenteNonTrovatoView;
+        }
+
+    }
+
+    // REGISTER
+    @PostMapping("/register")
+    public RedirectView registerAction(@RequestParam String piva, @RequestParam String nome, @RequestParam String sede, @RequestParam String username, @RequestParam String password) {
+
+        RegisterRequest registerRequest = new RegisterRequest(piva, nome, sede, username, password);
+        ResponseEntity<?> response = registerUser(registerRequest);
+
+        if (response.getBody() instanceof MessageResponse) {
+            return new RedirectView("/login?message=Registrato");
+        }
+
+        return new RedirectView("/index");
     }
 }
