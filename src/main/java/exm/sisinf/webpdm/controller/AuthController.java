@@ -67,7 +67,7 @@ public class AuthController {
                     // Il login ha successo
                     authTokenService.store(httpResponse, token); // Salvo il token di accesso
                     Ruolo.ERuolo ruolo = authTokenService.getUtente(token).getRuolo().getNome();
-                    logger.info("RUOLO UTENTE: {}", ruolo.name());
+//                    logger.info("RUOLO UTENTE: {}", ruolo.name());
 
                     return new ModelAndView("redirect:/content");
 
