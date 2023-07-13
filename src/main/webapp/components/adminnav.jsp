@@ -1,11 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="exm.sisinf.webpdm.model.Ruolo" %>
 <jsp:useBean id="utente" scope="request" class="exm.sisinf.webpdm.model.Utente"/>
 
 <%--CSS--%>
-<link rel="stylesheet" type="text/css" href="../assets/styles/main.css"/>
-<link rel="stylesheet" type="text/css" href="../assets/styles/navigator.css"/>
-<link rel="stylesheet" type="text/css" href="../assets/styles/dashboard.css"/>
+<link rel="stylesheet" type="text/css" href="../assets/styles/dashboard/main.css"/>
 
 <%--FontAwesome5--%>
 <script
@@ -21,4 +18,10 @@
     <a href="/dashboard/magazzino">Gestione Magazzino</a>
     <a href="/dashboard/dipendenti">Gestione Dipendenti</a>
     <a href="/dashboard/ordini">Gestione Ordini</a>
+    <a href="/dashboard/acquisti">Gestione Acquisti</a>
+    <a href="/dashboard/reclami">Gestione Reclami</a>
+
+    <div class="spacer"></div>
+    <div class="divider"></div>
+    <p class="footer">Powered by F.A.M Group ©</p>
 </div>

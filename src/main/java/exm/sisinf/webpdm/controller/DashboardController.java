@@ -51,4 +51,22 @@ public class DashboardController {
         return "dashboard/ordini";
     }
 
+    @GetMapping("/dashboard/reclami")
+    public String reclami(Model model, HttpServletRequest request) {
+        String token = authTokenService.retrieve(request);
+        model.addAttribute("username", authTokenService.getUtente(token).getUsername());
+
+        return "dashboard/reclami";
+    }
+
+
+    @GetMapping("/dashboard/acquisti")
+    public String acquisti(Model model, HttpServletRequest request) {
+        String token = authTokenService.retrieve(request);
+        model.addAttribute("username", authTokenService.getUtente(token).getUsername());
+
+        return "dashboard/acquisti";
+    }
+
+
 }
