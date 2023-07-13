@@ -22,8 +22,8 @@
     <!--Routes-->
     <div class="nav-routes">
         <a href="/">Home</a>
-        <a href="/azienda">Azienda</a>
         <a href="/catalogo">Catalogo</a>
+        <a href="/ricette">Ricette</a>
         <a href="/contatti">Contatti</a>
     </div>
 

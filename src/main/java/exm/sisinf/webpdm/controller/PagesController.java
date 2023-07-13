@@ -25,9 +25,9 @@ public class PagesController {
         return root();
     }
 
-    @GetMapping("/azienda")
-    public String azienda() {
-        return "azienda";
+    @GetMapping("/ricette")
+    public String ricette() {
+        return "ricette";
     }
 
     @GetMapping("/contatti")

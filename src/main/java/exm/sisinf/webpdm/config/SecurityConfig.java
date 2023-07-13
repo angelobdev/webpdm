@@ -72,6 +72,7 @@ public class SecurityConfig {
                         }))
                 ).authenticationProvider(authenticationProvider())
                 .addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class)
+                .headers(AbstractHttpConfigurer::disable)
                 .build();
     }
 

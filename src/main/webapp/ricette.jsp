@@ -2,8 +2,8 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <html>
 <head>
-    <title>WEBPDM: Home</title>
-    <link rel="stylesheet" type="text/css" href="assets/styles/index.css"/>
+    <title>WEBPDM: Ricette</title>
+    <link rel="stylesheet" type="text/css" href="assets/styles/ricette.css"/>
 </head>
 <body>
 <jsp:include page="/nav"/>
@@ -30,14 +30,14 @@
         <div style="background-color: #579dc9">
             <h1> Ostriche al limone  </h1>
             <p> "U piatto di Baruni" cosi si vuole che lo si chiami nella tradizione del posto, questo
-                nome deriva dal fatto che era un piatto ricco, che non tutti potevano permettersi
-                perchè dove aver mangiato i Baroni, ne ricavavano anche stupende Perle di mare
+                  nome deriva dal fatto che era un piatto ricco, che non tutti potevano permettersi
+                    perchè dove aver mangiato i Baroni, ne ricavavano anche stupende Perle di mare
             </p>
         </div>
         <div style="background-color: #579dc9">
             <h1> Pesce spada ai cetrioli  </h1>
             <p>  una ricetta dalle origini sconosciute, ma continua a vivere portando armoni a
-                e sorrisi in tavola </p>
+                   e sorrisi in tavola </p>
         </div>
     </div>
     <div class="right-slide">

@@ -10,6 +10,7 @@
 <head>
     <title>WEBPDM: Dashboard</title>
     <link rel="stylesheet" type="text/css" href="../assets/styles/dashboard/magazzino.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="../assets/scripts/sortable.js"></script>
     <script>
         // delete the user from the database
@@ -17,9 +18,11 @@
             $.ajax({
                 type: "DELETE",
                 url: deleteURL,
+                success: (data) => {
+                    location.reload();
+                }
             });
-
-            window.location.reload();
+            location.reload();
         }
     </script>
 </head>
@@ -94,7 +97,8 @@
 
             <div class="input-container">
                 <label>Descrizione</label>
-                <input name="descrizione" type="text" size="512" placeholder="Descrizione prodotto" class="wide" required>
+                <input name="descrizione" type="text" size="512" placeholder="Descrizione prodotto" class="wide"
+                       required>
             </div>
 
             <div class="input-container">

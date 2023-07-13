@@ -10,6 +10,8 @@
 <body>
 <jsp:include page="/nav"/>
 
+<h1>Catalogo</h1>
+
 <%--LISTA--%>
 <ul class="products">
     <c:forEach var="p" items="${prodotti}">
@@ -18,10 +20,12 @@
 
             <h1>${p.nome}</h1>
 
-            <p>${p.descrizione}</p>
+            <p class="desc">${p.descrizione}</p>
 
             <p class="prezzo">${p.prezzoKg}€/kg</p>
             <p class="quantita">Disponibilità: ${p.quantita}pz</p>
+
+            <button class="buy">Acquista Ora</button>
         </li>
     </c:forEach>
 

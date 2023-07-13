@@ -1,8 +1,11 @@
+body {
+    background: url("https://img.freepik.com/premium-vector/abstract-blue-wave-vector-background-brochure-design-project-website-flyer_206325-1163.jpg?w=2000");
+    background-size: contain;
+}
+
 .products {
-    min-width: 100%;
-    height: calc(100vh - var(--nav-height));
-    background-image: url("https://www.theladders.com/wp-content/uploads/fisherman-191101.jpg");
-    background-size: cover;
+    width: 80%;
+    min-height: calc(100vh - var(--nav-height));
 
     margin: 0;
     padding: 0;
@@ -10,46 +13,67 @@
     overflow-x: scroll;
     scroll-behavior: smooth;
 
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
 }
 
 
 .container {
-    display: inline;
+    background: #679CC5DD;
 
-    background: #fff9;
-
-    min-width: 300px;
-    max-width: 300px;
-    height: 80%;
-
-    border: 1px solid #0005;
-    border-radius: 3rem;
-    box-shadow: 3px 2px #0005;
+    border: 1px solid #0002;
+    border-radius: 2rem;
+    box-shadow: 0 2px 5px #0005;
 
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-left: 20px;
+    margin: 1rem;
 }
 
 .container > img {
     width: 90%;
     height: 40%;
     margin-top: 2rem;
-    border-radius: 2rem;
+    border-radius: 0.4rem;
     object-fit: cover;
 }
 
+.container > h1 {
+    color: white;
+}
+
+.container > .desc {
+    color: white;
+}
+
+.container > .quantita {
+    color: yellow;
+}
+
 .container > .prezzo {
+    color: yellow;
     margin-top: auto;
     margin-bottom: 0;
 }
 
-.container > .quantita {
+.buy {
+    width: 50%;
+    height: 2rem;
+    border: 1px solid #0005;
+    border-radius: 0.4rem;
+    margin-bottom: 1rem;
+    background: #91d8eb;
+    color: white;
+    font-size: 1.2rem;
+}
 
+.buy:hover {
+    background: #b5e0ec;
+}
+
+.buy:active {
+    background: #d6e7ec;
 }
