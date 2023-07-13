@@ -19,7 +19,10 @@ public class DashboardController {
 
     @GetMapping("/dashboard")
     public String dashboard(Model model, HttpServletRequest request) {
-        return magazzino(model, request);
+        String token = authTokenService.retrieve(request);
+        model.addAttribute("username", authTokenService.getUtente(token).getUsername());
+
+        return "dashboard/index";
     }
 
     @GetMapping("/dashboard/magazzino")
@@ -36,7 +39,16 @@ public class DashboardController {
     public String dipendenti(Model model, HttpServletRequest request) {
         String token = authTokenService.retrieve(request);
         model.addAttribute("username", authTokenService.getUtente(token).getUsername());
+
         return "dashboard/dipendenti";
+    }
+
+    @GetMapping("/dashboard/ordini")
+    public String ordini(Model model, HttpServletRequest request) {
+        String token = authTokenService.retrieve(request);
+        model.addAttribute("username", authTokenService.getUtente(token).getUsername());
+
+        return "dashboard/ordini";
     }
 
 }

@@ -1,4 +1,4 @@
-package exm.sisinf.webpdm.controller;
+package exm.sisinf.webpdm.restcontroller;
 
 import exm.sisinf.webpdm.model.Prodotto;
 import exm.sisinf.webpdm.service.ProdottoService;
@@ -13,27 +13,21 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-@Controller
-public class ProdottiController {
+@RestController
+@RequestMapping("/prodotti")
+public class ProdottiRestController {
 
     @Autowired
     private ProdottoService prodottoService;
 
-    @GetMapping("/catalogo")
-    public String catalogo(Model model) {
-        List<Prodotto> prodotti = prodottoService.getAllProdotti();
-        model.addAttribute("prodotti", prodotti);
-        return "catalogo";
-    }
-
-    @PostMapping("/prodotti/add")
+    @PostMapping("/add")
     public RedirectView prodottiAddAction(@RequestParam String nome, @RequestParam Double prezzoKg, @RequestParam String dataArrivo, @RequestParam Integer quantita, @RequestParam String descrizione, @RequestParam String immagine) throws ParseException {
         Prodotto prodotto = new Prodotto(nome, prezzoKg, new SimpleDateFormat("yyyy-MM-dd").parse(dataArrivo), quantita, descrizione, immagine);
         prodottoService.createProdotto(prodotto);
         return new RedirectView("/dashboard/magazzino");
     }
 
-    @DeleteMapping("/prodotti/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public RedirectView prodottiDeleteAction(@PathVariable Integer id) {
         prodottoService.deleteProdotto(id);
         return new RedirectView("/dashboard/magazzino");

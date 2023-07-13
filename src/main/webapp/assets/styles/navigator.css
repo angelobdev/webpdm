@@ -143,3 +143,47 @@ nav > .nav-last > .login-button:hover {
 nav > .nav-last > .login-button:active {
     background: #85aec7;
 }
+
+.cart-button {
+    padding-right: 1rem;
+}
+
+.cart-button > button {
+    background: #0000;
+    border: none;
+
+}
+
+.cart-button > button:hover {
+    box-shadow: 0 0 4px azure;
+}
+
+#carrello {
+    position: absolute;
+
+    background: white;
+    box-shadow: 0 -3px 10px #0005;
+
+    right: 0;
+    top: 0;
+
+    width: 30vw;
+    height: 100vh;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    visibility: hidden;
+}
+
+#carrello > .close {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    background: #0000;
+    border: none;
+    padding: 10px;
+}

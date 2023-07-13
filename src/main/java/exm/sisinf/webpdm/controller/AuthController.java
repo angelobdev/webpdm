@@ -28,16 +28,12 @@ import org.springframework.web.servlet.view.RedirectView;
 @Controller
 public class AuthController {
 
-    private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
-
-    // LOGIN
     @GetMapping("/login")
     public String login(Model model) {
         model.addAttribute("error", "");
         return "login";
     }
 
-    // REGISTER
     @GetMapping("/register")
     public String register(Model model) {
         model.addAttribute("error", "");

@@ -16,7 +16,7 @@
 <nav>
     <%--Logo--%>
     <img src="https://img.freepik.com/premium-vector/vector-graphic-abstract-fish-logo-design-template_600800-223.jpg"
-         class="logo">
+         class="logo" alt="logo">
     <h2 class="logo-titolo">La Perla del Mediterraneo</h2>
 
     <!--Routes-->
@@ -46,9 +46,40 @@
             </div>
         </div>
 
+        <div class="cart-button">
+            <button onclick="openCart()">
+                <i class="fa fa-shopping-cart"></i>
+            </button>
+        </div>
+
+        <div id="carrello">
+            <%--Bottone chiusura--%>
+            <button class="close" onclick="closeCart()">
+                <i class="fa fa-times"></i>
+            </button>
+
+            <%--CARRELLO--%>
+            <h2>Carrello</h2>
+
+
+        </div>
+
         <%--Accesso--%>
         <% } else { %>
         <a href="/login" class="login-button">Login</a>
         <% } %>
     </div>
 </nav>
+
+<%--Script Carrello--%>
+<script>
+    let carrello = document.getElementById("carrello");
+
+    function openCart() {
+        carrello.style.visibility = "visible";
+    }
+
+    function closeCart() {
+        carrello.style.visibility = "hidden";
+    }
+</script>

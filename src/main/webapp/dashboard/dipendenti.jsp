@@ -2,15 +2,15 @@
 <html>
 <head>
     <title>WEBPDM: Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="../assets/styles/dashboard.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../assets/styles/dashboard/dipendenti.css">
 </head>
 <body>
 <jsp:include page="/adminnav"/>
 
 <div class="dashboard-content">
 
-    <p>Dipendenti</p>
+    <h1>Gestione Dipendenti</h1>
+    <div class="divider"></div>
 
 </div>
 

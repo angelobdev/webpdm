@@ -20,4 +20,5 @@
     <div class="divider"></div>
     <a href="/dashboard/magazzino">Gestione Magazzino</a>
     <a href="/dashboard/dipendenti">Gestione Dipendenti</a>
+    <a href="/dashboard/ordini">Gestione Ordini</a>
 </div>

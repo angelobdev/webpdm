@@ -10,7 +10,6 @@
 <head>
     <title>WEBPDM: Dashboard</title>
     <link rel="stylesheet" type="text/css" href="../assets/styles/dashboard/magazzino.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="../assets/scripts/sortable.js"></script>
     <script>
         // delete the user from the database
@@ -30,7 +29,6 @@
 <div class="dashboard-content">
 
     <h1>Gestione Magazzino</h1>
-
     <div class="divider"></div>
 
     <h2 class="title">Lista Prodotti</h2>
