@@ -120,7 +120,7 @@ public class AuthRestController {
                     Ruolo.ERuolo ruolo = authTokenService.getUtente(token).getRuolo().getNome();
 //                    logger.info("RUOLO UTENTE: {}", ruolo.name());
 
-                    return new ModelAndView("redirect:/content");
+                    return new ModelAndView("redirect:/areaclienti");
 
                 } else {
                     // Se fallisce ritorno l'errore

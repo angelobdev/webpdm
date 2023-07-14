@@ -38,7 +38,7 @@
                 <%=utente.getNome()%>
             </button>
             <div class="dropdown-content">
-                <a href="/content">Area Clienti</a>
+                <a href="/areaclienti">Area Clienti</a>
                 <% if (utente.getRuolo() != null && utente.getRuolo().getNome().equals(Ruolo.ERuolo.ROLE_ADMIN)) { %>
                 <a href="/dashboard">Dashboard</a>
                 <% } %>

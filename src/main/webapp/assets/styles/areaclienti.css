@@ -1,0 +1,115 @@
+body {
+    background: #73a5c5;
+}
+
+.container {
+    width: 80%;
+    min-height: calc(100vh - var(--nav-height));
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 2fr);
+    margin-top: 3rem;
+}
+
+.card {
+    min-width: 30%;
+    border: 1px solid #0005;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px #0005;
+    background: white;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.card > .title {
+    color: blue;
+    /*padding: 1rem;*/
+}
+
+.card > .content {
+    /*background: yellow;*/
+    padding: 1rem;
+}
+
+/* FORM RECLAMO */
+.reclamo {
+
+}
+
+.reclamo > form {
+    display: grid;
+    font-family: sans-serif;
+
+}
+
+.reclamo > form > .input-container {
+    color: black;
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 10%;
+    background-color: #91d8eb;
+
+
+}
+
+.reclamo > form > .input-container > label {
+    color: black;
+
+}
+
+.reclamo > form > .input-container > input {
+    font-family: sans-serif;
+    background: azure;
+
+}
+
+.reclamo > form > input[type="submit"] {
+    color: azure;
+    font-family: sans-serif;
+
+}
+
+/* ORDINI */
+
+.ordini {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(3, 3fr);
+}
+
+.ordine {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.ordine > .lista-prodotti {
+    /*display: none;*/
+    margin: 0;
+}
+
+/* GESTIONE ACCOUNT */
+.gestione-account-card {
+    /*width: 100%;*/
+
+
+
+
+}
+
+.gestione_account {
+    font-size: small ;
+    font-family: sans-serif ;
+    text-decoration-line:  underline ;
+    border : 1px solid black ;
+    border-radius: 10% ;
+
+
+
+
+
+}

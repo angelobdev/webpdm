@@ -1,8 +1,11 @@
 package exm.sisinf.webpdm.service;
 
+import exm.sisinf.webpdm.model.Acquisto;
 import exm.sisinf.webpdm.repository.AcquistoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Collection;
 
 @Service
 public class AcquistoService {
@@ -10,8 +13,9 @@ public class AcquistoService {
     @Autowired
     private AcquistoRepository acquistoRepository;
 
-    // CREATE (dovrebbe crearsi in automatico)
-
+//    public Collection<Acquisto> getAcquistiByUsername(String username) {
+//        return acquistoRepository.getAcquistiByUsername(username);
+//    }
 
 
 }

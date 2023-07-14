@@ -1,6 +1,8 @@
 package exm.sisinf.webpdm.controller;
 
 import exm.sisinf.webpdm.auth.AuthTokenService;
+import exm.sisinf.webpdm.repository.AcquistoRepository;
+import exm.sisinf.webpdm.service.AcquistoService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,10 +15,17 @@ public class ContentController {
     @Autowired
     private AuthTokenService authTokenService;
 
-    @GetMapping("/content")
-    public String content(Model model, HttpServletRequest request) {
+    @Autowired
+    private AcquistoService acquistoService;
+
+    @GetMapping("/areaclienti")
+    public String areaClienti(Model model, HttpServletRequest request) {
         String token = authTokenService.retrieve(request);
-        model.addAttribute("username", authTokenService.getUtente(token).getUsername());
-        return "content";
+        String username = authTokenService.getUtente(token).getUsername();
+
+        model.addAttribute("username", username);
+//        model.addAttribute("acquisti", acquistoService.getAcquistiByUsername(username));
+
+        return "areaclienti";
     }
 }

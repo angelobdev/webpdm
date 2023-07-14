@@ -1,8 +1,6 @@
 <%@ taglib prefix="http" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="exm.sisinf.webpdm.model.Prodotto" %>
-<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <jsp:useBean id="username" scope="request" type="java.lang.String"/>
 <jsp:useBean id="prodotti" scope="request" type="java.util.List<exm.sisinf.webpdm.model.Prodotto>"/>
