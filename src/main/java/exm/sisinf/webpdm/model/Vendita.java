@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Collection;
 import java.util.Date;
+import java.util.Map;
 
 @Entity
 @Table(name = "vendite")
@@ -14,27 +14,23 @@ import java.util.Date;
 public class Vendita {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "vendite_id_seq")
+    @SequenceGenerator(name = "vendite_id_seq", allocationSize = 1)
     @Column(name = "id")
     private Integer id;
 
     @Column(name = "data")
     private Date data;
 
-    @Column(name = "totale")
-    private Double totale;
+    @Column(name = "importo_totale")
+    private Double importoTotale;
 
-    @ManyToMany
-    @JoinTable(
-            name = "acquisti",
-            joinColumns = @JoinColumn(name = "vendita_id"),
-            inverseJoinColumns = @JoinColumn(name = "prodotto_id")
+    @ElementCollection
+    @CollectionTable(
+            name = "vendite_prodotti",
+            joinColumns = @JoinColumn(name = "vendita_id", referencedColumnName = "id")
     )
-    private Collection<Prodotto> prodotti;
-
-
-    @ManyToOne
-    @JoinColumn(name = "codice_coupon")
-    private Coupon coupon;
+    @MapKeyColumn(name = "quantita")
+    private Map<Prodotto, Integer> prodottiQuantita;
 
 }

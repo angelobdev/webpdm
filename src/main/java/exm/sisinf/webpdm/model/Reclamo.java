@@ -13,15 +13,13 @@ import java.util.Date;
 public class Reclamo {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "reclami_id_seq")
+    @SequenceGenerator(name = "reclami_id_seq", allocationSize = 1)
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "email")
-    private Integer email;
-
-    @Column(name = "segnalazione")
-    private String segnalazione;
+    @Column(name = "messaggio")
+    private String messaggio;
 
     @Column(name = "data")
     private Date data;
@@ -30,10 +28,6 @@ public class Reclamo {
     private String stato;
 
     @OneToOne
-    @JoinColumn(name = "vendita_id")
-    private Vendita vendita;
-
-    @OneToOne
-    @JoinColumn(name = "rimborso_id")
-    private Rimborso rimborso;
+    @JoinColumn(name = "ordine_id")
+    private Ordine ordine;
 }

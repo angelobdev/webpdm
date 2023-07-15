@@ -15,37 +15,36 @@ public class OrdineFornitoreService {
 
     //CREATE
 
-    public OrdineFornitore createOrdineFornitore(OrdineFornitore ordineFornitore){
+    public OrdineFornitore createOrdineFornitore(OrdineFornitore ordineFornitore) {
         return ordineFornitoreRepository.save(ordineFornitore);
     }
 
     //READ
 
-    public List<OrdineFornitore> getAllOrdineFornitore(){
+    public List<OrdineFornitore> getAllOrdineFornitore() {
         return ordineFornitoreRepository.findAll();
     }
 
-    public OrdineFornitore getOrdineFornitore(Integer id){
+    public OrdineFornitore getOrdineFornitore(Integer id) {
         return ordineFornitoreRepository.findById(id).orElse(null);
     }
 
     //UPDATE
 
-    public OrdineFornitore updateOrdineFornitore(Integer id, OrdineFornitore ordineFornitore){
+    public OrdineFornitore updateOrdineFornitore(Integer id, OrdineFornitore ordineFornitore) {
         OrdineFornitore toUpdate = ordineFornitoreRepository.findById(id).orElse(null);
-        if(toUpdate!=null){
+        if (toUpdate != null) {
             toUpdate.setDescrizione(ordineFornitore.getDescrizione());
             toUpdate.setData(ordineFornitore.getData());
-            toUpdate.setTotale(ordineFornitore.getTotale());
-            toUpdate.setTotale(ordineFornitore.getTotale());
+            toUpdate.setStatoOrdine(ordineFornitore.getStatoOrdine());
+            toUpdate.setImportoTotale(ordineFornitore.getImportoTotale());
             toUpdate.setFornitore(ordineFornitore.getFornitore());
-            return ordineFornitoreRepository.save(toUpdate);
         }
-        return null;
+        return toUpdate;
     }
 
     //DELETE
-    public void updateOrdineFornitore(Integer id){
+    public void updateOrdineFornitore(Integer id) {
         ordineFornitoreRepository.deleteById(id);
     }
 }

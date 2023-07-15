@@ -35,11 +35,11 @@
             <button class="dropbtn">
                 <i class="fa fa-user"></i>
                 &nbsp;
-                <%=utente.getNome()%>
+                <%=utente.getNomeAzienda()%>
             </button>
             <div class="dropdown-content">
                 <a href="/areaclienti">Area Clienti</a>
-                <% if (utente.getRuolo() != null && utente.getRuolo().getNome().equals(Ruolo.ERuolo.ROLE_ADMIN)) { %>
+                <% if (utente.getRuolo() != null && utente.getRuolo().getNome().equals("ROLE_ADMIN")) { %>
                 <a href="/dashboard">Dashboard</a>
                 <% } %>
                 <a class="logout" href="/logout">Logout</a>

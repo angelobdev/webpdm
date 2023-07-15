@@ -14,6 +14,11 @@ import java.util.Date;
 public class Coupon {
 
     @Id
+    @GeneratedValue(generator = "coupon_id_seq")
+    @SequenceGenerator(name = "coupon_id_seq", allocationSize = 1)
+    @Column(name="id")
+    private Integer id;
+
     @Column(name="codice_sconto")
     private String codiceSconto;
 
@@ -25,8 +30,5 @@ public class Coupon {
 
     @Column(name="prezzo_minimo")
     private Double prezzoMinimo;
-
-    @OneToMany
-    private Collection<Vendita> vendite;
 
 }

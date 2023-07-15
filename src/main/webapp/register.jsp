@@ -50,6 +50,14 @@
         <!-- Username -->
         <div>
             <div class="icon-holder">
+                <i class="fa fa-envelope"></i>
+            </div>
+            <input name="email" type="email" placeholder="E-Mail" required>
+        </div>
+
+        <!-- Username -->
+        <div>
+            <div class="icon-holder">
                 <i class="fa fa-user"></i>
             </div>
             <input name="username" type="text" placeholder="Username" required>

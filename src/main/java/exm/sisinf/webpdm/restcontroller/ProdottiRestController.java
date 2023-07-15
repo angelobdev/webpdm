@@ -21,8 +21,22 @@ public class ProdottiRestController {
     private ProdottoService prodottoService;
 
     @PostMapping("/add")
-    public RedirectView prodottiAddAction(@RequestParam String nome, @RequestParam Double prezzoKg, @RequestParam String dataArrivo, @RequestParam Integer quantita, @RequestParam String descrizione, @RequestParam String immagine) throws ParseException {
-        Prodotto prodotto = new Prodotto(nome, prezzoKg, new SimpleDateFormat("yyyy-MM-dd").parse(dataArrivo), quantita, descrizione, immagine);
+    public RedirectView prodottiAddAction(
+            @RequestParam String nome,
+            @RequestParam Double prezzoKg,
+            @RequestParam String dataArrivo,
+            @RequestParam Integer quantita,
+            @RequestParam String descrizione,
+            @RequestParam String immagine) throws ParseException {
+
+        Prodotto prodotto = new Prodotto(
+                nome,
+                prezzoKg,
+                new SimpleDateFormat("yyyy-MM-dd").parse(dataArrivo),
+                quantita,
+                descrizione,
+                immagine);
+
         prodottoService.createProdotto(prodotto);
         return new RedirectView("/dashboard/magazzino");
     }

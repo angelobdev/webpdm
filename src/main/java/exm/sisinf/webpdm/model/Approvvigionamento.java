@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Map;
+
 @Entity
 @Table(name = "approvvigionamenti")
 @Data
@@ -11,16 +13,13 @@ import lombok.NoArgsConstructor;
 public class Approvvigionamento {
 
     @Id
-    @GeneratedValue
-    @Column(name="id")
+    @GeneratedValue(generator = "approvvigionamenti_id_seq")
+    @SequenceGenerator(name = "approvvigionamenti_id_seq", allocationSize = 1)
+    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "nome")
-    private String nome;
-
-    @OneToOne
-    @JoinColumn(name = "categoria")
-    private CategoriaOrdine categoria;
+    @Column(name = "nome_prodotto")
+    private String nomeProdotto;
 
     @Column(name = "quantita")
     private Integer quantita;

@@ -15,28 +15,33 @@ public class ApprovvigionamentoService {
     ApprovvigionamentoRepository approvvigionamentoRepository;
 
     // CREATE
-    public Approvvigionamento createApprovvigionamento(Approvvigionamento approvvigionamento){
+    public Approvvigionamento createApprovvigionamento(Approvvigionamento approvvigionamento) {
         return approvvigionamentoRepository.save(approvvigionamento);
     }
 
     // READ
-    public List<Approvvigionamento> getAllForitori(){
+
+    public Approvvigionamento getApprovvigionamento(Integer id) {
+        return approvvigionamentoRepository.findById(id).orElse(null);
+    }
+
+    public List<Approvvigionamento> getAllApprovvigionamenti() {
         return approvvigionamentoRepository.findAll();
     }
 
     // UPDATE
 
-    public Approvvigionamento updateApprovvigionamento(Integer id, Approvvigionamento approvvigionamento ) {
+    public Approvvigionamento updateApprovvigionamento(Integer id, Approvvigionamento approvvigionamento) {
         Approvvigionamento toUpdate = approvvigionamentoRepository.findById(id).orElse(null);
         if (toUpdate != null) {
-            toUpdate.setNome(approvvigionamento.getNome());
-            toUpdate.setCategoria(approvvigionamento.getCategoria());
+            toUpdate.setNomeProdotto(approvvigionamento.getNomeProdotto());
             toUpdate.setQuantita(approvvigionamento.getQuantita());
         }
-        return null;
+        return toUpdate;
     }
+
     // DELETE
-    public void deleteApprovvigionamento(Integer id ){
-            approvvigionamentoRepository.deleteById(id);
+    public void deleteApprovvigionamento(Integer id) {
+        approvvigionamentoRepository.deleteById(id);
     }
 }

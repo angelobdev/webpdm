@@ -46,11 +46,11 @@
                 <tr>
                     <th>${p.nome}
                     </th>
-                    <th>${p.prezzoKg}
+                    <th>${p.prezzoAlKg}
                     </th>
                     <th>${p.dataArrivo}
                     </th>
-                    <th>${p.quantita}
+                    <th>${p.quantitaInMagazzino}
                     </th>
                     <th>
                         <spring:url value="/prodotti/delete/${p.id}" var="deleteUrl"/>

@@ -15,36 +15,35 @@ public class DipendenteService {
 
     // CREATE
 
-    public Dipendente createDipendente(Dipendente dipendente){
+    public Dipendente createDipendente(Dipendente dipendente) {
         return dipendenteRepository.save(dipendente);
     }
 
     // READ
 
-    public List<Dipendente> getAllDipendenti(){
-        return dipendenteRepository.findAll();
+    public Dipendente getDipendente(Integer id) {
+        return dipendenteRepository.findById(id).orElse(null);
     }
 
-    public Dipendente getDipendente(String codiceFiscale){
-        return dipendenteRepository.findById(codiceFiscale).orElse(null);
+    public List<Dipendente> getAllDipendenti() {
+        return dipendenteRepository.findAll();
     }
 
     // UDPATE
 
-    public Dipendente updateDipendente(String codiceFiscale, Dipendente dipendente){
-        Dipendente toUpdate = dipendenteRepository.findById(codiceFiscale).orElse(null);
-        if(toUpdate!=null){
+    public Dipendente updateDipendente(Integer id, Dipendente dipendente) {
+        Dipendente toUpdate = dipendenteRepository.findById(id).orElse(null);
+        if (toUpdate != null) {
             toUpdate.setCodiceFiscale(dipendente.getCodiceFiscale());
             toUpdate.setMansioni(dipendente.getMansioni());
-            return dipendenteRepository.save(toUpdate);
         }
-        return null;
+        return toUpdate;
     }
 
     // DELETE
 
-    public void deleteDipendente(String codiceFiscale){
-        dipendenteRepository.deleteById(codiceFiscale);
+    public void deleteDipendente(Integer id) {
+        dipendenteRepository.deleteById(id);
     }
 
 }

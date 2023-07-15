@@ -14,35 +14,36 @@ public class BustaPagaService {
     private BustaPagaRepository bustaPagaRepository;
 
     // CREATE
-    public BustaPaga createBustaPaga(BustaPaga bustaPaga){
-        return  bustaPagaRepository.save(bustaPaga);
+
+    public BustaPaga createBustaPaga(BustaPaga bustaPaga) {
+        return bustaPagaRepository.save(bustaPaga);
     }
 
     // READ
 
-    public List<BustaPaga> getAllBustePaga(){
-        return bustaPagaRepository.findAll();
+    public BustaPaga getBustaPaga(Integer id) {
+        return bustaPagaRepository.findById(id).orElse(null);
     }
 
-    public BustaPaga getBustaPaga(Integer id){
-        return bustaPagaRepository.findById(id).orElse(null);
+    public List<BustaPaga> getAllBustePaga() {
+        return bustaPagaRepository.findAll();
     }
 
     // UPDATE
 
-    public BustaPaga updateBustaPaga(Integer id, BustaPaga  bustaPaga){
+    public BustaPaga updateBustaPaga(Integer id, BustaPaga bustaPaga) {
         BustaPaga toUpdate = bustaPagaRepository.findById(id).orElse(null);
-        if(toUpdate!= null){
-            toUpdate.setTotale(bustaPaga.getTotale());
+        if (toUpdate != null) {
+            toUpdate.setImportoEmesso(bustaPaga.getImportoEmesso());
             toUpdate.setDataEmissione(bustaPaga.getDataEmissione());
             toUpdate.setDipendente(bustaPaga.getDipendente());
         }
-        return null;
+        return toUpdate;
     }
 
     // DELETE
 
-    public void deleteBustaPaga(Integer id){
+    public void deleteBustaPaga(Integer id) {
         bustaPagaRepository.deleteById(id);
     }
 

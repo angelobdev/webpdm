@@ -16,6 +16,7 @@ public class UtenteService implements UserDetailsService {
 
     @Autowired
     private UtenteRepository utenteRepository;
+
     //CREATE
 
     public Utente createUtente(Utente utente) {
@@ -24,12 +25,12 @@ public class UtenteService implements UserDetailsService {
 
     //READ
 
-    public List<Utente> getAllUtente() {
-        return utenteRepository.findAll();
-    }
-
     public Utente getUtente(Integer id) {
         return utenteRepository.findById(id).orElse(null);
+    }
+
+    public List<Utente> getAllUtenti() {
+        return utenteRepository.findAll();
     }
 
     //UPDATE
@@ -37,20 +38,21 @@ public class UtenteService implements UserDetailsService {
     public Utente updateUtente(Integer id, Utente utente) {
         Utente toUpdate = utenteRepository.findById(id).orElse(null);
         if (toUpdate != null) {
-            toUpdate.setPiva(utente.getPiva());
-            toUpdate.setNome(utente.getNome());
-            toUpdate.setSede(utente.getSede());
+            toUpdate.setPartitaIVA(utente.getPartitaIVA());
+            toUpdate.setNomeAzienda(utente.getNomeAzienda());
+            toUpdate.setSedeAziendale(utente.getSedeAziendale());
+            toUpdate.setEmail(utente.getEmail());
             toUpdate.setUsername(utente.getUsername());
             toUpdate.setPassword(utente.getPassword());
-            toUpdate.setNumeroOrdini(utente.getNumeroOrdini());
-            return utenteRepository.save(toUpdate);
+            toUpdate.setAvatar(utente.getAvatar());
+            toUpdate.setRuolo(utente.getRuolo());
         }
-        return null;
+        return toUpdate;
     }
 
     //DELETE
 
-    public void deleteUtente(int id) {
+    public void deleteUtente(Integer id) {
         utenteRepository.deleteById(id);
     }
 
@@ -63,7 +65,7 @@ public class UtenteService implements UserDetailsService {
 
     // UTILITY
 
-    public boolean existsByUsername(String username){
+    public boolean existsByUsername(String username) {
         return utenteRepository.existsByUsername(username);
     }
 }

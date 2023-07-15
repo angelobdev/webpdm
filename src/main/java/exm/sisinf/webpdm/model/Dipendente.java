@@ -1,9 +1,6 @@
 package exm.sisinf.webpdm.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +11,11 @@ import lombok.NoArgsConstructor;
 public class Dipendente {
 
     @Id
+    @GeneratedValue(generator = "dipendenti_id_seq")
+    @SequenceGenerator(name = "dipendenti_id_seq", allocationSize = 1)
+    @Column(name = "id")
+    private Integer id;
+
     @Column(name = "codice_fiscale")
     private String codiceFiscale;
 

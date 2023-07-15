@@ -15,37 +15,36 @@ public class ProdottoService {
 
     // CREATE
 
-    public Prodotto createProdotto(Prodotto prodotto){
+    public Prodotto createProdotto(Prodotto prodotto) {
         return prodottoRepository.save(prodotto);
     }
 
     // READ
 
-    public List<Prodotto> getAllProdotti(){
-        return prodottoRepository.findAll();
+    public Prodotto getProdotto(Integer id) {
+        return prodottoRepository.findById(id).orElse(null);
     }
 
-    public Prodotto getProdotto(Integer id){
-        return prodottoRepository.findById(id).orElse(null);
+    public List<Prodotto> getAllProdotti() {
+        return prodottoRepository.findAll();
     }
 
     // UPDATE
 
-    public Prodotto updateProdotto(Integer id, Prodotto prodotto){
+    public Prodotto updateProdotto(Integer id, Prodotto prodotto) {
         Prodotto toUpdate = prodottoRepository.findById(id).orElse(null);
-        if(toUpdate!=null){
+        if (toUpdate != null) {
             toUpdate.setNome(prodotto.getNome());
-            toUpdate.setPrezzoKg(prodotto.getPrezzoKg());
+            toUpdate.setPrezzoAlKg(prodotto.getPrezzoAlKg());
             toUpdate.setDataArrivo(prodotto.getDataArrivo());
-            toUpdate.setQuantita(prodotto.getQuantita());
-            return prodottoRepository.save(toUpdate);
+            toUpdate.setQuantitaInMagazzino(prodotto.getQuantitaInMagazzino());
         }
-        return null;
+        return toUpdate;
     }
 
     // DELETE
 
-    public void deleteProdotto(Integer id){
+    public void deleteProdotto(Integer id) {
         prodottoRepository.deleteById(id);
     }
 
