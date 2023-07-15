@@ -5,8 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Collection;
-import java.util.Comparator;
 import java.util.Date;
 
 @Entity
@@ -31,8 +29,8 @@ public class Prodotto {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataArrivo;
 
-    @Column(name = "quantita_in_magazzino")
-    private Integer quantitaInMagazzino;
+    @Column(name = "quantita_stoccata")
+    private Integer quantitaStoccata;
 
     @Column(name = "descrizione")
     private String descrizione;
@@ -40,11 +38,11 @@ public class Prodotto {
     @Column(name = "immagine")
     private String immagine;
 
-    public Prodotto(String nome, Double prezzoAlKg, Date dataArrivo, Integer quantitaInMagazzino, String descrizione, String immagine) {
+    public Prodotto(String nome, Double prezzoAlKg, Date dataArrivo, Integer quantitaStoccata, String descrizione, String immagine) {
         this.nome = nome;
         this.prezzoAlKg = prezzoAlKg;
         this.dataArrivo = dataArrivo;
-        this.quantitaInMagazzino = quantitaInMagazzino;
+        this.quantitaStoccata = quantitaStoccata;
         this.descrizione = descrizione;
         this.immagine = immagine;
     }

@@ -23,7 +23,7 @@
             <p class="desc">${p.descrizione}</p>
 
             <p class="prezzo">${p.prezzoAlKg}€/kg</p>
-            <p class="quantita">Disponibilità: ${p.quantitaInMagazzino}pz</p>
+            <p class="quantita">Disponibilità: ${p.quantitaStoccata}pz</p>
 
             <button class="buy">Acquista Ora</button>
         </li>

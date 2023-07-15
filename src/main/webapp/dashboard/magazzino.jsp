@@ -50,7 +50,7 @@
                     </th>
                     <th>${p.dataArrivo}
                     </th>
-                    <th>${p.quantitaInMagazzino}
+                    <th>${p.quantitaStoccata}
                     </th>
                     <th>
                         <spring:url value="/prodotti/delete/${p.id}" var="deleteUrl"/>
@@ -60,6 +60,11 @@
                     </th>
                 </tr>
             </c:forEach>
+            <% if (prodotti.isEmpty()) { %>
+            <tr>
+                <td colspan="5">Non ci sono prodotti</td>
+            </tr>
+            <% } %>
         </table>
 
     </div>
