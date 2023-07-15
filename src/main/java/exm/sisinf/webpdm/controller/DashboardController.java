@@ -43,12 +43,12 @@ public class DashboardController {
         return "dashboard/dipendenti";
     }
 
-    @GetMapping("/dashboard/ordini")
-    public String ordini(Model model, HttpServletRequest request) {
+    @GetMapping("/dashboard/approvvigionamenti")
+    public String approvvigionamenti(Model model, HttpServletRequest request) {
         String token = authTokenService.retrieve(request);
         model.addAttribute("username", authTokenService.getUtente(token).getUsername());
 
-        return "dashboard/ordini";
+        return "dashboard/approvvigionamenti";
     }
 
     @GetMapping("/dashboard/reclami")
@@ -60,12 +60,12 @@ public class DashboardController {
     }
 
 
-    @GetMapping("/dashboard/acquisti")
-    public String acquisti(Model model, HttpServletRequest request) {
+    @GetMapping("/dashboard/vendite")
+    public String vendite(Model model, HttpServletRequest request) {
         String token = authTokenService.retrieve(request);
         model.addAttribute("username", authTokenService.getUtente(token).getUsername());
 
-        return "dashboard/acquisti";
+        return "dashboard/vendite";
     }
 
 

@@ -29,6 +29,10 @@ public class OrdineService {
         return ordineRepository.findAll();
     }
 
+    public List<Ordine> getAllOrdiniFromUtenteId(Integer id){
+        return ordineRepository.findByUtenteId(id);
+    }
+
     // UPDATE
 
     public Ordine updateOrdine(Integer id, Ordine ordine) {

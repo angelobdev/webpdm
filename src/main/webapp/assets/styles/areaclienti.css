@@ -2,77 +2,124 @@ body {
     background: #73a5c5;
 }
 
+h1 {
+    margin: 1rem 0 0 0;
+}
+
+h2 {
+    margin: 0.2rem 0 0.8rem 0;
+}
+
 .container {
     width: 80%;
     min-height: calc(100vh - var(--nav-height));
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(2, 2fr);
+    grid-template-columns: repeat(3, 2fr);
     margin-top: 3rem;
+    margin-bottom: 2rem;
 }
 
 .card {
     min-width: 30%;
-    border: 1px solid #0005;
+    border: none;
     border-radius: 1rem;
-    box-shadow: 0 4px 10px #0005;
+    box-shadow: 0 0 10px #0002;
     background: white;
-    height: fit-content;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.card > .title {
+    color: blue;
+    margin: 0.4rem;
+    /*padding: 1rem;*/
+}
+
+.card > .content {
+    /*background: yellow;*/
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+/* FORM RECLAMO */
+.reclamo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    grid-column: span 2;
+}
+
+.reclamo > form {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-.card > .title {
-    color: blue;
-    /*padding: 1rem;*/
-}
-
-.card > .content {
-    /*background: yellow;*/
-    padding: 1rem;
-}
-
-/* FORM RECLAMO */
-.reclamo {
-
-}
-
-.reclamo > form {
-    display: grid;
-    font-family: sans-serif;
-
-}
-
 .reclamo > form > .input-container {
-    color: black;
-    padding: 1rem;
-    border: 1px solid black;
-    border-radius: 10%;
-    background-color: #91d8eb;
-
-
+    width: 90%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .reclamo > form > .input-container > label {
-    color: black;
-
+    color: blue;
 }
 
-.reclamo > form > .input-container > input {
-    font-family: sans-serif;
-    background: azure;
+.reclamo > form > .input-container > input, select {
+    width: 100%;
+    height: 3rem;
+    margin-bottom: 10px;
+    border: 1px solid #0005;
+    border-radius: 0.4rem;
+}
 
+.reclamo > form > .input-container > textarea {
+    width: 100%;
+    min-height: 8rem;
+    margin-bottom: 10px;
+    resize: vertical;
+    border: 1px solid #0005;
+    border-radius: 0.4rem;
 }
 
 .reclamo > form > input[type="submit"] {
-    color: azure;
-    font-family: sans-serif;
+    width: 60%;
+    height: 3rem;
+    margin-top: 10px;
+    border: 1px solid #0005;
+    border-radius: 0.4rem;
+    background: #47c5e7;
+    color: white;
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px #0002;
+}
 
+.reclamo > form > input[type="submit"]:hover {
+    background: #91d8eb;
+}
+
+.reclamo > form > input[type="submit"]:active {
+    background: #b8dde7;
 }
 
 /* ORDINI */
+.ordini-card {
+    grid-column: span 2;
+}
 
 .ordini {
     display: grid;
@@ -94,22 +141,103 @@ body {
 
 /* GESTIONE ACCOUNT */
 .gestione-account-card {
-    /*width: 100%;*/
+    grid-column: span 2;
+}
 
+.gestione-account {
+    width: 100%;
+}
 
+.gestione-account > form {
+    width: 90%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
 
+.gestione-account > form > .divider {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.gestione-account > form > .title {
+    color: blue;
+    margin-bottom: 1rem;
+}
+
+.gestione-account > form > .info-account {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+
+.gestione-account > form > .info-account > label {
 
 }
 
-.gestione_account {
-    font-size: small ;
-    font-family: sans-serif ;
-    text-decoration-line:  underline ;
-    border : 1px solid black ;
-    border-radius: 10% ;
+.gestione-account > form > .info-account > textarea {
+    resize: none;
+    height: 2rem;
+    width: 40%;
+    border: 1px solid #0002;
+    border-radius: 0.2rem;
+}
 
+.gestione-account > form > input[type="submit"] {
+    width: 60%;
+    height: 3rem;
+    margin-top: 10px;
+    border: 1px solid #0005;
+    border-radius: 0.4rem;
+    background: #47c5e7;
+    color: white;
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px #0002;
+}
 
+.gestione-account > form > input[type="submit"]:hover {
+    background: #91d8eb;
+}
 
+.gestione-account > form > input[type="submit"]:active {
+    background: #b8dde7;
+}
 
+/* COUPON */
+.coupon {
+    width: 90% !important;
+    align-items: flex-start !important;
+}
 
+.coupon h3 {
+    color: blue;
+}
+
+.coupon .selection {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.coupon > .divider {
+    width: 100%;
+}
+
+.coupon > .info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.coupon .prezzo p:after {
+    content: '€';
+}
+
+.coupon > .info > h4 {
+    color: dodgerblue;
 }

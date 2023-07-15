@@ -31,4 +31,16 @@ public class Ordine {
     @JoinColumn(name = "carrello_id")
     private Carrello carrello;
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("ORDINE #" + id);
+        sb.append("\nData: " + data);
+        sb.append("\nTotale: " + importoTotale);
+
+        sb.append("\n\nCarrello: " + carrello);
+
+        return sb.toString();
+    }
 }

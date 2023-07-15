@@ -1,8 +1,11 @@
 spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
   mvc:
     view:
       prefix: /
       suffix: .jsp
+
 
   datasource:
     url: jdbc:postgresql://localhost:5432/webpdm

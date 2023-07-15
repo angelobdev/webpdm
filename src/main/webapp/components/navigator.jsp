@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="exm.sisinf.webpdm.model.Ruolo" %>
 <jsp:useBean id="utente" scope="request" class="exm.sisinf.webpdm.model.Utente"/>
 
 <%--CSS--%>
@@ -17,7 +16,7 @@
     <%--Logo--%>
     <img src="https://img.freepik.com/premium-vector/vector-graphic-abstract-fish-logo-design-template_600800-223.jpg"
          class="logo" alt="logo">
-    <h2 class="logo-titolo">La Perla del Mediterraneo</h2>
+    <a href="/"><h2 class="logo-titolo">La Perla del Mediterraneo</h2></a>
 
     <!--Routes-->
     <div class="nav-routes">

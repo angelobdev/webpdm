@@ -4,7 +4,7 @@
 <jsp:useBean id="prodotti" scope="request" type="java.util.List<exm.sisinf.webpdm.model.Prodotto>"/>
 <html>
 <head>
-    <title>WEBPDM: Prodotti</title>
+    <title>WEBPDM: Catalogo</title>
     <link rel="stylesheet" type="text/css" href="assets/styles/catalogo.css"/>
 </head>
 <body>

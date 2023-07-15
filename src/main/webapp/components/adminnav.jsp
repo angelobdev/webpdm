@@ -16,9 +16,9 @@
     <h1>Dashboard</h1>
     <div class="divider"></div>
     <a href="/dashboard/magazzino">Gestione Magazzino</a>
+    <a href="/dashboard/approvvigionamenti">Gestione Approvvigionamenti</a>
+    <a href="/dashboard/vendite">Gestione Vendite</a>
     <a href="/dashboard/dipendenti">Gestione Dipendenti</a>
-    <a href="/dashboard/ordini">Gestione Ordini</a>
-    <a href="/dashboard/acquisti">Gestione Acquisti</a>
     <a href="/dashboard/reclami">Gestione Reclami</a>
 
     <div class="spacer"></div>

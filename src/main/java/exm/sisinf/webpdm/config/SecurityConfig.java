@@ -48,6 +48,7 @@ public class SecurityConfig {
                         .requestMatchers("/logout").authenticated()
                         .requestMatchers("/content**", "/content/**").hasAnyRole("USER", "ADMIN") // USER CONTENT
                         .requestMatchers("/dashboard**", "/dashboard/**").hasRole("ADMIN") // DASHBOARD
+                        .requestMatchers("/assets/**").permitAll()
                         .anyRequest().permitAll()
                 ).exceptionHandling(exception -> exception
                         .authenticationEntryPoint(unauthorizedHandler)

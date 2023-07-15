@@ -1,11 +1,14 @@
 package exm.sisinf.webpdm.model;
 
+import exm.sisinf.webpdm.model.support.CarrelloProdotto;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "prodotti")
@@ -38,6 +41,9 @@ public class Prodotto {
     @Column(name = "immagine")
     private String immagine;
 
+    @OneToMany(mappedBy = "prodotto", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CarrelloProdotto> carrelloProdotti = new ArrayList<>();
+
     public Prodotto(String nome, Double prezzoAlKg, Date dataArrivo, Integer quantitaStoccata, String descrizione, String immagine) {
         this.nome = nome;
         this.prezzoAlKg = prezzoAlKg;
@@ -45,5 +51,10 @@ public class Prodotto {
         this.quantitaStoccata = quantitaStoccata;
         this.descrizione = descrizione;
         this.immagine = immagine;
+    }
+
+    @Override
+    public String toString() {
+        return nome + ", " + prezzoAlKg + "€/kg, " + quantitaStoccata + " rimasti";
     }
 }

@@ -9,7 +9,7 @@
 
 <div class="dashboard-content">
 
-    <h1>Gestione Ordini</h1>
+    <h1>Gestione Approvvigionamenti</h1>
     <div class="divider"></div>
 
 </div>

@@ -18,6 +18,14 @@ nav {
     z-index: 1;
 }
 
+nav > a {
+    text-decoration: none;
+}
+
+nav > a:visited {
+    color: black;
+}
+
 nav > .nav-routes {
     display: flex;
     justify-content: flex-start;
