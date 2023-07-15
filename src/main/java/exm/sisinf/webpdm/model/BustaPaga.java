@@ -13,18 +13,19 @@ import java.util.Date;
 public class BustaPaga {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "buste_paga_id_seq")
+    @SequenceGenerator(name = "buste_paga_id_seq", allocationSize = 1)
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "totale")
-    private Double totale;
+    @Column(name = "importo_emesso")
+    private Double importoEmesso;
 
     @Column(name = "data_emissione")
     private Date dataEmissione;
 
     @OneToOne
-    @JoinColumn(name = "dipendente_cf")
+    @JoinColumn(name = "dipendente_id")
     private Dipendente dipendente;
 
 }

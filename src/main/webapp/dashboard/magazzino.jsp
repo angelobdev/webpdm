@@ -46,11 +46,11 @@
                 <tr>
                     <th>${p.nome}
                     </th>
-                    <th>${p.prezzoKg}
+                    <th>${p.prezzoAlKg}
                     </th>
                     <th>${p.dataArrivo}
                     </th>
-                    <th>${p.quantita}
+                    <th>${p.quantitaStoccata}
                     </th>
                     <th>
                         <spring:url value="/prodotti/delete/${p.id}" var="deleteUrl"/>
@@ -60,6 +60,11 @@
                     </th>
                 </tr>
             </c:forEach>
+            <% if (prodotti.isEmpty()) { %>
+            <tr>
+                <td colspan="5">Non ci sono prodotti</td>
+            </tr>
+            <% } %>
         </table>
 
     </div>

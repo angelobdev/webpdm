@@ -13,24 +13,18 @@ import java.util.Collection;
 public class Fornitore {
 
     @Id
-    @Column(name = "piva")
+    @GeneratedValue(generator = "fornitori_id_seq")
+    @SequenceGenerator(name = "fornitori_id_seq", allocationSize = 1)
+    @Column(name = "id")
+    private Integer id;
+
+    @Column(name = "partita_iva")
     private String partitaIVA;
 
-    @Column(name = "nome")
-    private String nome;
+    @Column(name = "nome_azienda")
+    private String nomeAzienda;
 
-    @Column(name = "sede")
-    private String sede;
-
-    @Column(name = "numero_ordini")
-    private Integer numeroOrdini;
-
-    @ManyToMany
-    @JoinTable(
-            name = "categorie_fornitori",
-            joinColumns = @JoinColumn(name = "fornitore_piva"),
-            inverseJoinColumns = @JoinColumn(name = "categoria_id")
-    )
-    private Collection<CategoriaOrdine> categorie;
+    @Column(name = "sede_aziendale")
+    private String sedeAziendale;
 
 }

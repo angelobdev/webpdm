@@ -15,6 +15,7 @@ import java.util.List;
 @Entity
 @Table(name = "utenti",
         uniqueConstraints = {
+                @UniqueConstraint(columnNames = "email"),
                 @UniqueConstraint(columnNames = "username")
         }
 )
@@ -25,46 +26,53 @@ import java.util.List;
 public class Utente implements UserDetails {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "utenti_id_seq")
+    @SequenceGenerator(name = "utenti_id_seq", allocationSize = 1)
     @Column(name = "id")
     private Integer id;
 
-    //Dati aziendali
+    // Dati aziendali
 
-    @Column(name = "piva")
-    private String piva;
+    @Column(name = "partita_iva")
+    private String partitaIVA;
 
-    @Column(name = "nome")
-    private String nome;
+    @Column(name = "nome_azienda")
+    private String nomeAzienda;
 
-    @Column(name = "sede")
-    private String sede;
+    @Column(name = "sede_aziendale")
+    private String sedeAziendale;
 
-    //Info accesso
+    // Info Account
 
-    @Column(name = "username")
+    @Column(name = "email", unique = true)
+    private String email;
+
+    @Column(name = "username", unique = true)
     private String username;
 
     @Column(name = "password")
     private String password;
 
+    @Column(name = "avatar")
+    private String avatar;
+
     @ManyToOne
     private Ruolo ruolo;
 
-    @Column(name = "numero_ordini")
-    private Integer numeroOrdini;
-
-    public Utente(String piva, String nome, String sede, String username, String password) {
-        this.piva = piva;
-        this.nome = nome;
-        this.sede = sede;
+    public Utente(String partitaIVA, String nomeAzienda, String sedeAziendale, String email, String username, String password, String avatar, Ruolo ruolo) {
+        this.partitaIVA = partitaIVA;
+        this.nomeAzienda = nomeAzienda;
+        this.sedeAziendale = sedeAziendale;
+        this.email = email;
         this.username = username;
         this.password = password;
+        this.avatar = avatar;
+        this.ruolo = ruolo;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(ruolo.getNome().name()));
+        return List.of(new SimpleGrantedAuthority(ruolo.getNome()));
     }
 
     @Override

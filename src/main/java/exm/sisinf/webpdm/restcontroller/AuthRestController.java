@@ -82,16 +82,18 @@ public class AuthRestController {
 
         // Create new user's account
         Utente utente = new Utente(
-                registerRequest.getPiva(),
-                registerRequest.getNome(),
-                registerRequest.getSede(),
+                registerRequest.getPartitaIVA(),
+                registerRequest.getNomeAzienda(),
+                registerRequest.getSedeAziendale(),
+
+                registerRequest.getEmail(),
                 registerRequest.getUsername(),
-                encoder.encode(registerRequest.getPassword())
+                encoder.encode(registerRequest.getPassword()),
+
+                registerRequest.getAvatar(),
+                ruoloRepository.findByNome("ROLE_USER").orElse(null)
         );
 
-        Ruolo ruoloUtente = ruoloRepository.findByNome(Ruolo.ERuolo.ROLE_USER).orElse(null);
-        utente.setRuolo(ruoloUtente);
-        utente.setNumeroOrdini(0);
         utenteRepository.save(utente);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
@@ -117,7 +119,7 @@ public class AuthRestController {
 
                     // Il login ha successo
                     authTokenService.store(httpResponse, token); // Salvo il token di accesso
-                    Ruolo.ERuolo ruolo = authTokenService.getUtente(token).getRuolo().getNome();
+//                    Ruolo ruolo = authTokenService.getUtente(token).getRuolo();
 //                    logger.info("RUOLO UTENTE: {}", ruolo.name());
 
                     return new ModelAndView("redirect:/areaclienti");
@@ -146,9 +148,17 @@ public class AuthRestController {
 
     // REGISTER
     @PostMapping("/register")
-    public RedirectView registerAction(@RequestParam String piva, @RequestParam String nome, @RequestParam String sede, @RequestParam String username, @RequestParam String password) {
+    public RedirectView registerAction(
+            @RequestParam String piva,
+            @RequestParam String nome,
+            @RequestParam String sede,
 
-        RegisterRequest registerRequest = new RegisterRequest(piva, nome, sede, username, password);
+            @RequestParam String email,
+            @RequestParam String username,
+            @RequestParam String password
+    ) {
+
+        RegisterRequest registerRequest = new RegisterRequest(piva, nome, sede, email, username, password);
         ResponseEntity<?> response = registerUser(registerRequest);
 
         if (response.getBody() instanceof MessageResponse) {

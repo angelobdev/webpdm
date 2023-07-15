@@ -13,11 +13,16 @@ import java.util.Date;
 public class Rimborso {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "rimborsi_id_seq")
+    @SequenceGenerator(name = "rimborsi_id_seq", allocationSize = 1)
     @Column(name = "id")
     private Integer id;
 
     @Column(name = "data_emissione")
     private Date dataEmissione;
+
+    @OneToOne
+    @JoinColumn(name = "reclamo_id")
+    private Reclamo reclamo;
 
 }

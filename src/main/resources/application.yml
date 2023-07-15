@@ -16,6 +16,7 @@ spring:
           lob:
             non_contextual_creation: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: public
 #        hbm2ddl:
 #          auto: update
 
@@ -23,7 +24,7 @@ webpdm:
   app:
     jwtSecret: ======================WEBPDM=Spring===========================
     jwtExpirationMs: 86400000
-    jwtSessionAttribute: W88SBtkU3ScRKzBP6YUBx4Wg6kqpi5sCiqTLoKEyNrq1ENKeIxngChXAqx5ghafRbSGAAUTOsUBzre3koJW3KGNUkyFxsbr9U7Lh
+    jwtSessionAttribute: W88SBtkU3ScRKzBP6YUBx4Wg6kqpi5sCiqTLoKEyN
 
 #management:
 #  security:

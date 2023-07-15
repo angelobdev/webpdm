@@ -10,23 +10,17 @@ import lombok.Data;
 @AllArgsConstructor
 public class RegisterRequest {
 
-    public RegisterRequest(String piva, String nome, String sede, String username, String password) {
-        this.piva = piva;
-        this.nome = nome;
-        this.sede = sede;
-        this.username = username;
-        this.password = password;
-    }
+    @NotBlank
+    private String partitaIVA;
 
     @NotBlank
-    private String piva;
+    private String nomeAzienda;
 
     @NotBlank
-    private String nome;
+    private String sedeAziendale;
 
     @NotBlank
-    private String sede;
-
+    private String email;
 
     @NotBlank
     private String username;
@@ -34,8 +28,16 @@ public class RegisterRequest {
     @NotBlank
     private String password;
 
-    private String ruolo = Ruolo.ERuolo.ROLE_USER.name();
+    private String avatar = "";
 
+    private String ruolo = "ROLE_USER";
 
-    private Integer numeroOrdini = 0;
+    public RegisterRequest(String partitaIVA, String nomeAzienda, String sedeAziendale, String email, String username, String password) {
+        this.partitaIVA = partitaIVA;
+        this.nomeAzienda = nomeAzienda;
+        this.sedeAziendale = sedeAziendale;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+    }
 }

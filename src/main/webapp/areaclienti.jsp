@@ -1,4 +1,3 @@
-<jsp:useBean id="acquisti" scope="request" type="java.util.Collection<exm.sisinf.webpdm.model.Acquisto>"/>
 <jsp:useBean id="username" scope="request" type="java.lang.String"/>
 <html>
 <head>

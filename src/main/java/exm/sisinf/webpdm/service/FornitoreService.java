@@ -14,38 +14,37 @@ public class FornitoreService {
     FornitoreRepository fornitoreRepository;
 
     // CREATE
-    public Fornitore createFornitore(Fornitore fornitore){
+    public Fornitore createFornitore(Fornitore fornitore) {
         return fornitoreRepository.save(fornitore);
     }
 
     // READ
 
-    public List<Fornitore> getAllForitori(){
+    public List<Fornitore> getAllForitori() {
         return fornitoreRepository.findAll();
     }
 
-    public Fornitore getFornitore(String piva){
-        return fornitoreRepository.findById(piva).orElse(null);
+    public Fornitore getFornitore(Integer id) {
+        return fornitoreRepository.findById(id).orElse(null);
     }
 
     // UPDATE
 
-    public Fornitore updateFornitore(String piva, Fornitore fornitore){
-        Fornitore toUpdate = fornitoreRepository.findById(piva).orElse(null);
-        if(toUpdate != null){
+    public Fornitore updateFornitore(Integer id, Fornitore fornitore) {
+        Fornitore toUpdate = fornitoreRepository.findById(id).orElse(null);
+        if (toUpdate != null) {
             toUpdate.setPartitaIVA(fornitore.getPartitaIVA());
-            toUpdate.setNome(fornitore.getNome());
-            toUpdate.setCategorie(fornitore.getCategorie());
-            toUpdate.setNumeroOrdini(fornitore.getNumeroOrdini());
+            toUpdate.setNomeAzienda(fornitore.getNomeAzienda());
+            toUpdate.setSedeAziendale(fornitore.getSedeAziendale());
             return fornitoreRepository.save(toUpdate);
         }
-        return null;
+        return toUpdate;
     }
 
     // DELETE
 
-    public void deleteFornitore(String piva){
-        fornitoreRepository.deleteById(piva);
+    public void deleteFornitore(Integer id) {
+        fornitoreRepository.deleteById(id);
     }
 
 }

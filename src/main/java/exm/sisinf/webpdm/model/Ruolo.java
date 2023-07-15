@@ -12,16 +12,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Ruolo {
 
-    public enum ERuolo {
-        ROLE_ADMIN, ROLE_USER
-    }
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "ruoli_id_seq")
+    @SequenceGenerator(name = "ruoli_id_seq", allocationSize = 1)
     private Integer id;
 
-    @Enumerated(EnumType.STRING)
-    @Column(length = 32)
-    private ERuolo nome;
+    @Column(name = "nome")
+    private String nome;
+
+    @Column(name = "grado")
+    private Integer grado;
 
 }
