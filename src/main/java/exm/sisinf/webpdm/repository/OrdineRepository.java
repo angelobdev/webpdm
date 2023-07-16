@@ -20,4 +20,6 @@ public interface OrdineRepository extends JpaRepository<Ordine, Integer> {
     public List<Ordine> findByUtenteId(Integer id);
 
 
+
+
 }

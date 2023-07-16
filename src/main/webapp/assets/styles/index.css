@@ -1,99 +1,134 @@
 body {
-    height: calc(100vh - var(--nav-height));
+    /*background-image: url("https://img.freepik.com/premium-photo/light-blue-paper-seamless-square-texture-tile-ready-high-resolution-photo_463999-1273.jpg?w=2000");*/
+    background-repeat: repeat;
 }
 
-.slider-container {
-    position: relative;
-    overflow: hidden;
-    width: 100vw;
-    height: 100vh;
-}
-
-.slider-container > * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-.left-slide {
-    height: 100%;
-    width: 35%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: transform 0.5s ease-in-out;
-}
-
-.left-slide > div {
-    height: 100%;
+.container {
     width: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #fff;
+    flex-direction: column;
+    margin-top: 2rem;
 }
 
-.left-slide h1 {
-    font-size: 40px;
-    margin-bottom: 10px;
-    margin-top: -30px;
-}
-
-.left-slide p {
-    padding-left: 3rem;
-    padding-right: 3rem;
-}
-
-.right-slide {
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 35%;
-    width: 65%;
-    transition: transform 0.5s ease-in-out;
-}
-
-.right-slide > div {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    height: 100%;
+.container .show {
     width: 100%;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    -webkit-box-shadow: inset 0 0 20px 10px #0006;
+    -moz-box-shadow: inset 0 0 20px 10px #0006;
+    box-shadow: inset 0 0 20px 10px #0006;
 }
 
-.action-buttons > button {
-    background-color: #fff;
-    border: none;
-    color: #aaa;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 15px;
+.container .galbanino {
+    border-radius: 0 0 20% 20%;
+    border-bottom: 1rem solid white;
 }
 
-.action-buttons > button:hover {
-    color: #222;
-}
-
-.action-buttons > button:focus {
-    outline: none;
-}
-
-.slider-container .action-buttons button {
+.container .galbanino .button-area {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 40vw;
+    height: 1rem;
     position: absolute;
-    left: 35%;
-    top: 50%;
-    z-index: 100;
+    margin-top: 18rem;
 }
 
-.slider-container .action-buttons .down-button {
-    transform: translateX(-100%);
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+.container > .galbanino > .button-area > button {
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    width: 200px;
+    height: 50px;
+    background: transparent;
+    border: 3px solid white;
+    transition: 0.6s;
 }
 
-.slider-container .action-buttons .up-button {
-    transform: translateY(-100%);
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+.container .round {
+    border-radius: 10px;
+}
+
+.container .show img, video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /*border-radius: 30px;*/
+    position: relative;
+    z-index: -999;
+}
+
+
+.container .show h1 {
+    position: absolute;
+    color: white;
+    font-size: 3rem;
+    margin: 3rem;
+    text-align: center;
+    text-shadow: 0 0 20px #000;
+
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 1rem;
+}
+
+.container > .show > button {
+    position: absolute;
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 10rem;
+    width: 200px;
+    height: 50px;
+    background: transparent;
+    border: 3px solid white;
+    transition: 0.6s;
+}
+
+.container .show button:hover {
+    background: white;
+    border: none;
+    color: black;
+    transition: 0.6s;
+}
+
+.container .area {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.container h1 {
+    margin: 1rem auto 0 1rem;
+    font-family: "Dancing Script", sans-serif;
+    font-size: 4rem;
+}
+
+.container .area .left, .right {
+    width: 48%;
+    height: 90%;
+    overflow: hidden;
+}
+
+.container .area p {
+    text-align: justify;
+    /*font-style: italic;*/
+    font-size: 1.4rem;
+    font-family: "Dancing Script", sans-serif;
+    font-weight: 800;
+}
+
+footer {
+    width: 100%;
+    height: 3rem;
+    background: #91d8ebaa;
 }

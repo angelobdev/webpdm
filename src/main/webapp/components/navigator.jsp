@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <jsp:useBean id="utente" scope="request" class="exm.sisinf.webpdm.model.Utente"/>
+<jsp:useBean id="carrello" scope="request" class="exm.sisinf.webpdm.model.Carrello"/>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%--CSS--%>
 <link rel="stylesheet" type="text/css" href="../assets/styles/main.css"/>
@@ -60,6 +62,23 @@
             <%--CARRELLO--%>
             <h2>Carrello</h2>
 
+            <c:choose>
+                <c:when test="${carrello == null}">
+                    <p>Nessun carrello!</p>
+                </c:when>
+                <c:otherwise>
+                    <p>Carrello presente:</p>
+                    ID: ${carrello.id}
+                    ${carrello}
+                </c:otherwise>
+            </c:choose>
+
+            <c:if test="${carrello == null}">
+                <p>Nessun carrello!</p>
+            </c:if>
+            <c:if test="${carrello != null}">
+                <p>Carrello presente!</p>
+            </c:if>
 
         </div>
 
@@ -72,13 +91,13 @@
 
 <%--Script Carrello--%>
 <script>
-    let carrello = document.getElementById("carrello");
+    let carrelloDiv = document.getElementById("carrello");
 
     function openCart() {
-        carrello.style.visibility = "visible";
+        carrelloDiv.style.visibility = "visible";
     }
 
     function closeCart() {
-        carrello.style.visibility = "hidden";
+        carrelloDiv.style.visibility = "hidden";
     }
 </script>

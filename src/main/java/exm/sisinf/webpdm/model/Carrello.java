@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -28,25 +29,8 @@ public class Carrello {
     @JoinColumn(name = "utente_id")
     private Utente utente;
 
-//    @ManyToMany
-//    @JoinTable(
-//            name = "carrelli_prodotti",
-//            joinColumns = @JoinColumn(name = "carrello_id"),
-//            inverseJoinColumns = @JoinColumn(name = "prodotto_id")
-//    )
-//    @MapKeyJoinColumn(name = "quantita")
-//    private Map<Integer, Prodotto> prodottiQuantita = new HashMap<>();
-
-//    @ManyToMany
-//    @JoinTable(
-//            name = "carrelli_prodotti",
-//            joinColumns = @JoinColumn(name = "carrello_id"),
-//            inverseJoinColumns = @JoinColumn(name = "prodotto_id")
-//    )
-//    private List<Prodotto> prodotti;
-
-//    @OneToMany(mappedBy = "carrello", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<CarrelloProdotto> prodottiQuantita = new ArrayList<>();
+    @Column(name = "data_creazione")
+    private Date dataCreazione;
 
     @OneToMany(mappedBy = "carrello", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CarrelloProdotto> carrelloProdotti = new ArrayList<>();
