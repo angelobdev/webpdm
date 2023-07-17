@@ -5,7 +5,7 @@
     top: var(--nav-height);
     left: 0;
 
-    width: 30vw;
+    width: 20vw;
     height: 100vh;
 
     display: flex;
@@ -45,7 +45,7 @@
     top: var(--nav-height);
     right: 0;
 
-    width: 70vw;
+    width: 80vw;
     height: 100vh;
 
     display: flex;
@@ -54,10 +54,21 @@
     flex-direction: column;
 }
 
+.dashboard-content h1 {
+    background-image: url("../../media/mare.jpg");
+    background-size: cover;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 50px 0 50px 0;
+    color:white;
+    text-shadow: 0 0 10px #0006;
+}
+
 .spacer {
     margin-top: auto;
 }
 
-.footer{
-    margin-bottom:4rem;
+.footer {
+    margin-bottom: 4rem;
 }

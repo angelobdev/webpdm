@@ -12,6 +12,7 @@ table {
     border: 1px solid grey;
     font-size: 12pt;
     border-collapse: collapse;
+    width: 90%;
 }
 
 table thead th,
@@ -31,6 +32,10 @@ table td {
     border: 1px solid lightgrey;
 }
 
+th > input[type=number] {
+    width: 100px;
+}
+
 .delete-prodotto {
     background: #ff6348;
     border: 1px solid #0005;
@@ -46,10 +51,27 @@ table td {
     background: #ff8c8c;
 }
 
+
+.modifica-prodotto {
+    background: #579dc9;
+    border: 1px solid #0005;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
+}
+
+.modifica-prodotto:hover {
+    background: #7ba6c2;
+}
+
+.modifica-prodotto:active {
+    background: #9cb7c9;
+}
+
 .title {
     width: 100%;
     background: #579dc955;
     text-align: center;
+    margin: 0 0 2rem 0;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
 
@@ -87,17 +109,17 @@ form {
 .input-container > input {
     width: 100%;
     height: 2rem;
-    border: 1px solid #0005;
-    border-radius: 0.2rem;
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
 }
 
 input[type=submit] {
     background: #579dc9;
     width: 50%;
     height: 2rem;
-    border: 1px solid #0005;
-    border-radius: 0.2rem;
-    color:white;
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
+    color: white;
 }
 
 input[type=submit]:hover {
@@ -110,4 +132,81 @@ input[type=submit]:active {
 
 .wide {
     height: 6rem !important;
+}
+
+.ricerca {
+    width: 60%;
+}
+
+.search-area {
+    width: 100%;
+}
+
+.search-area > form {
+    width: 100%;
+}
+
+.search-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    height: 2rem;
+    width: 100%;
+}
+
+.search-box > input {
+    width: 78%;
+    height: 100%;
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
+}
+
+.search-box > button {
+    background: #579dc9;
+    width: 10%;
+    height: 100%;
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
+    color: white;
+}
+
+.search-box > button:hover {
+    background: #73a5c5;
+}
+
+.search-box > button:active {
+    background: #97afbe;
+}
+
+.search-result {
+
+}
+
+#lista-risultati {
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
+    list-style: none;
+    background: #579dc9aa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#lista-risultati > li {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+#lista-risultati > li > p {
+    width: 80%;
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
+    padding: 0.2rem;
+    background: #fff;
 }

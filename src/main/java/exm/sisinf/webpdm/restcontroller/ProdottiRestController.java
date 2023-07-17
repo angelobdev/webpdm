@@ -1,7 +1,10 @@
 package exm.sisinf.webpdm.restcontroller;
 
+import exm.sisinf.webpdm.controller.ContentController;
 import exm.sisinf.webpdm.model.Prodotto;
 import exm.sisinf.webpdm.service.ProdottoService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +20,8 @@ import java.util.List;
 @RequestMapping("/prodotti")
 public class ProdottiRestController {
 
+    private static final Logger logger = LoggerFactory.getLogger(ProdottiRestController.class);
+
     @Autowired
     private ProdottoService prodottoService;
 
@@ -28,7 +33,6 @@ public class ProdottiRestController {
             @RequestParam Integer quantita,
             @RequestParam String descrizione,
             @RequestParam String immagine) throws ParseException {
-
         Prodotto prodotto = new Prodotto(
                 nome,
                 prezzoKg,
@@ -41,10 +45,24 @@ public class ProdottiRestController {
         return new RedirectView("/dashboard/magazzino");
     }
 
+    @GetMapping("/cerca/{nome}")
+    public List<Prodotto> getAllProdotti(@PathVariable String nome) {
+        return prodottoService.cercaProdotto(nome);
+    }
+
     @DeleteMapping("/delete/{id}")
     public RedirectView prodottiDeleteAction(@PathVariable Integer id) {
         prodottoService.deleteProdotto(id);
         return new RedirectView("/dashboard/magazzino");
+    }
+
+    @PostMapping("/modifica/{id}")
+    public Prodotto modificaProdotto(@PathVariable Integer id, @RequestBody Prodotto prodotto) {
+        logger.warn("Sto modificando prodotto con id: " + id);
+
+        logger.warn("VALORI: " + prodotto);
+
+        return prodottoService.updateProdotto(id, prodotto);
     }
 
 }

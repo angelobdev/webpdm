@@ -11,6 +11,38 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="../assets/scripts/sortable.js"></script>
     <script>
+
+        function modificaProdotto(id) {
+            let form = $("#modifica-prodotto-form-" + id);
+
+            console.log("Modifico " + id);
+
+            let datiProdotto = {
+                nome: form.find('input[name="nome"]').val(),
+                prezzoAlKg: form.find('input[name="prezzoAlKg"]').val(),
+                dataArrivo: form.find('input[name="dataArrivo"]').val(),
+                quantitaStoccata: form.find('input[name="quantitaStoccata"]').val(),
+                descrizione: form.find('textarea[name="descrizione"]').val(),
+                immagine: form.find('textarea[name="immagine"]').val()
+            };
+
+            console.log("Oggetto: ", datiProdotto);
+
+            $.ajax({
+                type: "POST",
+                url: "/prodotti/modifica/" + id,
+                contentType: "application/json",
+                data: JSON.stringify(datiProdotto),
+                success: (data) => {
+                    console.log("CIAO");
+                },
+                error: (xhr) => {
+                    console.log("error");
+                }
+            });
+        }
+
+
         // delete the user from the database
         function eliminaProdotto(deleteURL) {
             $.ajax({
@@ -22,6 +54,45 @@
             });
             location.reload();
         }
+
+        function pulisciRicerca() {
+            document.getElementById("risultato").style.display = "none";
+        }
+
+        function cercaProdotto(event) {
+
+            var nomeProdottoCercato = $("#nomeProdottoCercato").val();
+            console.log("Cerco " + nomeProdottoCercato);
+
+            $.ajax({
+                type: "GET",
+                url: "/prodotti/cerca/" + nomeProdottoCercato,
+                success: (data) => {
+                    console.log(data);
+                    document.getElementById("risultato").style.display = "block";
+
+                    document.getElementById("lista-risultati").innerHTML = '';
+                    data.forEach((value) => {
+
+                        let item = document.createElement("li");
+
+                        let nome = document.createElement("p");
+                        nome.innerHTML = value["nome"] + ", " + value["prezzoAlKg"] + "€/kg : " + value["quantitaStoccata"] + "pz";
+                        item.appendChild(nome);
+
+                        document.getElementById("lista-risultati").appendChild(item);
+
+                    })
+                },
+                error: (xhr, ajaxOptions, thrownError) => {
+                    if (xhr.status === 404) {
+                        console.log("Non trovato");
+                        document.getElementById("risultato").style.display = "block";
+                        document.getElementById("lista-risultati").innerHTML = "Nessun risultato!";
+                    }
+                }
+            });
+        }
     </script>
 </head>
 <body>
@@ -30,6 +101,28 @@
 <div class="dashboard-content">
 
     <h1>Gestione Magazzino</h1>
+
+    <h2 class="title">Ricerca prodotti</h2>
+    <div class="ricerca">
+        <div class="search-area">
+            <form id="ricerca-form" onsubmit="cercaProdotto(); return false;">
+                <div class="search-box">
+                    <input id="nomeProdottoCercato" name="nomeProdotto" type="text" placeholder="Prodotto...">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                    <button onclick="pulisciRicerca(); return false;"><i class="fa fa-broom"></i></button>
+                </div>
+            </form>
+        </div>
+        <div class="search-result">
+            <div id="risultato" style="display: none">
+
+                <ul id="lista-risultati">
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
     <div class="divider"></div>
 
     <h2 class="title">Lista Prodotti</h2>
@@ -37,27 +130,50 @@
         <table class="sortable">
             <tr>
                 <th>Nome</th>
-                <th>Prezzo al KG</th>
+                <th>€/kg</th>
                 <th>Data Arrivo</th>
                 <th>Quantità</th>
-                <th></th>
+                <th>Descrizione</th>
+                <th>Immagine</th>
+                <th class="sorttable_nosort"></th>
+                <th class="sorttable_nosort"></th>
             </tr>
             <c:forEach var="p" items="${prodotti}">
                 <tr>
-                    <th>${p.nome}
-                    </th>
-                    <th>${p.prezzoAlKg}
-                    </th>
-                    <th>${p.dataArrivo}
-                    </th>
-                    <th>${p.quantitaStoccata}
-                    </th>
-                    <th>
-                        <spring:url value="/prodotti/delete/${p.id}" var="deleteUrl"/>
-                        <button class="delete-prodotto" onclick="eliminaProdotto('${deleteUrl}')">
-                            <i class="fa fa-trash" style="color: white"></i>
-                        </button>
-                    </th>
+                    <form action="" id="modifica-prodotto-form-${p.id}">
+                        <th>
+                            <input name="nome" type="text" placeholder="Nome..." value="${p.nome}">
+                        </th>
+                        <th>
+                            <input name="prezzoAlKg" type="number" placeholder="Nome..." value="${p.prezzoAlKg}">
+                        </th>
+                        <th>
+                            <input name="dataArrivo" type="datetime-local" placeholder="Nome..."
+                                   value="${p.dataArrivo}">
+                        </th>
+                        <th>
+                            <input name="quantitaStoccata" type="number" placeholder="Nome..."
+                                   value="${p.quantitaStoccata}">
+                        </th>
+                        <th>
+                            <textarea name="descrizione">${p.descrizione}</textarea>
+                        </th>
+                        <th>
+                            <textarea name="immagine">${p.immagine}</textarea>
+                        </th>
+                        <th>
+                            <button class="modifica-prodotto" type="submit"
+                                    onclick="modificaProdotto('${p.id}'); return false;">
+                                <i class="fa fa-trash" style="color: white"></i>
+                            </button>
+                        </th>
+                        <th>
+                            <spring:url value="/prodotti/delete/${p.id}" var="deleteUrl"/>
+                            <button class="delete-prodotto" onclick="eliminaProdotto('${deleteUrl}')">
+                                <i class="fa fa-trash" style="color: white"></i>
+                            </button>
+                        </th>
+                    </form>
                 </tr>
             </c:forEach>
             <% if (prodotti.isEmpty()) { %>

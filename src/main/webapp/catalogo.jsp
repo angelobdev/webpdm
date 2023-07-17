@@ -10,6 +10,8 @@
 <body>
 <jsp:include page="/nav"/>
 
+<div class="background"></div>
+
 <h1>Catalogo</h1>
 
 <%--LISTA--%>

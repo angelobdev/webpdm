@@ -68,17 +68,17 @@
                 </c:when>
                 <c:otherwise>
                     <p>Carrello presente:</p>
-                    ID: ${carrello.id}
-                    ${carrello}
+<%--                    ID: ${carrello.id}--%>
+<%--                    ${carrello}--%>
                 </c:otherwise>
             </c:choose>
 
-            <c:if test="${carrello == null}">
-                <p>Nessun carrello!</p>
-            </c:if>
-            <c:if test="${carrello != null}">
-                <p>Carrello presente!</p>
-            </c:if>
+<%--            <c:if test="${carrello == null}">--%>
+<%--                <p>Nessun carrello!</p>--%>
+<%--            </c:if>--%>
+<%--            <c:if test="${carrello != null}">--%>
+<%--                <p>Carrello presente!</p>--%>
+<%--            </c:if>--%>
 
         </div>
 

@@ -1,31 +1,36 @@
-body {
-    background: url("https://img.freepik.com/premium-vector/abstract-blue-wave-vector-background-brochure-design-project-website-flyer_206325-1163.jpg?w=2000");
-    background-size: contain;
+.background {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    background: url("../media/catalogobg.jpg");
+    background-size: cover;
+    width: 100vw;
+    height: calc(100vh - var(--nav-height));
+    z-index: -999;
 }
 
 .products {
-    width: 80%;
+    width: 90%;
     min-height: calc(100vh - var(--nav-height));
 
     margin: 0;
     padding: 0;
 
-    overflow-x: scroll;
-    scroll-behavior: smooth;
-
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
 }
 
 
 .container {
-    background: #679CC5DD;
+    background: #0002;
 
-    max-height: 600px;
+    width: 100%;
+
+    max-height: 500px;
 
     border: 1px solid #0002;
-    border-radius: 2rem;
+    border-radius: 1rem;
     box-shadow: 0 2px 5px #0005;
 
     display: flex;
@@ -45,20 +50,24 @@ body {
 
 .container > h1 {
     color: white;
+    text-shadow: 0 0 10px #0006;
 }
 
 .container > .desc {
     color: white;
+    text-shadow: 0 0 10px #0006;
 }
 
 .container > .quantita {
     color: yellow;
+    text-shadow: 0 0 10px #0006;
 }
 
 .container > .prezzo {
     color: yellow;
     margin-top: auto;
     margin-bottom: 0;
+    text-shadow: 0 0 10px #0006;
 }
 
 .buy {
@@ -67,15 +76,15 @@ body {
     border: 1px solid #0005;
     border-radius: 0.4rem;
     margin-bottom: 1rem;
-    background: #91d8eb;
+    background: #579dc9;
     color: white;
     font-size: 1.2rem;
 }
 
 .buy:hover {
-    background: #b5e0ec;
+    background: #86b1cc;
 }
 
 .buy:active {
-    background: #d6e7ec;
+    background: #9db2c0;
 }

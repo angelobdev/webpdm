@@ -11,25 +11,28 @@
 
 <div class="container">
 
+    <div class="background"></div>
     <h1 class="scritta"> Contattaci</h1>
 
     <div class="cards-container">
-        <div class="contact-info">
-            <div class="card">
-                <i class="fas fa-envelope fa-lg"></i>
-                <p>Laperladelmediterraneo@gmail.com</p>
 
-            </div>
+        <div class="contact-info">
+
+            <a class="card" href="mailto:info@webpdm.com">
+                <i class="fas fa-envelope fa-lg"></i>
+                <p>info@webpdm.com</p>
+            </a>
+
             <div class="card">
                 <i class="fas fa-phone"></i>
-                <p>+39 345 8790970</p>
-
+                <p>+39 320 12345678</p>
             </div>
-            <div class="card">
+
+            <a class="card" href="https://goo.gl/maps/6nZ6Np17gdgJ2ywB7" target="_blank">
                 <i class="fas fa-map-marker-alt fa-lg"></i>
                 <p>San Lucido , Calabria </p>
+            </a>
 
-            </div>
         </div>
     </div>
 

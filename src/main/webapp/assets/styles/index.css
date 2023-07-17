@@ -122,13 +122,16 @@ body {
 .container .area p {
     text-align: justify;
     /*font-style: italic;*/
-    font-size: 1.4rem;
-    font-family: "Dancing Script", sans-serif;
-    font-weight: 800;
+    font-size: 1.35rem;
+    font-family: "Open Sans", serif;
+    line-height: 1.6rem;
 }
 
 footer {
     width: 100%;
     height: 3rem;
     background: #91d8ebaa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

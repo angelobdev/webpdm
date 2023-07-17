@@ -1,11 +1,13 @@
-/** {*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*    font-family: "mont-serrat", sans-serif;*/
-/*    box-sizing: border-box;*/
-
-
-/*}*/
+.background {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    background: url("../media/contattibg.jpg");
+    background-size: cover;
+    width: 100vw;
+    height: calc(100vh - var(--nav-height));
+    z-index: -999;
+}
 
 .contact-info {
     display: flex;
@@ -14,18 +16,17 @@
     align-items: center;
     justify-content: center;
     padding: 0 20px;
-
-
 }
 
 
 .scritta {
     color: white;
     font-size: 3rem;
+    text-shadow: 0 0 20px #0006;
 }
 
 .card {
-    background: #579dc9;
+    background: #579dc9aa;
     padding: 0 20px;
     margin: 0 10px;
     width: calc(33% - 20px);
@@ -87,9 +88,6 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), transparent), url("../media/pescatore.jpg");
-    background-size: cover;
 }
 
 .cards-container {
@@ -101,6 +99,7 @@
     background: #fff5;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    box-shadow: 0 0 20px #0006;
 }
 
 

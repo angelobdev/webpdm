@@ -21,6 +21,10 @@ public class ProdottoService {
 
     // READ
 
+    public List<Prodotto> cercaProdotto(String nome) {
+        return prodottoRepository.findAllByNomeLikeIgnoreCaseOrNomeContainingIgnoreCase(nome, nome).orElse(null);
+    }
+
     public Prodotto getProdotto(Integer id) {
         return prodottoRepository.findById(id).orElse(null);
     }
