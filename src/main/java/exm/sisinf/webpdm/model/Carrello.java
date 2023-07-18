@@ -1,5 +1,7 @@
 package exm.sisinf.webpdm.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import exm.sisinf.webpdm.model.support.CarrelloProdotto;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -33,6 +35,7 @@ public class Carrello {
     private Date dataCreazione;
 
     @OneToMany(mappedBy = "carrello", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<CarrelloProdotto> carrelloProdotti = new ArrayList<>();
 
     @Override

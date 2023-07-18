@@ -7,14 +7,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface CarrelloRepository extends JpaRepository<Carrello, Integer> {
 
-    @Query(value = "SELECT c.* FROM carrelli c WHERE (c.utente_id = ?1 AND c.acquistato = false)", nativeQuery = true)
-    Optional<Carrello> findByUtente(Integer utenteID);
+    @Query(value = "SELECT * FROM carrelli c WHERE (c.utente_id = ?1 AND c.acquistato = false)", nativeQuery = true)
+    Collection<Carrello> findByUtente(Integer utenteID);
 
     @Query(value = "INSERT INTO carrelli_prodotti (carrello_id, prodotto_id, quantita) VALUES (?1, ?2, ?3)", nativeQuery = true)
     void aggiungiProdotto(Integer carrelloID, Integer prodottoID, Integer quantita);

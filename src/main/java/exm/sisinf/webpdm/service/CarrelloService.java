@@ -8,6 +8,8 @@ import exm.sisinf.webpdm.repository.CarrelloRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,9 +24,13 @@ public class CarrelloService {
 
     // CREATE
 
-    public Carrello creaCarrelloUtente(Utente u) {
+    public Carrello creaCarrelloUtente(Integer utenteID) {
+        Utente u = utenteService.getUtente(utenteID);
         Carrello nuovoCarrello = new Carrello();
         nuovoCarrello.setUtente(u);
+        nuovoCarrello.setAcquistato(false);
+        nuovoCarrello.setCarrelloProdotti(new ArrayList<>());
+        nuovoCarrello.setDataCreazione(new Date());
         return carrelloRepository.save(nuovoCarrello);
     }
 
@@ -39,12 +45,7 @@ public class CarrelloService {
     }
 
     public Carrello getCarrelloUtente(Integer utenteID) {
-        Carrello carrello = carrelloRepository.findByUtente(utenteID).orElse(null);
-        if (carrello != null) {
-            if (carrello.getId() == null || carrello.getUtente() == null || carrello.getAcquistato() == null)
-                return null;
-        }
-        return carrello;
+        return carrelloRepository.findByUtente(utenteID).stream().toList().get(0);
     }
 
     public List<Carrello> getAllCarrelli() {

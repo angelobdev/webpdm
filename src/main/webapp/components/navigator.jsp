@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<jsp:useBean id="utente" scope="request" class="exm.sisinf.webpdm.model.Utente"/>
-<jsp:useBean id="carrello" scope="request" class="exm.sisinf.webpdm.model.Carrello"/>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:useBean id="utente" scope="request" class="exm.sisinf.webpdm.model.Utente"/>
 
 <%--CSS--%>
 <link rel="stylesheet" type="text/css" href="../assets/styles/main.css"/>
@@ -13,6 +12,61 @@
         data-keep-original-source="false"
 ></script>
 
+<%--jQuery--%>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+<%-- Gestione carrello --%>
+<% if (utente != null) { %>
+<script>
+    // Aggiunge un prodotto al carrello
+    async function aggiungiProdottoAlCarrello(prdid, qta) {
+
+        let data = {
+            "prodottoID": prdid,
+            "quantita": qta,
+        }
+
+        console.log(JSON.stringify(data));
+
+        $.ajax({
+            type: "POST",
+            url: "/carrello/aggiungi/" + ${utente.id},
+            contentType: "application/json; charset=UTF-8",
+            data: JSON.stringify(data),
+            async: true,
+            success: () => {
+                console.log("SUCCESS");
+            },
+            error: () => {
+                console.error("ERROR");
+            }
+
+        });
+    }
+
+    // Ritorna il carrello dell'utente;
+    async function getCarrelloUtente() {
+        $.ajax({
+            type: "GET",
+            url: "/carrello/" + ${utente.id},
+            dataType: "json",
+            success: (data) => {
+
+                if (data == []) {
+                    $("#carrello-content").html("<p>Nessun Carrello Presente!</p>");
+                } else {
+                    $("#carrello-content").html("<div><b>Carrello presente!</b><p>ID: " + data["id"] + "</p><p>Utente: " + data["utente"]["username"] + "</p><p>Data Creazione: " + data["data_creazione"] + "</p></div>");
+                }
+
+
+            }
+        });
+    }
+
+    getCarrelloUtente();
+</script>
+<% } %>
+
 <%--Navigatore--%>
 <nav>
     <%--Logo--%>
@@ -20,7 +74,7 @@
          class="logo" alt="logo">
     <a href="/"><h2 class="logo-titolo">La Perla del Mediterraneo</h2></a>
 
-    <!--Routes-->
+    <%--Routes--%>
     <div class="nav-routes">
         <a href="/">Home</a>
         <a href="/catalogo">Catalogo</a>
@@ -53,36 +107,23 @@
             </button>
         </div>
 
+        <%--CARRELLO--%>
         <div id="carrello">
             <%--Bottone chiusura--%>
             <button class="close" onclick="closeCart()">
                 <i class="fa fa-times"></i>
             </button>
 
-            <%--CARRELLO--%>
             <h2>Carrello</h2>
 
-            <c:choose>
-                <c:when test="${carrello == null}">
-                    <p>Nessun carrello!</p>
-                </c:when>
-                <c:otherwise>
-                    <p>Carrello presente:</p>
-                    <%--                    ID: ${carrello.id}--%>
-                    <%--                    ${carrello}--%>
-                </c:otherwise>
-            </c:choose>
+            <div id="carrello-content">
+                <p>Ciao</p>
+            </div>
 
-            <%--            <c:if test="${carrello == null}">--%>
-            <%--                <p>Nessun carrello!</p>--%>
-            <%--            </c:if>--%>
-            <%--            <c:if test="${carrello != null}">--%>
-            <%--                <p>Carrello presente!</p>--%>
-            <%--            </c:if>--%>
 
         </div>
 
-        <%--Accesso--%>
+        <%--Menu Accesso--%>
         <% } else { %>
         <a href="/login" class="login-button">Login</a>
         <% } %>

@@ -21,23 +21,10 @@ public class NavigatorController {
     @Autowired
     private AuthTokenService authTokenService;
 
-    @Autowired
-    private CarrelloService carrelloService;
-
     @GetMapping("/nav")
     public String navigator(Model model, HttpServletRequest request) {
         Utente utente = authTokenService.getUtente(authTokenService.retrieve(request));
         model.addAttribute("utente", utente);
-
-        Carrello carrello = null;
-        if (utente != null) {
-            carrello = carrelloService.getCarrelloUtente(utente.getId());
-//        Carrello carrello = carrelloService.getCarrello(1);
-
-//            logger.warn("CARRELLO: " + carrello);
-            model.addAttribute("carrello", carrello);
-        }
-
         return "components/navigator";
     }
 
