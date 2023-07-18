@@ -29,11 +29,14 @@ public class NavigatorController {
         Utente utente = authTokenService.getUtente(authTokenService.retrieve(request));
         model.addAttribute("utente", utente);
 
-        Carrello carrello = carrelloService.getCarrelloUtente(utente.getId());
+        Carrello carrello = null;
+        if (utente != null) {
+            carrello = carrelloService.getCarrelloUtente(utente.getId());
 //        Carrello carrello = carrelloService.getCarrello(1);
 
-        logger.warn("CARRELLO: " + carrello);
-        model.addAttribute("carrello", carrello);
+            logger.warn("CARRELLO: " + carrello);
+            model.addAttribute("carrello", carrello);
+        }
 
         return "components/navigator";
     }

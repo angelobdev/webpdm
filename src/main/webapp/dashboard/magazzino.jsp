@@ -13,17 +13,15 @@
     <script>
 
         function modificaProdotto(id) {
-            let form = $("#modifica-prodotto-form-" + id);
-
             console.log("Modifico " + id);
 
             let datiProdotto = {
-                nome: form.find('input[name="nome"]').val(),
-                prezzoAlKg: form.find('input[name="prezzoAlKg"]').val(),
-                dataArrivo: form.find('input[name="dataArrivo"]').val(),
-                quantitaStoccata: form.find('input[name="quantitaStoccata"]').val(),
-                descrizione: form.find('textarea[name="descrizione"]').val(),
-                immagine: form.find('textarea[name="immagine"]').val()
+                nome: $("#nome-prodotto-" + id).val(),
+                prezzoAlKg: $("#prezzoKg-prodotto-" + id).val(),
+                dataArrivo: $("#dataArrivo-prodotto-" + id).val(),
+                quantitaStoccata: $("#quantitaStoccata-prodotto-" + id).val(),
+                descrizione: $("#descrizione-prodotto-" + id).val(),
+                immagine: $("#immagine-prodotto-" + id).val()
             };
 
             console.log("Oggetto: ", datiProdotto);
@@ -34,7 +32,7 @@
                 contentType: "application/json",
                 data: JSON.stringify(datiProdotto),
                 success: (data) => {
-                    console.log("CIAO");
+                    location.reload();
                 },
                 error: (xhr) => {
                     console.log("error");
@@ -88,7 +86,7 @@
                     if (xhr.status === 404) {
                         console.log("Non trovato");
                         document.getElementById("risultato").style.display = "block";
-                        document.getElementById("lista-risultati").innerHTML = "Nessun risultato!";
+                        document.getElementById("lista-risultati").innerHTML = "<li>Nessun risultato!</li>";
                     }
                 }
             });
@@ -140,40 +138,43 @@
             </tr>
             <c:forEach var="p" items="${prodotti}">
                 <tr>
-                    <form action="" id="modifica-prodotto-form-${p.id}">
-                        <th>
-                            <input name="nome" type="text" placeholder="Nome..." value="${p.nome}">
-                        </th>
-                        <th>
-                            <input name="prezzoAlKg" type="number" placeholder="Nome..." value="${p.prezzoAlKg}">
-                        </th>
-                        <th>
-                            <input name="dataArrivo" type="datetime-local" placeholder="Nome..."
-                                   value="${p.dataArrivo}">
-                        </th>
-                        <th>
-                            <input name="quantitaStoccata" type="number" placeholder="Nome..."
-                                   value="${p.quantitaStoccata}">
-                        </th>
-                        <th>
-                            <textarea name="descrizione">${p.descrizione}</textarea>
-                        </th>
-                        <th>
-                            <textarea name="immagine">${p.immagine}</textarea>
-                        </th>
-                        <th>
-                            <button class="modifica-prodotto" type="submit"
-                                    onclick="modificaProdotto('${p.id}'); return false;">
-                                <i class="fa fa-trash" style="color: white"></i>
-                            </button>
-                        </th>
-                        <th>
-                            <spring:url value="/prodotti/delete/${p.id}" var="deleteUrl"/>
-                            <button class="delete-prodotto" onclick="eliminaProdotto('${deleteUrl}')">
-                                <i class="fa fa-trash" style="color: white"></i>
-                            </button>
-                        </th>
-                    </form>
+                    <th>
+                        <input id="nome-prodotto-${p.id}" name="nome" type="text" placeholder="Nome..."
+                               value="${p.nome}">
+                    </th>
+                    <th>
+                        <input id="prezzoKg-prodotto-${p.id}" name="prezzoAlKg" type="number" placeholder="Nome..."
+                               value="${p.prezzoAlKg}">
+                    </th>
+                    <th>
+                        <input id="dataArrivo-prodotto-${p.id}" name="dataArrivo" type="datetime-local"
+                               placeholder="Nome..."
+                               value="${p.dataArrivo}">
+                    </th>
+                    <th>
+                        <input id="quantitaStoccata-prodotto-${p.id}" name="quantitaStoccata" type="number"
+                               placeholder="Nome..."
+                               value="${p.quantitaStoccata}">
+                    </th>
+                    <th>
+                        <textarea id="descrizione-prodotto-${p.id}" name="descrizione">${p.descrizione}</textarea>
+                    </th>
+                    <th>
+                        <textarea id="immagine-prodotto-${p.id}" name="immagine">${p.immagine}</textarea>
+                    </th>
+                    <th>
+                        <button class="modifica-prodotto" type="submit"
+                                onclick="modificaProdotto('${p.id}');">
+                            <i class="fa fa-save" style="color: white"></i>
+                        </button>
+                    </th>
+                    <th>
+                        <spring:url value="/prodotti/delete/${p.id}" var="deleteUrl"/>
+                        <button class="delete-prodotto" onclick="eliminaProdotto('${deleteUrl}')">
+                            <i class="fa fa-trash" style="color: white"></i>
+                        </button>
+                    </th>
+
                 </tr>
             </c:forEach>
             <% if (prodotti.isEmpty()) { %>
@@ -216,13 +217,14 @@
 
             <div class="input-container">
                 <label>Descrizione</label>
-                <input name="descrizione" type="text" size="512" placeholder="Descrizione prodotto" class="wide"
-                       required>
+                <textarea name="descrizione" placeholder="Descrizione prodotto" required>
+                </textarea>
             </div>
 
             <div class="input-container">
                 <label>Link Immagine</label>
-                <input name="immagine" type="text" size="512" placeholder="Link Immagine" class="wide" required>
+                <textarea name="immagine" placeholder="Link Immagine" required>
+                </textarea>
             </div>
 
             <input type="submit" value="Aggiungi">
