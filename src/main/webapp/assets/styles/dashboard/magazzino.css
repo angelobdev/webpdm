@@ -1,3 +1,13 @@
+.title {
+    width: 100%;
+    background: #579dc955;
+    text-align: center;
+    margin: 0 0 2rem 0;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    box-shadow: 0 2px #0005;
+}
+
 .lista {
     width: 100%;
     display: flex;
@@ -32,15 +42,34 @@ table td {
     border: 1px solid lightgrey;
 }
 
+th > input{
+    width: 120px;
+    height: 3rem;
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
+}
+
+th > textarea{
+    width: 240px;
+    height: 3rem;
+    resize: none;
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
+}
+
 th > input[type=number] {
-    width: 100px;
+    width: 80px;
+    height: 3rem;
+}
+
+th > button {
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
 }
 
 .delete-prodotto {
     background: #ff6348;
-    border: 1px solid #0005;
     padding: 0.5rem;
-    border-radius: 0.2rem;
 }
 
 .delete-prodotto:hover {
@@ -54,9 +83,7 @@ th > input[type=number] {
 
 .modifica-prodotto {
     background: #579dc9;
-    border: 1px solid #0005;
     padding: 0.5rem;
-    border-radius: 0.2rem;
 }
 
 .modifica-prodotto:hover {
@@ -65,17 +92,6 @@ th > input[type=number] {
 
 .modifica-prodotto:active {
     background: #9cb7c9;
-}
-
-.title {
-    width: 100%;
-    background: #579dc955;
-    text-align: center;
-    margin: 0 0 2rem 0;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-
-    box-shadow: 0 2px #0005;
 }
 
 /* FORM */

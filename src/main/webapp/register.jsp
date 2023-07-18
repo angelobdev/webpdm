@@ -28,7 +28,7 @@
             <div class="icon-holder">
                 <i class="fa fa-briefcase"></i>
             </div>
-            <input name="piva" type="text" placeholder="Partita IVA" required>
+            <input name="piva" type="text" placeholder="Partita IVA" required size="11" minlength="11">
         </div>
 
         <!-- Ragione Sociale -->
@@ -36,7 +36,7 @@
             <div class="icon-holder">
                 <i class="fa fa-file-signature"></i>
             </div>
-            <input name="nome" type="text" placeholder="Ragione Sociale" required>
+            <input name="nome" type="text" placeholder="Ragione Sociale" required size="64">
         </div>
 
         <!-- Sede -->
@@ -44,7 +44,7 @@
             <div class="icon-holder">
                 <i class="fa fa-map-pin"></i>
             </div>
-            <input name="sede" type="text" placeholder="Sede" required>
+            <input name="sede" type="text" placeholder="Sede" required size="64">
         </div>
 
         <!-- Username -->
@@ -52,7 +52,7 @@
             <div class="icon-holder">
                 <i class="fa fa-envelope"></i>
             </div>
-            <input name="email" type="email" placeholder="E-Mail" required>
+            <input name="email" type="email" placeholder="E-Mail" required size="128">
         </div>
 
         <!-- Username -->
@@ -60,7 +60,7 @@
             <div class="icon-holder">
                 <i class="fa fa-user"></i>
             </div>
-            <input name="username" type="text" placeholder="Username" required>
+            <input name="username" type="text" placeholder="Username" required size="64">
         </div>
 
         <!-- Password -->
@@ -68,7 +68,7 @@
             <div class="icon-holder">
                 <i class="fa fa-lock"></i>
             </div>
-            <input name="password" type="password" placeholder="Password" required>
+            <input name="password" type="password" placeholder="Password" required size="48">
         </div>
 
         <br>

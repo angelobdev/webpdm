@@ -42,6 +42,9 @@ public class ProdottoService {
             toUpdate.setPrezzoAlKg(prodotto.getPrezzoAlKg());
             toUpdate.setDataArrivo(prodotto.getDataArrivo());
             toUpdate.setQuantitaStoccata(prodotto.getQuantitaStoccata());
+            toUpdate.setDescrizione(prodotto.getDescrizione());
+            toUpdate.setImmagine(prodotto.getImmagine());
+            prodottoRepository.save(toUpdate);
         }
         return toUpdate;
     }

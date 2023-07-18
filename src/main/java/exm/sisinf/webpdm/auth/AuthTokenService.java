@@ -41,10 +41,12 @@ public class AuthTokenService {
     }
 
     public String retrieve(HttpServletRequest request) {
-        return Arrays.stream(request.getCookies())
-                .filter(cookie -> tokenSessionKey.equals(cookie.getName()))
-                .map(Cookie::getValue)
-                .findAny().orElse(null);
+        if (request.getCookies() != null && request.getCookies().length > 0)
+            return Arrays.stream(request.getCookies())
+                    .filter(cookie -> tokenSessionKey.equals(cookie.getName()))
+                    .map(Cookie::getValue)
+                    .findAny().orElse(null);
+        return "";
     }
 
     public Utente getUtente(String token) {
