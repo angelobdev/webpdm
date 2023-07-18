@@ -1,19 +1,53 @@
-<%@ taglib prefix="http" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <jsp:useBean id="username" scope="request" type="java.lang.String"/>
 <jsp:useBean id="prodotti" scope="request" type="java.util.List<exm.sisinf.webpdm.model.Prodotto>"/>
+
 <html>
 <head>
     <title>WEBPDM: Dashboard</title>
     <link rel="stylesheet" type="text/css" href="../assets/styles/dashboard/magazzino.css">
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="../assets/scripts/sortable.js"></script>
     <script>
 
+        // Pulisce l'area di ricerca
+        function pulisciRicerca() {
+            document.getElementById("risultato").style.display = "none";
+            document.getElementById("nomeProdottoCercato").value = "";
+        }
+
+        // Cerca un prodotto all'interno del database (per nome)
+        function cercaProdotto(event) {
+
+            var nomeProdottoCercato = $("#nomeProdottoCercato").val();
+            console.log("Cerco " + nomeProdottoCercato);
+
+            $.ajax({
+                type: "GET",
+                url: "/prodotti/cerca/" + nomeProdottoCercato,
+                success: (data) => {
+
+                    document.getElementById("risultato").style.display = "block";
+                    document.getElementById("lista-risultati").innerHTML = '';
+
+                    data.forEach((value) => {
+                        let item = document.createElement("li");
+
+                        let nome = document.createElement("p");
+                        nome.innerHTML = value["nome"] + ", " + value["prezzoAlKg"] + "€/kg : " + value["quantitaStoccata"] + "pz";
+                        item.appendChild(nome);
+
+                        document.getElementById("lista-risultati").appendChild(item);
+                    });
+                }
+            });
+        }
+
+        // Modifica prodotto esistente
         function modificaProdotto(id) {
-            console.log("Modifico " + id);
 
             let datiProdotto = {
                 nome: $("#nome-prodotto-" + id).val(),
@@ -31,66 +65,23 @@
                 url: "/prodotti/modifica/" + id,
                 contentType: "application/json",
                 data: JSON.stringify(datiProdotto),
-                success: (data) => {
+                success: () => {
                     location.reload();
                 },
-                error: (xhr) => {
-                    console.log("error");
-                }
             });
         }
 
-
-        // delete the user from the database
-        function eliminaProdotto(deleteURL) {
+        // Elimina prodotto dal database
+        function eliminaProdotto(id) {
             $.ajax({
                 type: "DELETE",
-                url: deleteURL,
-                success: (data) => {
+                url: "/prodotti/delete/" + id,
+                success: () => {
                     location.reload();
                 }
             });
-            location.reload();
         }
 
-        function pulisciRicerca() {
-            document.getElementById("risultato").style.display = "none";
-        }
-
-        function cercaProdotto(event) {
-
-            var nomeProdottoCercato = $("#nomeProdottoCercato").val();
-            console.log("Cerco " + nomeProdottoCercato);
-
-            $.ajax({
-                type: "GET",
-                url: "/prodotti/cerca/" + nomeProdottoCercato,
-                success: (data) => {
-                    console.log(data);
-                    document.getElementById("risultato").style.display = "block";
-
-                    document.getElementById("lista-risultati").innerHTML = '';
-                    data.forEach((value) => {
-
-                        let item = document.createElement("li");
-
-                        let nome = document.createElement("p");
-                        nome.innerHTML = value["nome"] + ", " + value["prezzoAlKg"] + "€/kg : " + value["quantitaStoccata"] + "pz";
-                        item.appendChild(nome);
-
-                        document.getElementById("lista-risultati").appendChild(item);
-
-                    })
-                },
-                error: (xhr, ajaxOptions, thrownError) => {
-                    if (xhr.status === 404) {
-                        console.log("Non trovato");
-                        document.getElementById("risultato").style.display = "block";
-                        document.getElementById("lista-risultati").innerHTML = "<li>Nessun risultato!</li>";
-                    }
-                }
-            });
-        }
     </script>
 </head>
 <body>
@@ -100,6 +91,7 @@
 
     <h1>Gestione Magazzino</h1>
 
+    <%--AREA DI RICERCA--%>
     <h2 class="title">Ricerca prodotti</h2>
     <div class="ricerca">
         <div class="search-area">
@@ -113,16 +105,14 @@
         </div>
         <div class="search-result">
             <div id="risultato" style="display: none">
-
                 <ul id="lista-risultati">
-
                 </ul>
-
             </div>
         </div>
     </div>
     <div class="divider"></div>
 
+    <%--LISTA (+ Modifica) Prodotti--%>
     <h2 class="title">Lista Prodotti</h2>
     <div class="lista">
         <table class="sortable">
@@ -163,14 +153,12 @@
                         <textarea id="immagine-prodotto-${p.id}" name="immagine">${p.immagine}</textarea>
                     </th>
                     <th>
-                        <button class="modifica-prodotto" type="submit"
-                                onclick="modificaProdotto('${p.id}');">
+                        <button class="modifica-prodotto" onclick="modificaProdotto('${p.id}')">
                             <i class="fa fa-save" style="color: white"></i>
                         </button>
                     </th>
                     <th>
-                        <spring:url value="/prodotti/delete/${p.id}" var="deleteUrl"/>
-                        <button class="delete-prodotto" onclick="eliminaProdotto('${deleteUrl}')">
+                        <button class="delete-prodotto" onclick="eliminaProdotto('${p.id}')">
                             <i class="fa fa-trash" style="color: white"></i>
                         </button>
                     </th>
@@ -179,7 +167,7 @@
             </c:forEach>
             <% if (prodotti.isEmpty()) { %>
             <tr>
-                <td colspan="5">Non ci sono prodotti</td>
+                <td colspan="8">Non ci sono prodotti</td>
             </tr>
             <% } %>
         </table>
@@ -188,13 +176,10 @@
     <br>
     <div class="divider"></div>
 
-
+    <%--AGGIUNTA PRODOTTI--%>
     <h2 class="title">Aggiungi Prodotti</h2>
-
     <div class="form-container">
-
         <form action="/prodotti/add" method="post">
-
             <div class="input-container">
                 <label>Nome</label>
                 <input name="nome" type="text" placeholder="Nome prodotto" required>
@@ -228,15 +213,10 @@
             </div>
 
             <input type="submit" value="Aggiungi">
-
         </form>
 
     </div>
-
     <br>
-    <div class="divider"></div>
-
-
 </div>
 
 </body>
