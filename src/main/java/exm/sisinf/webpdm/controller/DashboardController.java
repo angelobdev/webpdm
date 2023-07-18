@@ -1,6 +1,7 @@
 package exm.sisinf.webpdm.controller;
 
 import exm.sisinf.webpdm.auth.AuthTokenService;
+import exm.sisinf.webpdm.service.ApprovvigionamentoService;
 import exm.sisinf.webpdm.service.ProdottoService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ public class DashboardController {
 
     @Autowired
     private ProdottoService prodottoService;
+
+    @Autowired
+    private ApprovvigionamentoService approvvigionamentoService;
 
     @GetMapping("/dashboard")
     public String dashboard(Model model, HttpServletRequest request) {
@@ -47,6 +51,8 @@ public class DashboardController {
     public String approvvigionamenti(Model model, HttpServletRequest request) {
         String token = authTokenService.retrieve(request);
         model.addAttribute("username", authTokenService.getUtente(token).getUsername());
+
+        model.addAttribute("approvvigionamenti", approvvigionamentoService.getAllApprovvigionamenti());
 
         return "dashboard/approvvigionamenti";
     }

@@ -214,7 +214,8 @@
         </form>
 
     </div>
-    <br>
+
+    <div class="divider"></div>
 </div>
 
 </body>

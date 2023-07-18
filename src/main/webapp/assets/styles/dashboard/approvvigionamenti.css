@@ -67,29 +67,29 @@ th > button {
     border-radius: 0.4rem;
 }
 
-.delete-prodotto {
+.elimina-approvvigionamento {
     background: #ff6348;
     padding: 0.5rem;
 }
 
-.delete-prodotto:hover {
+.elimina-approvvigionamento:hover {
     background: #ff6348;
 }
 
-.delete-prodotto:active {
+.elimina-approvvigionamento:active {
     background: #ff8c8c;
 }
 
-.modifica-prodotto {
+.modifica-approvvigionamento {
     background: #579dc9;
     padding: 0.5rem;
 }
 
-.modifica-prodotto:hover {
+.modifica-approvvigionamento:hover {
     background: #7ba6c2;
 }
 
-.modifica-prodotto:active {
+.modifica-approvvigionamento:active {
     background: #9cb7c9;
 }
 

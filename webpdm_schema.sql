@@ -69,7 +69,10 @@ INSERT INTO ruoli (nome, grado)
 VALUES ('ROLE_USER', 1);
 
 INSERT INTO ruoli (nome, grado)
-VALUES ('ROLE_MAGAZZINIERE', 100);
+VALUES ('ROLE_DIPENDENTE', 100);
+
+INSERT INTO ruoli (nome, grado)
+VALUES ('ROLE_MAGAZZINIERE', 200);
 
 INSERT INTO ruoli (nome, grado)
 VALUES ('ROLE_ADMIN', 999);

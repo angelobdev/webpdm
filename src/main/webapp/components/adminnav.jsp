@@ -15,12 +15,16 @@
 <div class="admin-nav">
     <h1>Dashboard</h1>
     <div class="divider"></div>
+    <% if (utente.getRuolo().getGrado() != 100) { %>
     <a href="/dashboard/magazzino">Gestione Magazzino</a>
     <a href="/dashboard/approvvigionamenti">Gestione Approvvigionamenti</a>
-    <% if (utente.getRuolo().getGrado() > 900) { %>
+    <%}%>
+    <% if (utente.getRuolo().getGrado() != 200) { %>
     <a href="/dashboard/vendite">Gestione Vendite</a>
+    <% } %>
+    <% if (utente.getRuolo().getGrado() >= 900) { %>
     <a href="/dashboard/dipendenti">Gestione Dipendenti</a>
-    <a href="/dashboard/reclami">Gestione Reclami</a>
+    <a href="/dashboard/reclami">Gestione Ordini (e reclami)</a>
     <% } %>
 
     <div class="spacer"></div>

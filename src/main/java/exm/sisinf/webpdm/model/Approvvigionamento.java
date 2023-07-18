@@ -24,4 +24,8 @@ public class Approvvigionamento {
     @Column(name = "quantita")
     private Integer quantita;
 
+    public Approvvigionamento(String nomeProdotto, Integer quantita) {
+        this.nomeProdotto = nomeProdotto;
+        this.quantita = quantita;
+    }
 }

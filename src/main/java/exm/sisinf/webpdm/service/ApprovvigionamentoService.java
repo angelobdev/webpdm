@@ -29,6 +29,10 @@ public class ApprovvigionamentoService {
         return approvvigionamentoRepository.findAll();
     }
 
+    public List<Approvvigionamento> cercaApprovvigionamenti(String nome) {
+        return approvvigionamentoRepository.findAllByNomeProdottoLikeIgnoreCaseOrNomeProdottoContainingIgnoreCase(nome, nome).orElse(null);
+    }
+
     // UPDATE
 
     public Approvvigionamento updateApprovvigionamento(Integer id, Approvvigionamento approvvigionamento) {
@@ -36,6 +40,7 @@ public class ApprovvigionamentoService {
         if (toUpdate != null) {
             toUpdate.setNomeProdotto(approvvigionamento.getNomeProdotto());
             toUpdate.setQuantita(approvvigionamento.getQuantita());
+            approvvigionamentoRepository.save(toUpdate);
         }
         return toUpdate;
     }
