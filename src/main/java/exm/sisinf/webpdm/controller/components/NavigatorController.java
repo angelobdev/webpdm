@@ -34,7 +34,7 @@ public class NavigatorController {
             carrello = carrelloService.getCarrelloUtente(utente.getId());
 //        Carrello carrello = carrelloService.getCarrello(1);
 
-            logger.warn("CARRELLO: " + carrello);
+//            logger.warn("CARRELLO: " + carrello);
             model.addAttribute("carrello", carrello);
         }
 

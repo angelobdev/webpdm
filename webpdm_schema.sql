@@ -67,6 +67,10 @@ CREATE TABLE ruoli
 -- Ruoli di default --
 INSERT INTO ruoli (nome, grado)
 VALUES ('ROLE_USER', 1);
+
+INSERT INTO ruoli (nome, grado)
+VALUES ('ROLE_MAGAZZINIERE', 100);
+
 INSERT INTO ruoli (nome, grado)
 VALUES ('ROLE_ADMIN', 999);
 

@@ -40,7 +40,7 @@
             </button>
             <div class="dropdown-content">
                 <a href="/areaclienti">Area Clienti</a>
-                <% if (utente.getRuolo() != null && utente.getRuolo().getNome().equals("ROLE_ADMIN")) { %>
+                <% if (utente.getRuolo().getGrado() > 99) { %>
                 <a href="/dashboard">Dashboard</a>
                 <% } %>
                 <a class="logout" href="/logout">Logout</a>
@@ -68,17 +68,17 @@
                 </c:when>
                 <c:otherwise>
                     <p>Carrello presente:</p>
-<%--                    ID: ${carrello.id}--%>
-<%--                    ${carrello}--%>
+                    <%--                    ID: ${carrello.id}--%>
+                    <%--                    ${carrello}--%>
                 </c:otherwise>
             </c:choose>
 
-<%--            <c:if test="${carrello == null}">--%>
-<%--                <p>Nessun carrello!</p>--%>
-<%--            </c:if>--%>
-<%--            <c:if test="${carrello != null}">--%>
-<%--                <p>Carrello presente!</p>--%>
-<%--            </c:if>--%>
+            <%--            <c:if test="${carrello == null}">--%>
+            <%--                <p>Nessun carrello!</p>--%>
+            <%--            </c:if>--%>
+            <%--            <c:if test="${carrello != null}">--%>
+            <%--                <p>Carrello presente!</p>--%>
+            <%--            </c:if>--%>
 
         </div>
 

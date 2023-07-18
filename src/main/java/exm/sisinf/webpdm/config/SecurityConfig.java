@@ -47,7 +47,7 @@ public class SecurityConfig {
                         .requestMatchers("/login").anonymous()
                         .requestMatchers("/logout").authenticated()
                         .requestMatchers("/content**", "/content/**").hasAnyRole("USER", "ADMIN") // USER CONTENT
-                        .requestMatchers("/dashboard**", "/dashboard/**").hasRole("ADMIN") // DASHBOARD
+                        .requestMatchers("/dashboard**", "/dashboard/**").hasAnyRole("ADMIN", "MAGAZZINIERE") // DASHBOARD
                         .requestMatchers("/assets/**").permitAll()
                         .anyRequest().permitAll()
                 ).exceptionHandling(exception -> exception

@@ -17,9 +17,11 @@
     <div class="divider"></div>
     <a href="/dashboard/magazzino">Gestione Magazzino</a>
     <a href="/dashboard/approvvigionamenti">Gestione Approvvigionamenti</a>
+    <% if (utente.getRuolo().getGrado() > 900) { %>
     <a href="/dashboard/vendite">Gestione Vendite</a>
     <a href="/dashboard/dipendenti">Gestione Dipendenti</a>
     <a href="/dashboard/reclami">Gestione Reclami</a>
+    <% } %>
 
     <div class="spacer"></div>
     <div class="divider"></div>
