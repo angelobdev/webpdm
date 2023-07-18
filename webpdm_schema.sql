@@ -100,9 +100,10 @@ CREATE TABLE prodotti
 -- Carrelli creati dagli utenti --
 CREATE TABLE carrelli
 (
-    id         serial PRIMARY KEY,
-    acquistato boolean NOT NULL,
-    utente_id  int     NOT NULL,
+    id             serial PRIMARY KEY,
+    acquistato     boolean   NOT NULL,
+    utente_id      int       NOT NULL,
+    data_creazione timestamp NOT NULL,
     CONSTRAINT carrelli_utente_id_foreign_key FOREIGN KEY (utente_id) REFERENCES utenti (id)
 );
 
