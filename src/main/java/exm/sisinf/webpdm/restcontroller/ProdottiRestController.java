@@ -58,10 +58,6 @@ public class ProdottiRestController {
 
     @PostMapping("/modifica/{id}")
     public Prodotto modificaProdotto(@PathVariable Integer id, @RequestBody Prodotto prodotto) {
-        logger.warn("Sto modificando prodotto con id: " + id);
-
-        logger.warn("VALORI: " + prodotto);
-
         return prodottoService.updateProdotto(id, prodotto);
     }
 

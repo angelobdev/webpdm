@@ -1,7 +1,6 @@
 - Carrello con database + Coupon
-- Gestione Dipendenti, Ordini (Fornitori) e acquisti, Gestione Reclami
+- Gestione Vendite, Gestione Ordini (+ reclami)
 - Area Clienti
     - Gestione Account
     - Form Reclami
-    - Coupon
     - Storico Ordini

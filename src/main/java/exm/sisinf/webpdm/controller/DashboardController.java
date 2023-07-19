@@ -2,6 +2,8 @@ package exm.sisinf.webpdm.controller;
 
 import exm.sisinf.webpdm.auth.AuthTokenService;
 import exm.sisinf.webpdm.service.ApprovvigionamentoService;
+import exm.sisinf.webpdm.service.BustaPagaService;
+import exm.sisinf.webpdm.service.DipendenteService;
 import exm.sisinf.webpdm.service.ProdottoService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,13 @@ public class DashboardController {
     private ProdottoService prodottoService;
 
     @Autowired
+    private DipendenteService dipendenteService;
+
+    @Autowired
     private ApprovvigionamentoService approvvigionamentoService;
+
+    @Autowired
+    private BustaPagaService bustaPagaService;
 
     @GetMapping("/dashboard")
     public String dashboard(Model model, HttpServletRequest request) {
@@ -44,6 +52,9 @@ public class DashboardController {
         String token = authTokenService.retrieve(request);
         model.addAttribute("username", authTokenService.getUtente(token).getUsername());
 
+        model.addAttribute("dipendenti", dipendenteService.getAllDipendenti());
+        model.addAttribute("bustepaga", bustaPagaService.getAllBustePaga());
+
         return "dashboard/dipendenti";
     }
 
@@ -57,12 +68,12 @@ public class DashboardController {
         return "dashboard/approvvigionamenti";
     }
 
-    @GetMapping("/dashboard/reclami")
-    public String reclami(Model model, HttpServletRequest request) {
+    @GetMapping("/dashboard/ordini")
+    public String ordini(Model model, HttpServletRequest request) {
         String token = authTokenService.retrieve(request);
         model.addAttribute("username", authTokenService.getUtente(token).getUsername());
 
-        return "dashboard/reclami";
+        return "dashboard/ordini";
     }
 
 

@@ -22,4 +22,8 @@ public class Dipendente {
     @Column(name = "mansioni")
     private String mansioni;
 
+    public Dipendente(String codiceFiscale, String mansioni) {
+        this.codiceFiscale = codiceFiscale;
+        this.mansioni = mansioni;
+    }
 }

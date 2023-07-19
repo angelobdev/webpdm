@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>WEBPDM: Dashboard</title>
-  <link rel="stylesheet" type="text/css" href="../assets/styles/dashboard/reclami.css">
+  <link rel="stylesheet" type="text/css" href="../assets/styles/dashboard/vendite.css">
 </head>
 <body>
 <jsp:include page="/adminnav"/>

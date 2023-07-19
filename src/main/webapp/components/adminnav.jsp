@@ -23,8 +23,8 @@
     <a href="/dashboard/vendite">Gestione Vendite</a>
     <% } %>
     <% if (utente.getRuolo().getGrado() >= 900) { %>
+    <a href="/dashboard/ordini">Gestione Ordini</a>
     <a href="/dashboard/dipendenti">Gestione Dipendenti</a>
-    <a href="/dashboard/reclami">Gestione Ordini (e reclami)</a>
     <% } %>
 
     <div class="spacer"></div>

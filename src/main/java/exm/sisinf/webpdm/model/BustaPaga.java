@@ -28,4 +28,9 @@ public class BustaPaga {
     @JoinColumn(name = "dipendente_id")
     private Dipendente dipendente;
 
+    public BustaPaga(Double importoEmesso, Date dataEmissione, Dipendente dipendente) {
+        this.importoEmesso = importoEmesso;
+        this.dataEmissione = dataEmissione;
+        this.dipendente = dipendente;
+    }
 }

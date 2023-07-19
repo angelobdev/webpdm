@@ -13,6 +13,9 @@ public class DipendenteService {
     @Autowired
     private DipendenteRepository dipendenteRepository;
 
+    @Autowired
+    private BustaPagaService bustaPagaService;
+
     // CREATE
 
     public Dipendente createDipendente(Dipendente dipendente) {
@@ -20,6 +23,10 @@ public class DipendenteService {
     }
 
     // READ
+
+    public Dipendente getDipendente(String codiceFiscale) {
+        return dipendenteRepository.findByCodiceFiscale(codiceFiscale).orElse(null);
+    }
 
     public Dipendente getDipendente(Integer id) {
         return dipendenteRepository.findById(id).orElse(null);
@@ -36,6 +43,7 @@ public class DipendenteService {
         if (toUpdate != null) {
             toUpdate.setCodiceFiscale(dipendente.getCodiceFiscale());
             toUpdate.setMansioni(dipendente.getMansioni());
+            dipendenteRepository.save(toUpdate);
         }
         return toUpdate;
     }
@@ -43,6 +51,7 @@ public class DipendenteService {
     // DELETE
 
     public void deleteDipendente(Integer id) {
+        bustaPagaService.deleteBustePagaDipendente(id);
         dipendenteRepository.deleteById(id);
     }
 

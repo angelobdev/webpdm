@@ -44,8 +44,16 @@
         });
     }
 
+    function getProdottiNelCarrello(id) {
+        $.ajax({
+            type: "GET",
+            url: "/carrello/prodotti/" + id,
+            async: true,
+        })
+    }
+
     // Ritorna il carrello dell'utente;
-    async function getCarrelloUtente() {
+    function getCarrelloUtente() {
         $.ajax({
             type: "GET",
             url: "/carrello/" + ${utente.id},
@@ -55,9 +63,19 @@
                 if (data == []) {
                     $("#carrello-content").html("<p>Nessun Carrello Presente!</p>");
                 } else {
-                    $("#carrello-content").html("<div><b>Carrello presente!</b><p>ID: " + data["id"] + "</p><p>Utente: " + data["utente"]["username"] + "</p><p>Data Creazione: " + data["data_creazione"] + "</p></div>");
-                }
 
+                    let prodotti = getProdottiNelCarrello(data["id"]);
+                    console.log(prodotti);
+
+                    $("#carrello-content").html(
+                        "<div>\n" +
+                        "<b>Carrello presente!</b>\n" +
+                        "<p>ID:" + data["id"] + "</p>\n" +
+                        "<p>Utente:" + data["utente"]["username"] + "</p>\n" +
+                        "<p>Data Creazione:" + data["dataCreazione"] + "</p>\n" +
+                        "</div>\n"
+                    );
+                }
 
             }
         });

@@ -19,6 +19,9 @@ public class CarrelloService {
     @Autowired
     private CarrelloRepository carrelloRepository;
 
+    @Autowired
+    private ProdottoService prodottoService;
+
     // CREATE
 
     public Carrello creaCarrelloUtente(Integer utenteID) {
@@ -83,6 +86,18 @@ public class CarrelloService {
 
     public void eliminaProdotto(Integer carrelloID, Integer prodottoID) {
         carrelloRepository.eliminaProdotto(carrelloID, prodottoID);
+    }
+
+    public List<Prodotto> getProdottiNelCarrello(Integer carrelloID) {
+
+        List<Integer> listaID = carrelloRepository.selezionaProdotti(carrelloID);
+        List<Prodotto> listaProdotti = new ArrayList<>();
+
+        for (var id : listaID) {
+            listaProdotti.add(prodottoService.getProdotto(id));
+        }
+
+        return listaProdotti;
     }
 
     public void svuotaCarrello(Integer carrelloID) {

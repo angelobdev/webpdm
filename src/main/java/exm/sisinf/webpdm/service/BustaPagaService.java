@@ -37,6 +37,7 @@ public class BustaPagaService {
             toUpdate.setImportoEmesso(bustaPaga.getImportoEmesso());
             toUpdate.setDataEmissione(bustaPaga.getDataEmissione());
             toUpdate.setDipendente(bustaPaga.getDipendente());
+            bustaPagaRepository.save(toUpdate);
         }
         return toUpdate;
     }
@@ -45,6 +46,10 @@ public class BustaPagaService {
 
     public void deleteBustaPaga(Integer id) {
         bustaPagaRepository.deleteById(id);
+    }
+
+    public void deleteBustePagaDipendente(Integer dipendenteID) {
+        bustaPagaRepository.deleteByDipendenteId(dipendenteID);
     }
 
 }
