@@ -56,7 +56,6 @@
     <%--    GESTIONE ACCOUNT--%>
     <div class="card gestione-account-card">
         <h2 class="title">Gestione Account</h2>
-        <div class="divider"></div>
         <div class="content gestione-account">
 
             <form action="#">
@@ -112,7 +111,6 @@
     <%--    COUPON--%>
     <div class="card">
         <h2 class="title">Coupon Disponibili</h2>
-        <div class="divider"></div>
         <div class="content coupon">
             <% if (coupon.isEmpty()) {%>
             <p>Nessun coupon disponibile!</p>
@@ -134,17 +132,17 @@
 
             <div class="info prezzo">
                 <h4>Sconto Applicato</h4>
-                <p>${coupon.get(0).scontoApplicato}</p>
+                <p></p>
             </div>
 
             <div class="info prezzo">
                 <h4>Importo Minimo di Acquisto</h4>
-                <p>${coupon.get(0).prezzoMinimo}</p>
+                <p></p>
             </div>
 
             <div class="info">
                 <h4>Data di Scadenza</h4>
-                <p>${coupon.get(0).dataScadenza.toLocaleString()}</p>
+                <p></p>
             </div>
             <% } %>
         </div>
@@ -154,12 +152,11 @@
     <%--    STORICO ORDINI--%>
     <div class="card ordini-card">
         <h2 class="title">Storico Ordini</h2>
-        <div class="divider"></div>
         <div class="content ordini">
             <ul>
                 <c:forEach var="ordine" items="${ordini}">
                     <li>
-                        <p>Ordine N.${ordine.id + 1000} effettuato in data ${ordine.data.toLocaleString()}</p>
+                        <h4>Ordine N.${ordine.id + 1000} effettuato in data ${ordine.data.toLocaleString()}</h4>
                         <table>
                             <thead>
                             <th>Nome Prodotto</th>
@@ -186,6 +183,8 @@
                             </tr>
                             </tbody>
                         </table>
+                        <br>
+                        <div class="divider"></div>
                     </li>
                 </c:forEach>
             </ul>
@@ -195,7 +194,6 @@
     <%--    FORM RECLAMI--%>
     <div class="card">
         <h2 class="title">Crea Reclamo</h2>
-        <div class="divider"></div>
         <div class="content reclamo">
             <form action="#">
                 <div class="input-container">

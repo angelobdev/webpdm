@@ -1,10 +1,7 @@
 package exm.sisinf.webpdm.controller.components;
 
 import exm.sisinf.webpdm.auth.AuthTokenService;
-import exm.sisinf.webpdm.controller.ContentController;
-import exm.sisinf.webpdm.model.Carrello;
 import exm.sisinf.webpdm.model.Utente;
-import exm.sisinf.webpdm.service.CarrelloService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -37,6 +37,10 @@ h2 {
     color: blue;
     margin: 0.4rem;
     /*padding: 1rem;*/
+    width: 96%;
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #0005;
 }
 
 .card > .content {
@@ -119,9 +123,12 @@ h2 {
 /* ORDINI */
 .ordini-card {
     grid-column: span 2;
+    max-height: 500px;
 }
 
 .ordini {
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -129,16 +136,57 @@ h2 {
 }
 
 .ordini > ul {
+    width: 90%;
+    height: 80%;
     list-style: none;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    overflow-y: scroll;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
-table, tr, th {
-    border: 1px solid black;
+.ordini > ul > li {
+    width: 90%
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    color: #333;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    text-align: left;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+table th {
+    background-color: #ff9800;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+table tr:nth-child(even) td {
+    background-color: #f2f2f2;
+}
+
+table tr:hover td {
+    background-color: #ffedcc;
+}
+
+table td {
+    background-color: #fff;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
 }
 
 /* GESTIONE ACCOUNT */
@@ -237,7 +285,7 @@ table, tr, th {
 }
 
 .coupon .prezzo p:after {
-    content: '€';
+    content: '\20ac';
 }
 
 .coupon > .info > h4 {
