@@ -55,6 +55,6 @@ public class Prodotto {
 
     @Override
     public String toString() {
-        return nome + ", " + prezzoAlKg + "€/kg, " + quantitaStoccata + " rimasti. Data: " + dataArrivo + " (" + descrizione + ") ... LINK: " + immagine;
+        return nome;
     }
 }

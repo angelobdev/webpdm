@@ -25,6 +25,10 @@ public class ProdottoService {
         return prodottoRepository.findAllByNomeLikeIgnoreCaseOrNomeContainingIgnoreCase(nome, nome).orElse(null);
     }
 
+    public Prodotto getProdotto(String nome) {
+        return prodottoRepository.findByNome(nome).orElse(null);
+    }
+
     public Prodotto getProdotto(Integer id) {
         return prodottoRepository.findById(id).orElse(null);
     }

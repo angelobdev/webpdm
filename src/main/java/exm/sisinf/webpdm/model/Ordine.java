@@ -31,6 +31,13 @@ public class Ordine {
     @JoinColumn(name = "carrello_id")
     private Carrello carrello;
 
+    public Ordine(Date data, Float importoTotale, String statoOridine, Carrello carrello) {
+        this.data = data;
+        this.importoTotale = importoTotale;
+        this.statoOridine = statoOridine;
+        this.carrello = carrello;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

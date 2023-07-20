@@ -178,7 +178,6 @@ nav > .nav-last > .login-button:active {
     width: 30vw;
     height: 100vh;
 
-
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -194,4 +193,108 @@ nav > .nav-last > .login-button:active {
     background: #0000;
     border: none;
     padding: 10px;
+}
+
+#carrello-content {
+    width: 96%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+#carrello-content div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+#carrello-content div table {
+    border-collapse: collapse;
+    width: 100%;
+    color: #333;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    text-align: left;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+#carrello-content div table thead th:last-child {
+    width: 3rem;
+}
+
+#carrello-content div table th {
+    background-color: #ff9800;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+#carrello-content div table tr:nth-child(even) td {
+    background-color: #f2f2f2;
+}
+
+#carrello-content div table tr:hover td {
+    background-color: #ffedcc;
+}
+
+#carrello-content div table td {
+    background-color: #fff;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+}
+
+#carrello-content div table tr button {
+    background: red;
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
+    color: white;
+    padding: 0.5rem;
+}
+
+#carrello-content div button {
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
+    color: white;
+}
+
+#carrello-content div .acquista {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    background: #ff6348;
+    padding: 0.5rem;
+}
+
+#carrello-content div .acquista:hover {
+    background: #fa9e8e;
+}
+
+#carrello-content div .acquista:active {
+    background: #fcc6c6;
+}
+
+#carrello-content div .svuota {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background: #579dc9;
+    padding: 0.5rem;
+}
+
+#carrello-content div .svuota:hover {
+    background: #7ba6c2;
+}
+
+#carrello-content div .svuota:active {
+    background: #9cb7c9;
 }

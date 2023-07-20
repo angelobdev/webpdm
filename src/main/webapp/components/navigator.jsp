@@ -36,49 +36,123 @@
             async: true,
             success: () => {
                 console.log("SUCCESS");
+                getCarrelloUtente();
             },
             error: () => {
                 console.error("ERROR");
             }
-
         });
     }
 
     function getProdottiNelCarrello(id) {
-        $.ajax({
+        return $.ajax({
             type: "GET",
             url: "/carrello/prodotti/" + id,
             async: true,
-        })
+            success: (data) => {
+                console.log(data);
+            }
+        });
     }
 
     // Ritorna il carrello dell'utente;
-    function getCarrelloUtente() {
-        $.ajax({
-            type: "GET",
-            url: "/carrello/" + ${utente.id},
-            dataType: "json",
-            success: (data) => {
-
-                if (data == []) {
-                    $("#carrello-content").html("<p>Nessun Carrello Presente!</p>");
-                } else {
-
-                    let prodotti = getProdottiNelCarrello(data["id"]);
-                    console.log(prodotti);
-
-                    $("#carrello-content").html(
-                        "<div>\n" +
-                        "<b>Carrello presente!</b>\n" +
-                        "<p>ID:" + data["id"] + "</p>\n" +
-                        "<p>Utente:" + data["utente"]["username"] + "</p>\n" +
-                        "<p>Data Creazione:" + data["dataCreazione"] + "</p>\n" +
-                        "</div>\n"
-                    );
+    async function getCarrelloUtente() {
+        try {
+            const data = await $.ajax({
+                type: "GET",
+                url: "/carrello/" + ${utente.id},
+                success: (data) => {
+                    console.log(data);
                 }
+            });
 
+            if (data == []) {
+                $("#carrello-content").html("<p>Nessun prodotto presente!</p>");
+            } else {
+
+                $("#carrello-content").html(
+                    "<div>\n" +
+                    "<table id='prodottiTable'>\n" +
+                    "<thead>\n" +
+                    "<tr>\n" +
+                    "<th>Prodotto</th>\n" +
+                    "<th>Quantita</th>\n" +
+                    "<th></th>\n" +
+                    "</tr>\n" +
+                    "</thead>\n" +
+                    "<tbody></tbody>\n" +
+                    "</table>\n" +
+                    "</div>\n"
+                );
+
+                const acquistaButton = $('<button class="acquista">Acquista Ora</button>');
+                acquistaButton.on('click', function () {
+                    acquistaCarrello(data["id"]);
+                });
+
+                const svuotaCarrelloButton = $('<button class="svuota">Svuota Carrello</button>');
+                svuotaCarrelloButton.on('click', function () {
+                    svuotaCarrello(data["id"]);
+                });
+
+                $("#carrello-content div").append(acquistaButton).append(svuotaCarrelloButton);
+
+                // Usa await per ottenere i prodotti nel carrello in modo sincrono
+                const prodotti = await getProdottiNelCarrello(data["id"]);
+                console.log("PRODOTTI: ", JSON.stringify(prodotti));
+
+                const tableBody = $('#prodottiTable tbody');
+                const prodottiMap = new Map(Object.entries(prodotti));
+                prodottiMap.forEach((value, key, map) => {
+                    const newRow = $('<tr>');
+                    newRow.append($('<td>').text(key));
+                    newRow.append($('<td>').text(value));
+                    const button = $("<button class='elimina'><i class='fa fa-trash'></button>");
+                    button.on('click', () => {
+                        eliminaProdotto(data["id"], key);
+                    });
+                    newRow.append($('<td>').append(button));
+                    tableBody.append(newRow);
+                })
             }
-        });
+        } catch (error) {
+            // Gestisci eventuali errori qui
+            console.error("Errore durante la richiesta AJAX: ", error);
+        }
+    }
+
+    function eliminaProdotto(carrelloID, prodottoName) {
+        $.ajax({
+            type: "DELETE",
+            url: "/carrello/elimina/" + carrelloID + "/" + prodottoName,
+            success: (data) => {
+                console.log(data);
+                getCarrelloUtente();
+            }
+        })
+    }
+
+    function svuotaCarrello(carrelloID) {
+        $.ajax({
+            type: "DELETE",
+            url: "/carrello/svuota/" + carrelloID,
+            success: (data) => {
+                console.log(data);
+                getCarrelloUtente();
+            }
+        })
+    }
+
+    function acquistaCarrello(carrelloID) {
+        $.ajax({
+            type: "POST",
+            url: "/carrello/acquista/" + carrelloID,
+            success: (data) => {
+                console.log(data);
+                getCarrelloUtente();
+                alert("Congratulazioni, hai acquistato degli ottimi prodotti!");
+            }
+        })
     }
 
     getCarrelloUtente();
@@ -135,7 +209,7 @@
             <h2>Carrello</h2>
 
             <div id="carrello-content">
-                <p>Ciao</p>
+                <p>Nessun prodotto presente</p>
             </div>
 
 

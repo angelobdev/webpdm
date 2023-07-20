@@ -8,8 +8,17 @@
 
     <script>
         function aggiungiProdotto(prodottoID) {
-            let quantita = $("#prodotto-quantita-" + prodottoID).val();
-            aggiungiProdottoAlCarrello(prodottoID, quantita);
+            let quantitaInput = $("#prodotto-quantita-" + prodottoID)
+
+            let quantitaMax = quantitaInput.attr('max');
+            let quantitaValue = quantitaInput.val();
+
+            if (quantitaValue <= quantitaMax) {
+                aggiungiProdottoAlCarrello(prodottoID, quantitaValue);
+            } else {
+                alert("Non puoi comprare " + quantitaValue + "kg di questo prodotto!");
+            }
+
         }
     </script>
 </head>
@@ -30,10 +39,10 @@
 
             <p class="desc">${p.descrizione}</p>
             <p class="prezzo">${p.prezzoAlKg}€/kg</p>
-            <p class="quantita">Disponibilità: ${p.quantitaStoccata}pz</p>
+            <p class="quantita">Disponibilità: ${p.quantitaStoccata}kg</p>
 
-            <button class="buy" onclick="aggiungiProdotto('${p.id}')">Acquista Ora</button>
-            <input id="prodotto-quantita-${p.id}" type="number" value="1">
+            <input id="prodotto-quantita-${p.id}" type="number" value="1" min="1" max="${p.quantitaStoccata}">
+            <button class="buy" onclick="aggiungiProdotto('${p.id}')">Aggiungi al Carrello</button>
         </li>
     </c:forEach>
 

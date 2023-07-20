@@ -10,6 +10,8 @@ import java.util.Optional;
 @Repository
 public interface ProdottoRepository extends JpaRepository<Prodotto, Integer> {
 
+    Optional<Prodotto> findByNome(String nome);
+
     Optional<List<Prodotto>> findAllByNomeLikeIgnoreCaseOrNomeContainingIgnoreCase(String nome1, String nome2);
 
 }

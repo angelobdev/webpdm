@@ -156,19 +156,39 @@
         <h2 class="title">Storico Ordini</h2>
         <div class="divider"></div>
         <div class="content ordini">
-
-            ${ordini}
-
-            <%--TODO: QUERY--%>
-            <div class="ordine">
-                <h4><i class="fa fa-caret-down"></i>&nbsp;Ordine #1001</h4>
-                <ul class="lista-prodotti">
-                    <li>prodotto 1</li>
-                    <li>prodotto 2</li>
-                </ul>
-            </div>
-
-            <p>Acquisti: ${acquisti}</p>
+            <ul>
+                <c:forEach var="ordine" items="${ordini}">
+                    <li>
+                        <p>Ordine N.${ordine.id + 1000} effettuato in data ${ordine.data.toLocaleString()}</p>
+                        <table>
+                            <thead>
+                            <th>Nome Prodotto</th>
+                            <th>Quantita</th>
+                            <th>Sub-Totale</th>
+                            </thead>
+                            <tbody>
+                            <c:forEach var="cp" items="${ordine.carrello.carrelloProdotti}">
+                                <tr>
+                                    <td>${cp.prodotto.nome}</td>
+                                    <td>${cp.quantita}kg</td>
+                                    <td>${cp.prodotto.prezzoAlKg * cp.quantita}&euro;</td>
+                                </tr>
+                            </c:forEach>
+                            <tr>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                            </tr>
+                            <tr>
+                                <td><b>Totale:</b></td>
+                                <td></td>
+                                <td>${ordine.importoTotale}&euro;</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                </c:forEach>
+            </ul>
 
         </div>
     </div>

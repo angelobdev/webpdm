@@ -88,3 +88,12 @@
 .buy:active {
     background: #9db2c0;
 }
+
+input[type=number] {
+    width: 50%;
+    height: 2rem;
+    border: 1px solid #0005;
+    border-radius: 0.4rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}

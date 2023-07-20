@@ -1,9 +1,9 @@
 package exm.sisinf.webpdm.service;
 
-import exm.sisinf.webpdm.model.BustaPaga;
 import exm.sisinf.webpdm.model.Carrello;
 import exm.sisinf.webpdm.model.Prodotto;
 import exm.sisinf.webpdm.model.Utente;
+import exm.sisinf.webpdm.model.support.CarrelloProdotto;
 import exm.sisinf.webpdm.repository.CarrelloRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +21,7 @@ public class CarrelloService {
 
     @Autowired
     private ProdottoService prodottoService;
+
 
     // CREATE
 
@@ -84,20 +85,25 @@ public class CarrelloService {
         carrelloRepository.modificaProdotto(carrelloID, prodottoID, nuovaQuantita);
     }
 
-    public void eliminaProdotto(Integer carrelloID, Integer prodottoID) {
-        carrelloRepository.eliminaProdotto(carrelloID, prodottoID);
+    public void eliminaProdotto(Integer carrelloID, String nomeProdotto) {
+        Prodotto prodotto = prodottoService.getProdotto(nomeProdotto);
+        carrelloRepository.eliminaProdotto(carrelloID, prodotto.getId());
     }
 
-    public List<Prodotto> getProdottiNelCarrello(Integer carrelloID) {
+    public Map<Prodotto, Integer> getProdottiNelCarrello(Integer carrelloID) {
 
-        List<Integer> listaID = carrelloRepository.selezionaProdotti(carrelloID);
-        List<Prodotto> listaProdotti = new ArrayList<>();
+        Carrello carrello = carrelloRepository.findById(carrelloID).orElse(null);
+        assert (carrello != null);
 
-        for (var id : listaID) {
-            listaProdotti.add(prodottoService.getProdotto(id));
+        Collection<CarrelloProdotto> prodottiCarrello = carrello.getCarrelloProdotti();
+
+        Map<Prodotto, Integer> prodottiNelCarrello = new HashMap<>();
+
+        for (var cp : prodottiCarrello) {
+            prodottiNelCarrello.put(cp.getProdotto(), cp.getQuantita());
         }
 
-        return listaProdotti;
+        return prodottiNelCarrello;
     }
 
     public void svuotaCarrello(Integer carrelloID) {

@@ -1,5 +1,6 @@
 package exm.sisinf.webpdm.model.support;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import exm.sisinf.webpdm.model.Carrello;
 import exm.sisinf.webpdm.model.Prodotto;
 import jakarta.persistence.*;
@@ -8,19 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-
-@Embeddable
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-class CarrelloProdottoId implements Serializable {
-
-    @Column(name = "carrello_id")
-    private Integer carrelloId;
-
-    @Column(name = "prodotto_id")
-    private Integer prodottoId;
-}
 
 @Entity
 @Table(name = "carrelli_prodotti")
@@ -33,6 +21,7 @@ public class CarrelloProdotto {
 
     @ManyToOne
     @MapsId("carrelloId")
+    @JsonIgnore
     private Carrello carrello;
 
     @ManyToOne

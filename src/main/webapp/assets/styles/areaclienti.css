@@ -122,21 +122,23 @@ h2 {
 }
 
 .ordini {
-    display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(3, 3fr);
-}
-
-.ordine {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-.ordine > .lista-prodotti {
-    /*display: none;*/
-    margin: 0;
+.ordini > ul {
+    list-style: none;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+table, tr, th {
+    border: 1px solid black;
 }
 
 /* GESTIONE ACCOUNT */
