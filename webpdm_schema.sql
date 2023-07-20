@@ -388,7 +388,7 @@ $$
 BEGIN
     UPDATE prodotti
     SET quantita_stoccata = quantita_stoccata -
-                            (SELECT quantita FROM carrelli_prodotti WHERE carrello_id = NEW.carrello_id);
+                            (SELECT DISTINCT quantita FROM carrelli_prodotti WHERE carrello_id = NEW.carrello_id);
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -405,7 +405,7 @@ CREATE OR REPLACE FUNCTION update_quantita_in_magazzino_on_vendita()
 $$
 BEGIN
     UPDATE prodotti
-    SET quantita_stoccata = quantita_stoccata - (SELECT quantita FROM vendite_prodotti WHERE vendita_id = NEW.id);
+    SET quantita_stoccata = quantita_stoccata - (SELECT DISTINCT quantita FROM vendite_prodotti WHERE vendita_id = NEW.id);
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;

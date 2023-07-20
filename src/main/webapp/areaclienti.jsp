@@ -45,7 +45,6 @@
             return null;
         }
     </script>
-
     <script>
         function salvaUtente() {
 
@@ -71,6 +70,30 @@
 
         }
     </script>
+    <script>
+        function inviaReclamo() {
+            let data = {
+                ordine: $("#reclamo-ordine").val(),
+                segnalazione: $("#reclamo-segnalazione").val(),
+                data: $("#reclamo-data").val(),
+            }
+
+            if (data.segnalazione.length === 0) {
+                alert("Compila tutti i campi");
+                return;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/reclami/add",
+                contentType: "application/json; charset=UTF-8;",
+                data: JSON.stringify(data),
+                success: () => {
+                    alert('Il tuo reclamo e\' stato inviato, verrai contattato dai nostri amministratori!');
+                }
+            })
+        }
+    </script>
 </head>
 <body>
 <jsp:include page="/nav"/>
@@ -87,7 +110,7 @@
 </div>
 
 <div class="container">
-    <%--    GESTIONE ACCOUNT--%>
+    <%--GESTIONE ACCOUNT--%>
     <div class="card gestione-account-card">
         <h2 class="title">Gestione Account</h2>
         <div class="content gestione-account">
@@ -121,7 +144,7 @@
 
                 <div class="info-account">
                     <label>Username</label>
-                    <textarea name="username" id="utente-username" readonly>${utente.username}</textarea>
+                    <textarea name="username" id="utente-username" disabled>${utente.username}</textarea>
                 </div>
 
                 <div class="info-account">
@@ -142,7 +165,7 @@
         </div>
     </div>
 
-    <%--    COUPON--%>
+    <%--COUPON--%>
     <div class="card">
         <h2 class="title">Coupon Disponibili</h2>
         <div class="content coupon">
@@ -182,8 +205,7 @@
         </div>
     </div>
 
-
-    <%--    STORICO ORDINI--%>
+    <%--STORICO ORDINI--%>
     <div class="card ordini-card">
         <h2 class="title">Storico Ordini</h2>
         <div class="content ordini">
@@ -225,34 +247,37 @@
 
         </div>
     </div>
-    <%--    FORM RECLAMI--%>
+
+    <%--FORM RECLAMI--%>
     <div class="card">
         <h2 class="title">Crea Reclamo</h2>
         <div class="content reclamo">
-            <form action="#">
+            <div id="aggiungi-reclamo">
                 <div class="input-container">
                     <label>Ordine</label>
-                    <select name="ordine">
-                        <option>Ordine 1</option>
-                        <option>Ordine 2</option>
+                    <select name="ordine" id="reclamo-ordine">
+                        <c:forEach var="ord" items="${ordini}">
+                            <option value="${ord.id}">Ordine #${ord.id+1000}</option>
+                        </c:forEach>
                     </select>
                 </div>
                 <div class="input-container">
                     <label>Segnalazione</label>
-                    <textarea name="segnalazione" placeholder="Messaggio..."></textarea>
+                    <textarea id="reclamo-segnalazione" name="segnalazione" placeholder="Messaggio..."></textarea>
                 </div>
                 <div class="input-container">
                     <label>Data</label>
-                    <input name="data" type="date" placeholder="Date..." id="data-reclamo" disabled>
+                    <input id="reclamo-data" name="data" type="date" placeholder="Date..." disabled>
                 </div>
-                <input type="submit" value="Invia Reclamo"> <%--QUA--%>
-            </form>
+                <button onclick="inviaReclamo()">Invia Reclamo</button>
+                <%--QUA--%>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
-    document.getElementById('data-reclamo').valueAsDate = new Date();
+    document.getElementById('reclamo-data').valueAsDate = new Date();
     selezionaCoupon();
 </script>
 

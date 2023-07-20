@@ -82,7 +82,7 @@ h2 {
     grid-column: span 2;
 }
 
-.reclamo > form {
+.reclamo > #aggiungi-reclamo {
     width: 100%;
     display: flex;
     align-items: center;
@@ -90,7 +90,7 @@ h2 {
     flex-direction: column;
 }
 
-.reclamo > form > .input-container {
+.reclamo > #aggiungi-reclamo > .input-container {
     width: 90%;
     display: flex;
     align-items: flex-start;
@@ -98,11 +98,11 @@ h2 {
     flex-direction: column;
 }
 
-.reclamo > form > .input-container > label {
+.reclamo > #aggiungi-reclamo > .input-container > label {
     color: blue;
 }
 
-.reclamo > form > .input-container > input, select {
+.reclamo > #aggiungi-reclamo > .input-container > input, select {
     width: 100%;
     height: 3rem;
     margin-bottom: 10px;
@@ -110,7 +110,7 @@ h2 {
     border-radius: 0.4rem;
 }
 
-.reclamo > form > .input-container > textarea {
+.reclamo > #aggiungi-reclamo > .input-container > textarea {
     width: 100%;
     min-height: 8rem;
     margin-bottom: 10px;
@@ -119,7 +119,7 @@ h2 {
     border-radius: 0.4rem;
 }
 
-.reclamo > form > input[type="submit"] {
+.reclamo > #aggiungi-reclamo > button {
     width: 60%;
     height: 3rem;
     margin-top: 10px;
@@ -131,11 +131,11 @@ h2 {
     text-shadow: 0 0 10px #0002;
 }
 
-.reclamo > form > input[type="submit"]:hover {
+.reclamo > #aggiungi-reclamo > button:hover {
     background: #91d8eb;
 }
 
-.reclamo > form > input[type="submit"]:active {
+.reclamo > #aggiungi-reclamo > button:active {
     background: #b8dde7;
 }
 
@@ -254,6 +254,10 @@ table td {
     width: 40%;
     border: 1px solid #0002;
     border-radius: 0.2rem;
+}
+
+textarea[disabled], input[disabled] {
+    background: #f0f0f0;
 }
 
 .gestione-account > .info-account-container > button {

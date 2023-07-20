@@ -46,7 +46,15 @@ public class CarrelloRestController {
         if (carrello == null) carrello = carrelloService.creaCarrelloUtente(utenteID);
 
         Collection<CarrelloProdotto> prodottiNelCarrello = carrello.getCarrelloProdotti();
-        if (prodottiNelCarrello.isEmpty()) {
+        boolean contains = false;
+        for (var pnc : prodottiNelCarrello) {
+            if (pnc.getProdotto().getId().equals(carrelloProdottoDTO.getProdottoID())) {
+                contains = true;
+                break;
+            }
+        }
+
+        if (!contains) {
             carrelloService.aggiungiProdotto(carrello.getId(), carrelloProdottoDTO.getProdottoID(), carrelloProdottoDTO.getQuantita());
         } else {
             Integer quantitaTotale = carrelloProdottoDTO.getQuantita();

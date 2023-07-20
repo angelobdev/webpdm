@@ -17,7 +17,7 @@ public interface OrdineRepository extends JpaRepository<Ordine, Integer> {
                     "WHERE c.utente_id = ?1",
             nativeQuery = true
     )
-    public List<Ordine> findByUtenteId(Integer id);
+    List<Ordine> findByUtenteId(Integer id);
 
 
 

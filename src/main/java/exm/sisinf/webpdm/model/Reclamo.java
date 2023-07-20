@@ -30,4 +30,11 @@ public class Reclamo {
     @OneToOne
     @JoinColumn(name = "ordine_id")
     private Ordine ordine;
+
+    public Reclamo(String messaggio, Date data, String stato, Ordine ordine) {
+        this.messaggio = messaggio;
+        this.data = data;
+        this.stato = stato;
+        this.ordine = ordine;
+    }
 }
