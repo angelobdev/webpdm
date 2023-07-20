@@ -57,12 +57,13 @@
                 username: $("#utente-username").val(),
                 password: $("#utente-password").val(),
                 avatar: $("#utente-avatar").val(),
-                <%--ruolo: ${utente.ruolo},--%>
             };
 
             $.ajax({
                 type: "POST",
                 url: "/utenti/modifica/" + ${utente.id},
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=UTF-8;",
                 success: (data) => {
                     console.log("OK");
                 }

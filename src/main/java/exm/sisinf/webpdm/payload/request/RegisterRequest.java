@@ -28,7 +28,7 @@ public class RegisterRequest {
     @NotBlank
     private String password;
 
-    private String avatar = "";
+    private String avatar = "https://cdn.reviewwave.com/site/img/avatars/no-profile-picture.png";
 
     private String ruolo = "ROLE_USER";
 
