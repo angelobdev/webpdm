@@ -19,8 +19,8 @@
         <h1>“Dal mare alla tua tavola, La Perla del Mediterraneo: freschezza e qualità che conquistano ogni palato”</h1>
 
         <div class="button-area">
-            <button>Catalogo &rightarrow;</button>
-            <button>Contatti &rightarrow;</button>
+            <a href="/catalogo">Catalogo &rightarrow;</a>
+            <a href="/contatti">Contatti &rightarrow;</a>
         </div>
     </div>
 
@@ -81,7 +81,7 @@
     <div class="show round">
         <img src="assets/media/famiglia.jpeg">
         <h1>Scopri le nostre ricette</h1>
-        <button>Scopri di più &rightarrow;</button>
+        <a href="/ricette">Scopri di più &rightarrow;</a>
     </div>
 
     <h1>Aneddoti...</h1>
