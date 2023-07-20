@@ -1,0 +1,300 @@
+nav {
+    position: fixed;
+    top: 0;
+    width: calc(100% - 1rem);
+    height: var(--nav-height);
+    background: #fff;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+
+    padding-left: 1rem;
+    /*padding-right: 1rem;*/
+
+    box-shadow: 0 5px 5px #0005;
+
+    z-index: 1;
+}
+
+nav > a {
+    text-decoration: none;
+}
+
+nav > a:visited {
+    color: black;
+}
+
+nav > .nav-routes {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: 1rem;
+}
+
+nav > .nav-routes > a {
+    margin-left: 2rem;
+    color: #000;
+    font-size: 1.15rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+nav > .nav-routes > a:hover {
+    background: #0001;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+
+    opacity: 1
+}
+
+nav > .nav-routes > a > p {
+    margin-right: 0.5rem;
+}
+
+
+nav > .nav-last {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+}
+
+/* region DROPDOWN */
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    height: calc(var(--nav-height) - 1rem);
+    margin-right: 1rem;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #579dc9;
+    color: white;
+    height: 100%;
+    font-size: 16px;
+    border: none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 3rem;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #6da6c9;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 1rem;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-radius: 1rem;
+    margin: 0.2rem;
+}
+
+.dropdown-content .logout {
+    color: red !important;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* endregion */
+
+
+nav > .nav-last > .login-button {
+    background: #579dc9;
+    border-radius: 3rem;
+    color: white;
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+}
+
+nav > .nav-last > .login-button:hover {
+    background: #6da6c9;
+}
+
+nav > .nav-last > .login-button:active {
+    background: #85aec7;
+}
+
+.cart-button {
+    padding-right: 1rem;
+}
+
+.cart-button > button {
+    background: #0000;
+    border: none;
+
+}
+
+.cart-button > button:hover {
+    box-shadow: 0 0 4px azure;
+}
+
+#carrello {
+    position: absolute;
+
+    background: white;
+    box-shadow: 0 -3px 10px #0005;
+
+    right: 0;
+    top: 0;
+
+    width: 30vw;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    visibility: hidden;
+}
+
+#carrello > .close {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    background: #0000;
+    border: none;
+    padding: 10px;
+}
+
+#carrello-content {
+    width: 96%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+#carrello-content div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+#carrello-content div table {
+    border-collapse: collapse;
+    width: 100%;
+    color: #333;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    text-align: left;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+#carrello-content div table thead th:last-child {
+    width: 3rem;
+}
+
+#carrello-content div table th {
+    background-color: #ff9800;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+#carrello-content div table tr:nth-child(even) td {
+    background-color: #f2f2f2;
+}
+
+#carrello-content div table tr:hover td {
+    background-color: #ffedcc;
+}
+
+#carrello-content div table td {
+    background-color: #fff;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+}
+
+#carrello-content div table tr button {
+    background: red;
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
+    color: white;
+    padding: 0.5rem;
+}
+
+#carrello-content div button {
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
+    color: white;
+}
+
+#carrello-content div .acquista {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    background: #ff6348;
+    padding: 0.5rem;
+}
+
+#carrello-content div .acquista:hover {
+    background: #fa9e8e;
+}
+
+#carrello-content div .acquista:active {
+    background: #fcc6c6;
+}
+
+#carrello-content div .svuota {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background: #579dc9;
+    padding: 0.5rem;
+}
+
+#carrello-content div .svuota:hover {
+    background: #7ba6c2;
+}
+
+#carrello-content div .svuota:active {
+    background: #9cb7c9;
+}

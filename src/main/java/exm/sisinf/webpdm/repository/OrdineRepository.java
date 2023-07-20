@@ -1,0 +1,25 @@
+package exm.sisinf.webpdm.repository;
+
+import exm.sisinf.webpdm.model.Ordine;
+import jakarta.transaction.Transactional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import java.beans.Transient;
+import java.util.List;
+
+@Repository
+public interface OrdineRepository extends JpaRepository<Ordine, Integer> {
+
+    @Query(
+            value = "SELECT o.* " +
+                    "FROM ordini o " +
+                    "JOIN carrelli c ON o.carrello_id = c.id " +
+                    "WHERE c.utente_id = ?1",
+            nativeQuery = true
+    )
+    List<Ordine> findByUtenteId(Integer id);
+
+}

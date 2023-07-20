@@ -1,0 +1,324 @@
+body {
+    background: #73a5c5;
+}
+
+h1 {
+    margin: 1rem 0 0 0;
+}
+
+h2 {
+    margin: 0.2rem 0 0.8rem 0;
+}
+
+.header {
+    width: 100%;
+    background: #0002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    box-shadow: 0 0 10rem 10rem #0002;
+    margin-top: 1rem;
+}
+
+.header > .avatar {
+    margin-right: 1rem;
+}
+
+.header > .avatar > img {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.container {
+    width: 80%;
+    min-height: calc(100vh - var(--nav-height));
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(3, 2fr);
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    min-width: 30%;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px #0002;
+    background: white;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.card > .title {
+    color: blue;
+    margin: 0.4rem;
+    /*padding: 1rem;*/
+    width: 96%;
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #0005;
+}
+
+.card > .content {
+    /*background: yellow;*/
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+/* FORM RECLAMO */
+.reclamo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    grid-column: span 2;
+}
+
+.reclamo > #aggiungi-reclamo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.reclamo > #aggiungi-reclamo > .input-container {
+    width: 90%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.reclamo > #aggiungi-reclamo > .input-container > label {
+    color: blue;
+}
+
+.reclamo > #aggiungi-reclamo > .input-container > input, select {
+    width: 100%;
+    height: 3rem;
+    margin-bottom: 10px;
+    border: 1px solid #0005;
+    border-radius: 0.4rem;
+}
+
+.reclamo > #aggiungi-reclamo > .input-container > textarea {
+    width: 100%;
+    min-height: 8rem;
+    margin-bottom: 10px;
+    resize: vertical;
+    border: 1px solid #0005;
+    border-radius: 0.4rem;
+}
+
+.reclamo > #aggiungi-reclamo > button {
+    width: 60%;
+    height: 3rem;
+    margin-top: 10px;
+    border: 1px solid #0005;
+    border-radius: 0.4rem;
+    background: #47c5e7;
+    color: white;
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px #0002;
+}
+
+.reclamo > #aggiungi-reclamo > button:hover {
+    background: #91d8eb;
+}
+
+.reclamo > #aggiungi-reclamo > button:active {
+    background: #b8dde7;
+}
+
+/* ORDINI */
+.ordini-card {
+    grid-column: span 2;
+    max-height: 500px;
+}
+
+.ordini {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.ordini > ul {
+    width: 90%;
+    height: 80%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.ordini > ul > li {
+    width: 90%
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    color: #333;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    text-align: left;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+table th {
+    background-color: #ff9800;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+table tr:nth-child(even) td {
+    background-color: #f2f2f2;
+}
+
+table tr:hover td {
+    background-color: #ffedcc;
+}
+
+table td {
+    background-color: #fff;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+}
+
+/* GESTIONE ACCOUNT */
+.gestione-account-card {
+    grid-column: span 2;
+}
+
+.gestione-account {
+    width: 100%;
+}
+
+.gestione-account > .info-account-container {
+    width: 90%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.gestione-account > .info-account-container > .divider {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.gestione-account > .info-account-container > .title {
+    color: blue;
+    margin-bottom: 1rem;
+}
+
+.gestione-account > .info-account-container > .info-account {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+
+.gestione-account > .info-account-container > .info-account > label {
+
+}
+
+.gestione-account > .info-account-container > .info-account > textarea {
+    resize: none;
+    height: 2rem;
+    width: 40%;
+    border: 1px solid #0002;
+    border-radius: 0.2rem;
+}
+
+textarea[disabled], input[disabled] {
+    background: #f0f0f0;
+}
+
+.gestione-account > .info-account-container > button {
+    width: 60%;
+    height: 3rem;
+    margin-top: 10px;
+    border: 1px solid #0005;
+    border-radius: 0.4rem;
+    background: #47c5e7;
+    color: white;
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px #0002;
+}
+
+.gestione-account > .info-account-container > input[type="submit"]:hover {
+    background: #91d8eb;
+}
+
+.gestione-account > .info-account-container > input[type="submit"]:active {
+    background: #b8dde7;
+}
+
+#utente-avatar {
+    resize: vertical;
+    height: 3rem;
+}
+
+/* COUPON */
+.coupon {
+    width: 90% !important;
+    align-items: flex-start !important;
+}
+
+.coupon h3 {
+    color: blue;
+}
+
+.coupon .selection {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.coupon > .divider {
+    width: 100%;
+}
+
+.coupon > .info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.coupon .prezzo p:after {
+    content: '\20ac';
+}
+
+.coupon > .info > h4 {
+    color: dodgerblue;
+}

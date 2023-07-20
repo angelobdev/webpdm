@@ -1,0 +1,239 @@
+.title {
+    width: 100%;
+    background: #579dc955;
+    text-align: center;
+    margin: 0 0 2rem 0;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    box-shadow: 0 2px #0005;
+}
+
+.lista {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+table {
+    color: #333;
+    background: white;
+    border: 1px solid grey;
+    font-size: 12pt;
+    border-collapse: collapse;
+    width: 90%;
+}
+
+table thead th,
+table tfoot th {
+    color: white;
+    background: #579dc9;
+    cursor: pointer;
+}
+
+table caption {
+    padding: .5em;
+}
+
+table th,
+table td {
+    padding: .5em;
+    border: 1px solid lightgrey;
+}
+
+th > input {
+    width: 120px;
+    height: 3rem;
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
+}
+
+th > textarea {
+    width: 240px;
+    height: 3rem;
+    resize: none;
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
+}
+
+th > input[type=number] {
+    width: 80px;
+    height: 3rem;
+}
+
+th > button {
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
+}
+
+.delete-prodotto {
+    background: #ff6348;
+    padding: 0.5rem;
+}
+
+.delete-prodotto:hover {
+    background: #ff6348;
+}
+
+.delete-prodotto:active {
+    background: #ff8c8c;
+}
+
+.modifica-prodotto {
+    background: #579dc9;
+    padding: 0.5rem;
+}
+
+.modifica-prodotto:hover {
+    background: #7ba6c2;
+}
+
+.modifica-prodotto:active {
+    background: #9cb7c9;
+}
+
+/* FORM */
+
+.form-container {
+    border: 1px solid #0002;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.form-container,
+form {
+    width: 90%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input-container {
+    width: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    margin-bottom: 1rem;
+}
+
+.input-container > label {
+    margin-right: auto;
+
+}
+
+.input-container > input {
+    width: 100%;
+    height: 2rem;
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
+}
+
+.input-container > textarea {
+    width: 100%;
+    min-height: 3rem;
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
+    resize: vertical;
+}
+
+input[type=submit] {
+    background: #579dc9;
+    width: 50%;
+    height: 2rem;
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
+    color: white;
+}
+
+input[type=submit]:hover {
+    background: #73a5c5;
+}
+
+input[type=submit]:active {
+    background: #97afbe;
+}
+
+/* RICERCA */
+
+.ricerca {
+    width: 60%;
+}
+
+.search-area {
+    width: 100%;
+}
+
+.search-area > form {
+    width: 100%;
+}
+
+.search-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    height: 2rem;
+    width: 100%;
+}
+
+.search-box > input {
+    width: 78%;
+    height: 100%;
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
+}
+
+.search-box > button {
+    background: #579dc9;
+    width: 10%;
+    height: 100%;
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
+    color: white;
+}
+
+.search-box > button:hover {
+    background: #73a5c5;
+}
+
+.search-box > button:active {
+    background: #97afbe;
+}
+
+.search-result {
+
+}
+
+#lista-risultati {
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
+    list-style: none;
+    background: #579dc9aa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#lista-risultati > li {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+#lista-risultati > li > p {
+    width: 80%;
+    border: 1px solid #0002;
+    border-radius: 0.4rem;
+    padding: 0.2rem;
+    background: #fff;
+}
