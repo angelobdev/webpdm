@@ -1,10 +1,7 @@
 package exm.sisinf.webpdm.controller;
 
 import exm.sisinf.webpdm.auth.AuthTokenService;
-import exm.sisinf.webpdm.service.ApprovvigionamentoService;
-import exm.sisinf.webpdm.service.BustaPagaService;
-import exm.sisinf.webpdm.service.DipendenteService;
-import exm.sisinf.webpdm.service.ProdottoService;
+import exm.sisinf.webpdm.service.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +22,9 @@ public class DashboardController {
 
     @Autowired
     private ApprovvigionamentoService approvvigionamentoService;
+
+    @Autowired
+    private OrdineService ordineService;
 
     @Autowired
     private BustaPagaService bustaPagaService;
@@ -73,6 +73,8 @@ public class DashboardController {
         String token = authTokenService.retrieve(request);
         model.addAttribute("username", authTokenService.getUtente(token).getUsername());
 
+        model.addAttribute("ordini", ordineService.getAllOrdini());
+
         return "dashboard/ordini";
     }
 
@@ -81,6 +83,8 @@ public class DashboardController {
     public String vendite(Model model, HttpServletRequest request) {
         String token = authTokenService.retrieve(request);
         model.addAttribute("username", authTokenService.getUtente(token).getUsername());
+
+        model.addAttribute("prodotti", prodottoService.getAllProdotti());
 
         return "dashboard/vendite";
     }

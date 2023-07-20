@@ -33,4 +33,9 @@ public class Vendita {
     @MapKeyColumn(name = "quantita")
     private Map<Prodotto, Integer> prodottiQuantita;
 
+    public Vendita(Date data, Double importoTotale, Map<Prodotto, Integer> prodottiQuantita) {
+        this.data = data;
+        this.importoTotale = importoTotale;
+        this.prodottiQuantita = prodottiQuantita;
+    }
 }

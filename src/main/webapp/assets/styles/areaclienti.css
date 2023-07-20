@@ -18,6 +18,7 @@ h2 {
     justify-content: center;
     flex-direction: row;
     box-shadow: 0 0 10rem 10rem #0002;
+    margin-top: 1rem;
 }
 
 .header > .avatar {
@@ -25,8 +26,10 @@ h2 {
 }
 
 .header > .avatar > img {
-    height: 4rem;
+    width: 6rem;
+    height: 6rem;
     border-radius: 100%;
+    object-fit: cover;
 }
 
 .container {

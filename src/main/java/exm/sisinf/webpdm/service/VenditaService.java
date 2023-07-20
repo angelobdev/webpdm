@@ -37,6 +37,7 @@ public class VenditaService {
             toUpdate.setData(vendita.getData());
             toUpdate.setImportoTotale(vendita.getImportoTotale());
             toUpdate.setProdottiQuantita(vendita.getProdottiQuantita());
+            venditaRepository.save(toUpdate);
         }
         return toUpdate;
     }

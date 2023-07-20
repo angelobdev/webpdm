@@ -48,4 +48,8 @@ public class ReclamoService {
         reclamoRepository.deleteById(id);
     }
 
+    public void deleteReclamoByOrdine(Integer ordineID) {
+        reclamoRepository.deleteAllByOrdineId(ordineID);
+    }
+
 }
