@@ -4,8 +4,7 @@ Progetto per esame di Sistemi Informativi.
 
 ## Tecnologie utilizzate
 
-Front-end e Back-end: Spring Boot  
-Database: PostgreSQL
+Spring Boot, Spring Security, jQuery + AJAX, PostgreSQL
 
 Realizzato da:  
 - [Angelo Belcastro](https://github.com/angelobdev)  
