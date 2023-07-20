@@ -10,6 +10,25 @@ h2 {
     margin: 0.2rem 0 0.8rem 0;
 }
 
+.header {
+    width: 100%;
+    background: #0002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    box-shadow: 0 0 10rem 10rem #0002;
+}
+
+.header > .avatar {
+    margin-right: 1rem;
+}
+
+.header > .avatar > img {
+    height: 4rem;
+    border-radius: 100%;
+}
+
 .container {
     width: 80%;
     min-height: calc(100vh - var(--nav-height));
@@ -198,7 +217,7 @@ table td {
     width: 100%;
 }
 
-.gestione-account > form {
+.gestione-account > .info-account-container {
     width: 90%;
     display: flex;
     align-items: flex-start;
@@ -206,17 +225,17 @@ table td {
     flex-direction: column;
 }
 
-.gestione-account > form > .divider {
+.gestione-account > .info-account-container > .divider {
     width: 100%;
     margin-bottom: 1rem;
 }
 
-.gestione-account > form > .title {
+.gestione-account > .info-account-container > .title {
     color: blue;
     margin-bottom: 1rem;
 }
 
-.gestione-account > form > .info-account {
+.gestione-account > .info-account-container > .info-account {
     width: 100%;
     display: flex;
     align-items: center;
@@ -225,11 +244,11 @@ table td {
     margin-bottom: 1rem;
 }
 
-.gestione-account > form > .info-account > label {
+.gestione-account > .info-account-container > .info-account > label {
 
 }
 
-.gestione-account > form > .info-account > textarea {
+.gestione-account > .info-account-container > .info-account > textarea {
     resize: none;
     height: 2rem;
     width: 40%;
@@ -237,7 +256,7 @@ table td {
     border-radius: 0.2rem;
 }
 
-.gestione-account > form > input[type="submit"] {
+.gestione-account > .info-account-container > button {
     width: 60%;
     height: 3rem;
     margin-top: 10px;
@@ -249,12 +268,17 @@ table td {
     text-shadow: 0 0 10px #0002;
 }
 
-.gestione-account > form > input[type="submit"]:hover {
+.gestione-account > .info-account-container > input[type="submit"]:hover {
     background: #91d8eb;
 }
 
-.gestione-account > form > input[type="submit"]:active {
+.gestione-account > .info-account-container > input[type="submit"]:active {
     background: #b8dde7;
+}
+
+#utente-avatar {
+    resize: vertical;
+    height: 3rem;
 }
 
 /* COUPON */

@@ -1,4 +1,5 @@
 <%@ page import="exm.sisinf.webpdm.model.Coupon" %>
+<%@ page import="exm.sisinf.webpdm.model.Ruolo" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.fasterxml.jackson.databind.ObjectMapper" %>
 <%@ page import="com.fasterxml.jackson.core.type.TypeReference" %>
@@ -44,13 +45,45 @@
             return null;
         }
     </script>
+
+    <script>
+        function salvaUtente() {
+
+            let data = {
+                partitaIVA: $("#utente-piva").val(),
+                nomeAzienda: $("#utente-nomeAzienda").val(),
+                sedeAziendale: $("#utente-sedeAziendale").val(),
+                email: $("#utente-email").val(),
+                username: $("#utente-username").val(),
+                password: $("#utente-password").val(),
+                avatar: $("#utente-avatar").val(),
+                <%--ruolo: ${utente.ruolo},--%>
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/utenti/modifica/" + ${utente.id},
+                success: (data) => {
+                    console.log("OK");
+                }
+            });
+
+        }
+    </script>
 </head>
 <body>
 <jsp:include page="/nav"/>
 
-<h1>Area Clienti</h1>
-<h2>Bentornato/a, ${utente.username}</h2>
-<div class="divider"></div>
+<div class="header">
+    <div class="avatar">
+        <% String avatar = utente.getAvatar().isEmpty() ? "https://cdn.reviewwave.com/site/img/avatars/no-profile-picture.png" : utente.getAvatar(); %>
+        <img src="<%=avatar%>" alt="avatar">
+    </div>
+    <div>
+        <h1>Area Clienti</h1>
+        <h2>Ciao, ${utente.nomeAzienda}</h2>
+    </div>
+</div>
 
 <div class="container">
     <%--    GESTIONE ACCOUNT--%>
@@ -58,22 +91,22 @@
         <h2 class="title">Gestione Account</h2>
         <div class="content gestione-account">
 
-            <form action="#">
+            <div class="info-account-container">
                 <h2 class="title">Dati aziendali</h2>
 
                 <div class="info-account">
                     <label>Partita IVA</label>
-                    <textarea name="piva">${utente.partitaIVA}</textarea>
+                    <textarea name="piva" id="utente-piva">${utente.partitaIVA}</textarea>
                 </div>
 
                 <div class="info-account">
                     <label>Nome Azienda</label>
-                    <textarea name="nomeAzienda">${utente.nomeAzienda}</textarea>
+                    <textarea name="nomeAzienda" id="utente-nomeAzienda">${utente.nomeAzienda}</textarea>
                 </div>
 
                 <div class="info-account">
                     <label>Sede Aziendale</label>
-                    <textarea name="sedeAziendale">${utente.sedeAziendale}</textarea>
+                    <textarea name="sedeAziendale" id="utente-sedeAziendale">${utente.sedeAziendale}</textarea>
                 </div>
 
                 <div class="divider"></div>
@@ -82,29 +115,29 @@
 
                 <div class="info-account">
                     <label>E-Mail</label>
-                    <textarea name="email">${utente.email}</textarea>
+                    <textarea name="email" id="utente-email">${utente.email}</textarea>
                 </div>
 
                 <div class="info-account">
                     <label>Username</label>
-                    <textarea name="username">${utente.username}</textarea>
+                    <textarea name="username" id="utente-username" readonly>${utente.username}</textarea>
                 </div>
 
                 <div class="info-account">
                     <label>Password</label>
-                    <textarea
-                            name="password">&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;</textarea>
+                    <textarea id="utente-password"
+                              name="password">&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;</textarea>
                 </div>
 
                 <div class="info-account">
                     <label>Avatar</label>
-                    <textarea name="avatar">${utente.avatar}</textarea>
+                    <textarea name="avatar" id="utente-avatar">${utente.avatar}</textarea>
                 </div>
 
                 <div class="divider"></div>
 
-                <input type="submit" value="Salva Informazioni">
-            </form>
+                <button onclick="salvaUtente()">Salva Modifiche</button>
+            </div>
         </div>
     </div>
 

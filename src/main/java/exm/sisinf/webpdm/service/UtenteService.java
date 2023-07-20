@@ -46,6 +46,7 @@ public class UtenteService implements UserDetailsService {
             toUpdate.setPassword(utente.getPassword());
             toUpdate.setAvatar(utente.getAvatar());
             toUpdate.setRuolo(utente.getRuolo());
+            utenteRepository.save(utente);
         }
         return toUpdate;
     }
